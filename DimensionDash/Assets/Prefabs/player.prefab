@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 6740600990102101149}
   - component: {fileID: 2056252544}
   - component: {fileID: 2056252545}
+  - component: {fileID: 6740600990998819047}
   m_Layer: 6
   m_Name: player
   m_TagString: Untagged
@@ -383,7 +384,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: 
   m_DefaultActionMap: game
   m_SplitScreenIndex: -1
@@ -401,3 +402,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _movement: {fileID: 6740600990102101144}
+--- !u!114 &6740600990998819047
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740600990102101138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 933b242ff66640e9912f87f35006fb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _sprites:
+  - {fileID: 1671889859}

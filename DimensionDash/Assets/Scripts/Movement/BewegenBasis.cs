@@ -58,10 +58,12 @@ public abstract class BewegenBasis : MonoBehaviour {
 	public void SpringenStarten()
 	{
 		if(betäubt) return;
-		
-		foreach(var x in überschreibungen) {
-			if(x.enabled && !x.WennSpringen())
-				return;
+
+		if (überschreibungen != null) {
+			foreach (var x in überschreibungen) {
+				if (x.enabled && !x.WennSpringen())
+					return;
+			}
 		}
 
 		springen          = true;
