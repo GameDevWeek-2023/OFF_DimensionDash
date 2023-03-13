@@ -193,8 +193,8 @@ public class BewegenPlatformToolkit : BewegenBasis {
 
 		var ersterSprung = !springtGerade;
 
-		springen                 = false;      // Wir haben den Wunsch zu Springen erfüllt
-		sekundenSeitBodenkontakt = coyoteTime; // Die Coyote-Time soll nicht greifen wenn wir bereits gesprungen sind
+		springen                 = false;        // Wir haben den Wunsch zu Springen erfüllt
+		sekundenSeitBodenkontakt = coyoteTime+1; // Die Coyote-Time soll nicht greifen wenn wir bereits gesprungen sind
 		sekundenSeitSprungBefehl = 0;
 		springtGerade            = true;
 
