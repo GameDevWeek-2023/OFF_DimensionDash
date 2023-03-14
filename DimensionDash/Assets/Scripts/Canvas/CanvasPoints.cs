@@ -7,8 +7,8 @@ using UnityEngine.UI;
 
 public class CanvasPoints : MonoBehaviour
 {
-	private readonly List<GameObject> _playerText = new List<GameObject>();
-	private static   GameObject[]     _players;
+	public static readonly List<GameObject> _playerText = new List<GameObject>();
+	public static    GameObject[]     _players;
 	private          float            _time                 = 0;
 	private          float            _secondsPerDimension  = ObjectManager.SecondsPerDimension;
 	private readonly float            _secondsCompleteLevel = 50f;	//TODO: Specify complete Level time
@@ -17,12 +17,17 @@ public class CanvasPoints : MonoBehaviour
 	private void Start()
 	{
 		initializePlayerPointsCanvas(this.gameObject);
-		_players             = GameObject.FindGameObjectsWithTag("Player");
-		_levelSlider          = gameObject.transform.Find("LevelProgressBar").GetComponent<Slider>();
+		_players              = GameObject.FindGameObjectsWithTag("Player");                          //SerializeField
+		_levelSlider          = gameObject.transform.Find("LevelProgressBar").GetComponent<Slider>(); //SerializeField
 		_levelSlider.maxValue = _secondsCompleteLevel;
-		_dimensionCountdown   = gameObject.transform.Find("DimensionCountdown").GetComponent<TMP_Text>();
+		_dimensionCountdown   = gameObject.transform.Find("DimensionCountdown").GetComponent<TMP_Text>(); //SerializeField
 		_secondsPerDimension  = ObjectManager.SecondsPerDimension;
 
+		foreach (GameObject player in _players)
+		{
+			DontDestroyOnLoad(player);
+		}
+		
 		for (int i = 0; i < _players.Length; i++)
 		{
 			_playerText[i].SetActive(true);;
