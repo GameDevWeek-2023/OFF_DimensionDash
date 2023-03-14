@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
@@ -7,11 +8,11 @@ namespace Player {
 		[SerializeField] private float     _respawnDelay = 3;
 		[SerializeField] private Vector3[] _respawnPositions;
 		[SerializeField] private Transform _respawnPositionSource;
-
-		private Camera _camera;
-		private float  _nextExecution = float.MaxValue;
+		[SerializeField] private Camera    _camera;
+		private                  float     _nextExecution = float.MaxValue;
 
 		private readonly List<(float, GameObject)> _respawnAt = new();
+
 
 		public void KillAndRespawn(GameObject player) {
 			var t = Time.time + _respawnDelay;
@@ -21,6 +22,9 @@ namespace Player {
 		}
 
 		private void Update() {
+			if (_nextExecution > Time.time)
+				return;
+			
 			_respawnAt.RemoveAll(x => {
 				var (t, go) = x;
 				if (t > Time.time) return false;
@@ -28,6 +32,7 @@ namespace Player {
 				var p = GetRespawnPosition();
 				if (p == null) {
 					_nextExecution = Time.time + 1f;
+					Debug.Log("No valid respawn position");
 					return false;
 				}
 
@@ -38,10 +43,6 @@ namespace Player {
 			
 			if(_respawnAt.Count==0)
 				_nextExecution = float.MaxValue;
-		}
-
-		protected override void OnEnable() {
-			_camera = Camera.main;
 		}
 
 		[Button]
