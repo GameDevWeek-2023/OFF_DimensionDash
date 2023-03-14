@@ -5,23 +5,23 @@ using UnityEngine;
 
 public class ObjectManager : MonoBehaviour
 {
-	private float            time         = 0;
+	private float            _time         = 0;
 	private List<GameObject> _parents     = new List<GameObject>();
-	private float            secondsPerDimensnion = 2.5f;
+	public static readonly float            SecondsPerDimension = 2.5f;	//TODO: Specify time of the dimensions
 	void Start()
 	{
-		time = Time.time;
+		_time = Time.time;
 		_parents = getChildParentsfromParent(this.gameObject);
-		disableAllChildren(this.gameObject);
+		DisableAllChildren(this.gameObject);
 	}
 	
     void Update()
     {
-	    time += Time.deltaTime;
-	    int dimension = (int) (time / secondsPerDimensnion);
+	    _time += Time.deltaTime;
+	    int dimension = (int) (_time / SecondsPerDimension);
 	    if (dimension < _parents.Count)
 	    {
-		    disableAllChildren(this.gameObject);
+		    DisableAllChildren(this.gameObject);
 		    _parents[dimension].SetActive(true);
 		    if (dimension+1 < _parents.Count)
 		    {
@@ -48,7 +48,7 @@ public class ObjectManager : MonoBehaviour
 	    return parents;
     }
     
-    private void disableAllChildren(GameObject parent)
+    private void DisableAllChildren(GameObject parent)
     {
 	    Transform[] allChildren = parent.GetComponentsInChildren<Transform>();
 	    for (int i = 0; i < allChildren.Length; i++)
