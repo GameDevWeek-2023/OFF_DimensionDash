@@ -11,9 +11,15 @@ namespace Player {
 
 		private List<Color> _availableColor;
 
+		private readonly HashSet<GameObject> _alreadyJoined = new();
+
 		// TODO: implement actual joining logic in separate screen and transfer the resulting players into the level
 		
 		public void OnPlayerJoined(PlayerInput input) {
+			if (!_alreadyJoined.Add(input.gameObject))
+				return;
+			
+			Debug.Log("Player joined");
 			if (input.TryGetComponent(out PlayerColor playerColor)) {
 				var colorIndex = Random.Range(0, _colors.Count);
 				var color     = _colors[colorIndex];
@@ -22,6 +28,9 @@ namespace Player {
 			}
 
 			input.transform.position = transform.position;
+		}
+
+		public void OnPlayerLeft(PlayerInput input) {
 		}
 		
 	}
