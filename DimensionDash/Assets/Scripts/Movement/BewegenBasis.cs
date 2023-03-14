@@ -75,19 +75,23 @@ public abstract class BewegenBasis : MonoBehaviour {
 		if(betäubt) return;
 
 		richtung = 0;
-		
-		foreach(var x in überschreibungen) {
-			if(x.enabled && !x.WennLaufen(wunschRichtung))
-				return;
+
+		if (überschreibungen != null) {
+			foreach (var x in überschreibungen) {
+				if (x.enabled && !x.WennLaufen(wunschRichtung))
+					return;
+			}
 		}
-		
+
 		richtung = Mathf.Abs(wunschRichtung.x)<=1f ? wunschRichtung.x : Mathf.Sign(wunschRichtung.x);
 	}
 
 	private void FixedUpdate() {
-		foreach(var x in überschreibungen) {
-			if(x.enabled && !x.WennAktuallisieren())
-				return;
+		if (überschreibungen != null) {
+			foreach (var x in überschreibungen) {
+				if (x.enabled && !x.WennAktuallisieren())
+					return;
+			}
 		}
 
 		Aktuallisieren();
@@ -98,11 +102,13 @@ public abstract class BewegenBasis : MonoBehaviour {
 	// Methode um den Spieler/Gegner für X Sekunden zu betäuben
 	public void Betäuben(float sekunden)
 	{
-		foreach(var x in überschreibungen) {
-			if(x.enabled && !x.WennBetäuben())
-				return;
+		if (überschreibungen != null) {
+			foreach (var x in überschreibungen) {
+				if (x.enabled && !x.WennBetäuben())
+					return;
+			}
 		}
-		
+
 		betäubt  = true;
 		richtung = 0;
 		if(juice) juice.SchadensEffekteStarten();
