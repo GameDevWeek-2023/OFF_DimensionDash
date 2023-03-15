@@ -22,11 +22,6 @@ public class CanvasPoints : MonoBehaviour
 		_levelSlider.maxValue = _secondsCompleteLevel;
 		_dimensionCountdown   = gameObject.transform.Find("DimensionCountdown").GetComponent<TMP_Text>(); //SerializeField
 		_secondsPerDimension  = ObjectManager.SecondsPerDimension;
-
-		foreach (GameObject player in _players)
-		{
-			DontDestroyOnLoad(player);
-		}
 		
 		for (int i = 0; i < _players.Length; i++)
 		{
