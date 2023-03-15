@@ -15,7 +15,7 @@ namespace Player {
 		[SerializeField] private List<Color>        _colors;
 		[SerializeField] private PlayerInputManager _playerInputManager;
 		[SerializeField] private float              _startDelay = 3;
-		[SerializeField] private GameStateManager   _gameStateManager;
+		[SerializeField] public GameStateManager   _gameStateManager;
 
 		private          List<Color>         _availableColor;
 		private readonly List<PlayerJoined>  _remainingStartPositions = new();
