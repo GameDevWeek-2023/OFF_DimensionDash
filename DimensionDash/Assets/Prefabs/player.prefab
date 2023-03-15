@@ -1363,7 +1363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8006688697232008692}
-  - component: {fileID: 7335275183181193385}
+  - component: {fileID: 8534158331140308807}
   m_Layer: 6
   m_Name: visual
   m_TagString: Untagged
@@ -1394,7 +1394,7 @@ Transform:
   m_Father: {fileID: 6740600990102101148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &7335275183181193385
+--- !u!95 &8534158331140308807
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -1404,7 +1404,7 @@ Animator:
   m_GameObject: {fileID: 6630860338560604631}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 5b837400b359333389a92d5a7160ac2e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
