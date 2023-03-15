@@ -11,7 +11,7 @@ public class Finish : MonoBehaviour
 		if (col.tag == "Player")
 		{
 			col.gameObject.GetComponent<PlayerPoints>().points += 5;
-			GameObject.Find("input_system").GetComponent<PlayerManager>()._gameStateManager.EndGame();
+			GameStateManager.Instance.EndGame();
 			Destroy(this);
 		}
 	}
