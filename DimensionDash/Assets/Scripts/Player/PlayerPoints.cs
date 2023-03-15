@@ -11,7 +11,7 @@ public class PlayerPoints : MonoBehaviour
 
 	private void Awake()
 	{
-		DontDestroyOnLoad(this.gameObject.transform.parent);
+		//DontDestroyOnLoad(this.gameObject);
 	}
 
 	private void OnTriggerEnter2D(Collider2D col)

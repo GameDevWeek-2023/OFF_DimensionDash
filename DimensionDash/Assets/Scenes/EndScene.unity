@@ -514,6 +514,10 @@ MonoBehaviour:
   player2: {fileID: 722081607}
   player3: {fileID: 340801998}
   player4: {fileID: 58704742}
+  player1_Points: {fileID: 788465888}
+  player2_Points: {fileID: 824766421}
+  player3_Points: {fileID: 934388806}
+  player4_Points: {fileID: 1559957816}
 --- !u!1 &722081607
 GameObject:
   m_ObjectHideFlags: 0
@@ -1150,7 +1154,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559957816}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
