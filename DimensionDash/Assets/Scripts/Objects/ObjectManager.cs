@@ -48,7 +48,7 @@ public class ObjectManager : MonoBehaviour
 	    return parents;
     }
     
-    private void DisableAllChildren(GameObject parent)	//Hier wird irgendwo der Player kurz vor Kamerafahrt Ende deaktiviert
+    private void DisableAllChildren(GameObject parent)
     {
 	    Transform[] allChildren = parent.GetComponentsInChildren<Transform>();
 	    for (int i = 0; i < allChildren.Length; i++)

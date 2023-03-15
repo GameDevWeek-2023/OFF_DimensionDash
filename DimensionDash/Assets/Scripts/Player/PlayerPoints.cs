@@ -9,11 +9,6 @@ public class PlayerPoints : MonoBehaviour
 {
 	public int points = 0;
 
-	private void Awake()
-	{
-		DontDestroyOnLoad(this.gameObject.transform.parent);
-	}
-
 	private void OnTriggerEnter2D(Collider2D col)
 	{
 		if (col.gameObject.tag == "Item")
