@@ -23,41 +23,54 @@ public class EndPoints : MonoBehaviour
 	                   player5_Points,
 	                   player6_Points,
 	                   player7_Points,
-	                   player8_Points;
+	                   player8_Points, 
+	                   winnerText;
 	void Start()
 	{
-		GameObject[] points      = new[] { player1, player2, player3, player4, player5, player6, player7, player8 };
+		GameObject[] playerPoints      = new[] { player1, player2, player3, player4, player5, player6, player7, player8 };
 		GameObject[] playernames = new[] {player1_Points, player2_Points, player3_Points, player4_Points, player5_Points, player6_Points, player7_Points, player8_Points};
 		GameObject[] players     = CanvasPoints._players;
-		changePlayerStats(players, playernames, points);
-		setPlayerColors(players, playernames, points);
+		int winnerNumber = changePlayerStats(players, playernames, playerPoints);
+		setPlayerColors(players, playernames, playerPoints);
+		setWinnerText(winnerNumber);
 	    foreach (GameObject player in players)
 	    {
 		    Destroy(player);
 	    }
-	    
 	}
 
-	private void changePlayerStats(GameObject[] players, GameObject[] playernames, GameObject[] points)
+	private void setWinnerText(int playerNumber)
 	{
-		Debug.Log(players.Length + " " + points.Length);
-		for (int i = 0; i < players.Length; i++)
-		{
-			points[i].SetActive(true);
-			playernames[i].SetActive(true);
-			Debug.Log(getPointsFromPlayer(players[i].GetComponent<PlayerPoints>()));
-			points[i].GetComponent<TMP_Text>().text = getPointsFromPlayer(players[i].GetComponent<PlayerPoints>());
-		}
-		for (int i = players.Length; i < points.Length; i++)
-		{
-			playernames[i].SetActive(false);
-			points[i].SetActive(false);
-		}
+		winnerText.GetComponent<TMP_Text>().text = "Player " + playerNumber + " wins";
 	}
 	
-	private static string getPointsFromPlayer(PlayerPoints player)
+	private int changePlayerStats(GameObject[] players, GameObject[] playernames, GameObject[] playerPoints)
 	{
-		return player.points.ToString();
+		int[] winner = new int[] {0,0};
+		for (int player = 0; player < players.Length; player++)
+		{
+			playerPoints[player].SetActive(true);
+			playernames[player].SetActive(true);
+			int points = getPointsFromPlayer(players[player].GetComponent<PlayerPoints>());
+			playerPoints[player].GetComponent<TMP_Text>().text = points.ToString();
+			if (winner[1] < points)
+			{
+				winner[0] = player+1;
+				winner[1] = points;
+			}
+		}
+		for (int i = players.Length; i < playerPoints.Length; i++)
+		{
+			playernames[i].SetActive(false);
+			playerPoints[i].SetActive(false);
+		}
+
+		return winner[0];
+	}
+	
+	private static int getPointsFromPlayer(PlayerPoints player)
+	{
+		return player.points;
 	}
 	
 	private void setPlayerColors(GameObject[] players, GameObject[] playernames, GameObject[] points)
