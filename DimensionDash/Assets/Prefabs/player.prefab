@@ -890,7 +890,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 28a035e7059e29ce991b465150c6b981, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3bc737bf92d132646918a35af92303be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1091,7 +1091,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 28a035e7059e29ce991b465150c6b981, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3bc737bf92d132646918a35af92303be, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1210,7 +1210,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: c181ce5c7a78e66e192cf170d15cadbd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 05c9e1a20bd37514da4a59daa76bfb06, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -1743,6 +1743,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxOutOfViewTime: 3
+  _playerColor: {fileID: 6740600990998819047}
 --- !u!114 &4748083101057341066
 MonoBehaviour:
   m_ObjectHideFlags: 0
