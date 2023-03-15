@@ -35,6 +35,10 @@ namespace Dimensions {
 			}
 		}
 
+		public float GetTimeUntilNextSwitch() {
+			return _nextSwitch - Time.time;
+		}
+
 		private void OnDestroy() {
 			if (_current)
 				Disable(_current);

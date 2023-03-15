@@ -26,7 +26,7 @@ namespace Canvas {
 		}
 
 		public void ReturnMarker(Image marker) {
-			if(_pool!=null)
+			if(_pool!=null && marker)
 				_pool.Release(marker.gameObject);
 		}
 		
