@@ -20,6 +20,11 @@ namespace Player {
 				s.color = color;
 		}
 
+		public Color GetColor()
+		{
+			return _currentColor;
+		}
+
 		private void OnDestroy() {
 			if (_onReturn != null) _onReturn();
 		}

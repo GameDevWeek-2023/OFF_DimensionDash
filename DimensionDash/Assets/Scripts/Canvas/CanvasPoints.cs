@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -17,10 +18,10 @@ public class CanvasPoints : MonoBehaviour
 	private void Start()
 	{
 		initializePlayerPointsCanvas(this.gameObject);
-		_players              = GameObject.FindGameObjectsWithTag("Player");                          //SerializeField
-		_levelSlider          = gameObject.transform.Find("LevelProgressBar").GetComponent<Slider>(); //SerializeField
+		_players              = GameObject.FindGameObjectsWithTag("Player");                         
+		_levelSlider          = gameObject.transform.Find("LevelProgressBar").GetComponent<Slider>();
 		_levelSlider.maxValue = _secondsCompleteLevel;
-		_dimensionCountdown   = gameObject.transform.Find("DimensionCountdown").GetComponent<TMP_Text>(); //SerializeField
+		_dimensionCountdown   = gameObject.transform.Find("DimensionCountdown").GetComponent<TMP_Text>();
 		_secondsPerDimension  = ObjectManager.SecondsPerDimension;
 		
 		for (int i = 0; i < _players.Length; i++)
@@ -31,6 +32,17 @@ public class CanvasPoints : MonoBehaviour
 		for (int i = _players.Length; i < _playerText.Count; i++)
 		{
 			_playerText[i].SetActive(false);
+		}
+
+		setPlayerColor();
+	}
+
+	private void setPlayerColor()
+	{
+		for (int i = 0; i < _players.Length; i++)
+		{
+			Color c = _players[i].GetComponent<PlayerColor>().GetColor();
+			_playerText[i].GetComponent<TMP_Text>().color = c;
 		}
 	}
 
