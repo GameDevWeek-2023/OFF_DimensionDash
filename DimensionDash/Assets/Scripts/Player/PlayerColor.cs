@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using UnityEngine;
 
 namespace Player {
@@ -21,6 +22,12 @@ namespace Player {
 
 		private void OnDestroy() {
 			if (_onReturn != null) _onReturn();
+		}
+
+		[Button]
+		private void AddAllSprites() {
+			_sprites.Clear();
+			_sprites.AddRange(GetComponentsInChildren<SpriteRenderer>(includeInactive:true));
 		}
 	}
 }

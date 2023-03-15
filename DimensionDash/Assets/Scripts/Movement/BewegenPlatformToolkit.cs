@@ -55,7 +55,7 @@ public class BewegenPlatformToolkit : BewegenBasis {
 	public float downwardMovementMultiplier = 1f;
 
 	[Range(-1, 10), Tooltip("Anzahl der Sprünge die wir in der Luft machen können (-1 = beliebig viele). 'Double Jump' im Toolkit entspricht hier 1")]
-	public int maxAirJumps = 1;
+	[SerializeField]private int maxAirJumps = 1;
 
 	[Tooltip("Soll die Sprunghöhe davon abhängen wie lange die Taste gedrückt wird? Wenn das aktiviert ist beginnt der Spieler zu fallen sobald die Taste losgelassen wurde.")]
 	public bool variableJumpHeight = true;
@@ -82,6 +82,15 @@ public class BewegenPlatformToolkit : BewegenBasis {
 	private bool  springtGerade;
 	private float sekundenSeitSprungBefehl; // für Jump-Buffer
 
+	public int MaxAirJumps {
+		get => verbleibendeAirJumps;
+		set {
+			if (maxAirJumps < 0 && value >= 0) verbleibendeAirJumps = value;
+			if (value < verbleibendeAirJumps) verbleibendeAirJumps  = value;
+
+			maxAirJumps = value;
+		}
+	}
 
 	protected override void Aktuallisieren()
 	{

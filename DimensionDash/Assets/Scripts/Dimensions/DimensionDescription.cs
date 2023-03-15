@@ -1,17 +1,13 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Dimensions {
-
-	public enum Dimension {
-		Base,
-		Vector
-	}
 	
 	public abstract class DimensionDescription : ScriptableObject {
 		
 		[field:SerializeField]
-		public Dimension Dimension { get; private set; } = Dimension.Base;
+		public PlayerSpriteType PlayerSprite { get; private set; } = PlayerSpriteType.Base;
 
 		[field:SerializeField]
 		public string TileSetName { get; private set; } = null;
@@ -22,8 +18,17 @@ namespace Dimensions {
 		[field:SerializeField]
 		public Image Icon { get; private set; } = null;
 
-		public abstract void Apply();
-		public abstract void UnApply();
+		[field:SerializeField]
+		public int MaxUsedPerLevel { get; private set; } = -1;
+
+		[field:SerializeField]
+		public float MaxTime { get; private set; } = float.MaxValue;
+
+		[field:SerializeField]
+		public float MinTime { get; private set; } = 0f;
+
+		public abstract void Apply(List<GameObject>   players);
+		public abstract void UnApply(List<GameObject> players);
 
 	}
 }

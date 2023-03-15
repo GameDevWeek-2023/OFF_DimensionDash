@@ -216,6 +216,7 @@ MonoBehaviour:
   _springConstant: 800
   _damping: 30
   _mass: 0.5
+  _maxDistance: 2
 --- !u!1 &615400832805061342
 GameObject:
   m_ObjectHideFlags: 0
@@ -731,6 +732,7 @@ MonoBehaviour:
   _springConstant: 800
   _damping: 30
   _mass: 0.5
+  _maxDistance: 2
 --- !u!1 &3034296966265016108
 GameObject:
   m_ObjectHideFlags: 0
@@ -1319,6 +1321,7 @@ MonoBehaviour:
   _springConstant: 800
   _damping: 30
   _mass: 0.5
+  _maxDistance: 2
 --- !u!1 &6196964803142159562
 GameObject:
   m_ObjectHideFlags: 0
@@ -1432,6 +1435,7 @@ GameObject:
   - component: {fileID: -9068566014646828325}
   - component: {fileID: 4748083101057341066}
   - component: {fileID: 1329597968133401561}
+  - component: {fileID: 3419957717327807240}
   m_Layer: 6
   m_Name: player
   m_TagString: Player
@@ -1645,8 +1649,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f74bd95c55a6c4c847c35f1118a0df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  "kontaktL\xE4nge": 0.85
-  kontaktPosition: {x: 0, y: -0.65}
+  "kontaktL\xE4nge": 1
+  kontaktPosition: {x: 0, y: -0.4}
   "maxH\xF6he": 0.3
   bodenLayer:
     serializedVersion: 2
@@ -1712,6 +1716,19 @@ MonoBehaviour:
   - {fileID: 4879476886623847484}
   - {fileID: 2376270578977226896}
   - {fileID: 8285894072430952335}
+  - {fileID: 5477429124825296273}
+  - {fileID: 4053000258223004169}
+  - {fileID: 6136816465885890674}
+  - {fileID: 177868608487143015}
+  - {fileID: 8929762399291235812}
+  - {fileID: 7590914784866765036}
+  - {fileID: 8746478230116412872}
+  - {fileID: 3721853455923393381}
+  - {fileID: 1177868105120571653}
+  - {fileID: 8291892395429299518}
+  - {fileID: 7998941692545085470}
+  - {fileID: 3038232158845635624}
+  - {fileID: 2810766791304630341}
 --- !u!114 &-9068566014646828325
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1754,6 +1771,38 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &3419957717327807240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740600990102101138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0972eecfdc9c437a926f6c29f3bef480, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _initialType: 0
+  _typeGameObjects:
+    list:
+    - Key: 0
+      Value: {fileID: 1551975357347835283}
+    - Key: 1
+      Value: {fileID: 6793449522857606232}
+    - Key: 2
+      Value: {fileID: 5723662237885830488}
+    - Key: 3
+      Value: {fileID: 7913342557847559996}
+    - Key: 4
+      Value: {fileID: 615400832805061342}
+    - Key: 5
+      Value: {fileID: 997051632449237865}
+    - Key: 6
+      Value: {fileID: 3765881424829730442}
+    - Key: 7
+      Value: {fileID: 6196964803142159562}
+    keyCollision: 0
 --- !u!1 &6793449522857606232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1972,6 +2021,7 @@ MonoBehaviour:
   _springConstant: 800
   _damping: 30
   _mass: 0.5
+  _maxDistance: 2
 --- !u!1 &7760340755875069535
 GameObject:
   m_ObjectHideFlags: 0
