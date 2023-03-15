@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Player;
 using TMPro;
 using UnityEngine;
 
@@ -29,6 +30,7 @@ public class EndPoints : MonoBehaviour
 		GameObject[] playernames = new[] {player1_Points, player2_Points, player3_Points, player4_Points, player5_Points, player6_Points, player7_Points, player8_Points};
 		GameObject[] players     = CanvasPoints._players;
 		changePlayerStats(players, playernames, points);
+		setPlayerColors(players, playernames, points);
 	    foreach (GameObject player in players)
 	    {
 		    Destroy(player);
@@ -56,5 +58,15 @@ public class EndPoints : MonoBehaviour
 	private static string getPointsFromPlayer(PlayerPoints player)
 	{
 		return player.points.ToString();
+	}
+	
+	private void setPlayerColors(GameObject[] players, GameObject[] playernames, GameObject[] points)
+	{
+		for (int i = 0; i < players.Length; i++)
+		{
+			Color c = players[i].GetComponent<PlayerColor>().GetColor();
+			points[i].GetComponent<TMP_Text>().color = c;
+			playernames[i].GetComponent<TMP_Text>().color = c;
+		}
 	}
 }
