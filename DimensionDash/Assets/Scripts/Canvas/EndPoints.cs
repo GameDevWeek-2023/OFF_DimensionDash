@@ -6,11 +6,27 @@ using UnityEngine;
 
 public class EndPoints : MonoBehaviour
 {
-	[SerializeField] private GameObject player1, player2, player3, player4, player1_Points, player2_Points, player3_Points, player4_Points;
+	[SerializeField]
+	private GameObject player1,
+	                   player2,
+	                   player3,
+	                   player4,
+	                   player5,
+	                   player6,
+	                   player7,
+	                   player8,
+	                   player1_Points,
+	                   player2_Points,
+	                   player3_Points,
+	                   player4_Points,
+	                   player5_Points,
+	                   player6_Points,
+	                   player7_Points,
+	                   player8_Points;
 	void Start()
 	{
-		GameObject[] points      = new[] { player1, player2, player3, player4 };
-		GameObject[] playernames = new[] {player1_Points, player2_Points, player3_Points, player4_Points};
+		GameObject[] points      = new[] { player1, player2, player3, player4, player5, player6, player7, player8 };
+		GameObject[] playernames = new[] {player1_Points, player2_Points, player3_Points, player4_Points, player5_Points, player6_Points, player7_Points, player8_Points};
 		GameObject[] players     = CanvasPoints._players;
 		changePlayerStats(players, playernames, points);
 	    foreach (GameObject player in players)
