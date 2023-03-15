@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player {
-	[RequireComponent(typeof(BewegenBasis), typeof(PlayerInput))]
+	[RequireComponent(typeof(BewegenBasis))]
 	public class PlayerController : MonoBehaviour {
 		[SerializeField] private BewegenBasis _movement;
 
@@ -33,8 +33,10 @@ namespace Player {
 		}
 
 		public void OnLeave() {
-			if (PlayerManager.Instance.AllowJoining)
-				Destroy(gameObject);
+			if (PlayerManager.Instance.AllowJoining) {
+				Destroy(transform.parent.gameObject);
+				Debug.Log("Player left");
+			}
 		}
 
 		public void OnReady() {

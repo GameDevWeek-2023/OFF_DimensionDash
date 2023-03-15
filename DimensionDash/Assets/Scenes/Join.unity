@@ -1413,6 +1413,16 @@ MonoBehaviour:
   - {fileID: 1409848108}
   - {fileID: 1720154830}
   - {fileID: 1490769451}
+  _colors:
+  - {fileID: 11400000, guid: 8481e68588b49ecf1a73ccc402913f76, type: 2}
+  - {fileID: 11400000, guid: 8a1047ceffa7f7c99a3be03e17b41944, type: 2}
+  - {fileID: 11400000, guid: 1cf1b161fff1c49e2921eb34b5ac5af1, type: 2}
+  - {fileID: 11400000, guid: 7799635a9073e0861b9d82fb7cbecb6f, type: 2}
+  - {fileID: 11400000, guid: d4330241964ce56e4af51d5475f16a77, type: 2}
+  - {fileID: 11400000, guid: 4beb84caba3af35a7b373e73394a9110, type: 2}
+  - {fileID: 11400000, guid: 43025c4ae2b72a943b8d5a065bed6fd6, type: 2}
+  - {fileID: 11400000, guid: 671f8a03f4991e41cb884917b00e61e3, type: 2}
+  _startDelay: 3
 --- !u!4 &1182515110
 Transform:
   m_ObjectHideFlags: 0

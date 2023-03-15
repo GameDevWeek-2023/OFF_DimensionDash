@@ -94,7 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4ce4c203fb4eb99e8577fa8777ad02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _respawnDelay: 3
+  _respawnDelay: 2
   _respawnPositions:
   - {x: 11.4, y: 1.82, z: 0}
   _respawnPositionSource: {fileID: 0}

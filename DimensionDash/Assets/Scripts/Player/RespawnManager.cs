@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using NaughtyAttributes;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Player {
 	public class RespawnManager : GlobalSystem<RespawnManager> {
@@ -13,6 +14,17 @@ namespace Player {
 
 		private readonly List<(float, GameObject)> _respawnAt = new();
 
+		private void Start() {
+			var position = GetRespawnPosition();
+			if (position == null) {
+				Debug.LogError("No valid start position");
+				return;
+			}
+			
+			foreach (var p in FindObjectsOfType<PlayerController>()) {
+				p.transform.position = position.Value + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
+			}
+		}
 
 		public void KillAndRespawn(GameObject player) {
 			var t = Time.time + _respawnDelay;

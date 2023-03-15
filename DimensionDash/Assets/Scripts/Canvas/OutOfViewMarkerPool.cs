@@ -9,13 +9,16 @@ namespace Canvas {
 		
 		private ObjectPool<GameObject> _pool;
 
-		private void Awake() {
+		protected override void Awake() {
+			base.Awake();
 			_pool = new ObjectPool<GameObject>(() => Instantiate(_prefab, transform), (obj) => obj.SetActive(true), obj=>obj.SetActive(false), Destroy,
 			                                false, 8, 16);
 		}
 
-		private void OnDestroy() {
+		protected override void OnDestroy() {
+			base.OnDestroy();
 			_pool.Dispose();
+			_pool = null;
 		}
 
 		public Image GetMarker() {
@@ -23,7 +26,8 @@ namespace Canvas {
 		}
 
 		public void ReturnMarker(Image marker) {
-			_pool.Release(marker.gameObject);
+			if(_pool!=null)
+				_pool.Release(marker.gameObject);
 		}
 		
 	}
