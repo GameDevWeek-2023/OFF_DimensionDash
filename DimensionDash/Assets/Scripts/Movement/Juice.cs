@@ -53,8 +53,9 @@ public class Juice : MonoBehaviour {
 	[Tooltip("Wie schnell die Drehung passieren soll (in Grad/Sekunde)"), Range(0, 200)]
 	public float leanSpeed = 80;
 
+	public Transform squashTarget = null;
+
 	// Andere Komponenten, die wir uns dafür merken müssen
-	private GameObject   characterSprite;
 	private Bodenkontakt bodenkontakt;
 	private Animator     animator;
 	private Rigidbody2D  körper;
@@ -68,7 +69,6 @@ public class Juice : MonoBehaviour {
 
 	private void Start()
 	{
-		characterSprite = GetComponentInChildren<SpriteRenderer>().gameObject;
 		bodenkontakt    = GetComponent<Bodenkontakt>();
 		animator        = GetComponentInChildren<Animator>();
 		körper          = GetComponent<Rigidbody2D>();
@@ -107,7 +107,8 @@ public class Juice : MonoBehaviour {
 	{
 		// Die Richtung in die wir drehen/kippen hängt von der Laufrichtung ab
 		var tiltRichtung = körper.velocity.x == 0 ? 0f : -Mathf.Sign(körper.velocity.x);
-		animator.transform.rotation = Quaternion.RotateTowards(animator.transform.rotation, Quaternion.Euler(0, 0, leanAngle * tiltRichtung),
+		var t           = squashTarget ? squashTarget : animator.transform;
+		t.rotation = Quaternion.RotateTowards(t.rotation, Quaternion.Euler(0, 0, leanAngle * tiltRichtung),
 		                                                       leanSpeed * Time.deltaTime);
 	}
 
@@ -161,28 +162,30 @@ public class Juice : MonoBehaviour {
 	                                     float drop,
 	                                     float stärke)
 	{
+		var visualTransform                 = squashTarget ? squashTarget : animator.transform;
+		
 		var verzerrteGröße    = Vector3.LerpUnclamped(Vector3.one, new Vector3(xFaktor, yFaktor, 1f), stärke);
 		var verzerrtePosition = new Vector3(0, -drop * stärke, 0);
 
 		// Zuerst verzerren wir das Sprite schnell (in 0.1 Sekunden) auf die gewünschten Maße
 		for(var t = 0f; t <= 1f; t += Time.deltaTime / 0.1f) {
-			characterSprite.transform.localScale    = Vector3.Lerp(Vector3.one,  verzerrteGröße,    t);
-			characterSprite.transform.localPosition = Vector3.Lerp(Vector3.zero, verzerrtePosition, t);
+			visualTransform.localScale    = Vector3.Lerp(Vector3.one,  verzerrteGröße,    t);
+			visualTransform.localPosition = Vector3.Lerp(Vector3.zero, verzerrtePosition, t);
 			yield return null; // (nach jeder Änderung der Maße warten wir bis zum nächsten Frame)
 		}
 
-		characterSprite.transform.localScale    = verzerrteGröße;
-		characterSprite.transform.localPosition = verzerrtePosition;
+		visualTransform.localScale    = verzerrteGröße;
+		visualTransform.localPosition = verzerrtePosition;
 
 		// ... und danach strecken wir es langsam, über die festgelegte Dauer, wieder auf seine ursprünglichen Maße
 		for(var t = 0f; t <= 1f; t += Time.deltaTime / dauerSekunden) {
-			characterSprite.transform.localScale    = Vector3.Lerp(verzerrteGröße,    Vector3.one,  t);
-			characterSprite.transform.localPosition = Vector3.Lerp(verzerrtePosition, Vector3.zero, t);
+			visualTransform.localScale    = Vector3.Lerp(verzerrteGröße,    Vector3.one,  t);
+			visualTransform.localPosition = Vector3.Lerp(verzerrtePosition, Vector3.zero, t);
 			yield return null; // (nach jeder Änderung der Maße warten wir bis zum nächsten Frame)
 		}
 
-		characterSprite.transform.localScale    = Vector3.one;
-		characterSprite.transform.localPosition = Vector3.zero;
+		visualTransform.localScale    = Vector3.one;
+		visualTransform.localPosition = Vector3.zero;
 
 		squashAndStretchCoroutine = null;
 	}

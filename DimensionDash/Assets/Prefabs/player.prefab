@@ -1541,6 +1541,7 @@ MonoBehaviour:
   landDrop: 0.4
   leanAngle: 10
   leanSpeed: 80
+  squashTarget: {fileID: 8006688697232008692}
 --- !u!82 &6740600990102101150
 AudioSource:
   m_ObjectHideFlags: 0
