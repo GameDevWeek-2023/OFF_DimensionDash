@@ -9,7 +9,7 @@ namespace Player {
 
 		private Color  _currentColor;
 		private Action _onReturn;
-		
+
 		public void SetColor(Color color, Action onReturn) {
 			if (_onReturn != null) _onReturn();
 
@@ -20,8 +20,7 @@ namespace Player {
 				s.color = color;
 		}
 
-		public Color GetColor()
-		{
+		public Color GetColor() {
 			return _currentColor;
 		}
 
@@ -32,7 +31,7 @@ namespace Player {
 		[Button]
 		private void AddAllSprites() {
 			_sprites.Clear();
-			_sprites.AddRange(GetComponentsInChildren<SpriteRenderer>(includeInactive:true));
+			_sprites.AddRange(GetComponentsInChildren<SpriteRenderer>(includeInactive: true));
 		}
 	}
 }

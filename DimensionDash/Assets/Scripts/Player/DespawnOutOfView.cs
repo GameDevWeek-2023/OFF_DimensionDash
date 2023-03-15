@@ -1,17 +1,31 @@
 using System;
+using Canvas;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player {
 	public class DespawnOutOfView : MonoBehaviour {
-		[SerializeField] private float         _maxOutOfViewTime = 3f;
+		[SerializeField] private float       _maxOutOfViewTime = 3f;
+		[SerializeField] private PlayerColor _playerColor;
 
-		private                  float         _outOfViewTime = 0;
-		private RectTransform _marker;
+		private float _outOfViewTime = 0;
+		private Image _marker;
 
-		private void Update() {
+		private void OnValidate() {
+			if (!_playerColor)
+				_playerColor = GetComponent<PlayerColor>();
+		}
+
+		private void OnDisable() {
+			_outOfViewTime = 0;
+			OutOfViewMarkerPool.Instance.ReturnMarker(_marker);
+			_marker = null;
+		}
+
+		private void LateUpdate() {
 			var camera = Camera.main;
 			if (!camera) return;
-			
+
 			var camRelativePosition     = transform.position - camera.transform.position;
 			var camSize                 = new Vector2(camera.aspect, 1f) * camera.orthographicSize;
 			var outOfView               = false;
@@ -21,7 +35,7 @@ namespace Player {
 				outOfViewMarkerPosition.x = -camSize.x;
 				outOfView                 = true;
 			} else if (camRelativePosition.x > camSize.x) {
-				outOfViewMarkerPosition.x = -camSize.x;
+				outOfViewMarkerPosition.x = camSize.x;
 				outOfView                 = true;
 			}
 
@@ -44,23 +58,25 @@ namespace Player {
 						return;
 					}
 				}
-				
+
 				// show marker
 				if (!_marker) {
-					// TODO: get marker from UI (and set its color)
+					_marker       = OutOfViewMarkerPool.Instance.GetMarker();
+					_marker.color = _playerColor.GetColor();
 				}
-				
+
 				if (_marker) {
-					_marker.position = outOfViewMarkerPosition;
-					// TODO: test
-					_marker.rotation = Quaternion.Euler(0, 0, Vector2.Angle(Vector2.zero, new Vector2(outOfViewMarkerPosition.x, outOfViewMarkerPosition.y)));
+					_marker.rectTransform.position =  camera.WorldToScreenPoint(camera.transform.position + outOfViewMarkerPosition * 0.9f);
+					var angle = Vector2.SignedAngle(Vector2.right, new Vector2(outOfViewMarkerPosition.x/camSize.x, outOfViewMarkerPosition.y/camSize.y).normalized);
+					angle                               = 45f * Mathf.Round(angle / 45f);
+					_marker.rectTransform.localRotation = Quaternion.Euler(0, 0, angle);
 				}
-				
 			} else {
 				_outOfViewTime = 0;
 
 				if (_marker) {
-					// TODO: return marker to UI
+					OutOfViewMarkerPool.Instance.ReturnMarker(_marker);
+					_marker = null;
 				}
 			}
 		}

@@ -17,6 +17,10 @@ namespace Player {
 			if (!_movement) _movement = GetComponent<BewegenBasis>();
 		}
 
+		private void OnDisable() {
+			_movement.Laufen(Vector2.zero);
+		}
+
 		public void OnJump(InputValue input) {
 			if (input.isPressed)
 				_movement.SpringenStarten();
