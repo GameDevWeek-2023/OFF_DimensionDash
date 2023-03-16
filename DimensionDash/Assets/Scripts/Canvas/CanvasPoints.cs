@@ -1,81 +1,60 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
+using Dimensions;
 using Player;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class CanvasPoints : MonoBehaviour
-{
-	public static readonly List<GameObject> _playerText = new List<GameObject>();
-	public static    GameObject[]     _players;
-	private          float            _time                 = 0;
-	private          float            _secondsPerDimension  = ObjectManager.SecondsPerDimension;
-	private readonly float            _secondsCompleteLevel = 50f;	//TODO: Specify complete Level time
-	private          Slider           _levelSlider;
-	private          TMP_Text         _dimensionCountdown;
-	private void Start()
-	{
-		initializePlayerPointsCanvas(this.gameObject);
-		_players              = GameObject.FindGameObjectsWithTag("Player");                         
-		_levelSlider          = gameObject.transform.Find("LevelProgressBar").GetComponent<Slider>();
-		_levelSlider.maxValue = _secondsCompleteLevel;
-		_dimensionCountdown   = gameObject.transform.Find("DimensionCountdown").GetComponent<TMP_Text>();
-		_secondsPerDimension  = ObjectManager.SecondsPerDimension;
+public class CanvasPoints : MonoBehaviour {
+	[SerializeField] private List<TMP_Text>   _playerText;
+	[SerializeField] private TMP_Text         _dimensionCountdown;
+	[SerializeField] private Slider           _levelSlider;
+	[SerializeField] private Animation        _cameraAnimation;
+	[SerializeField] private DimensionManager _dimensionManager;
+
+	private void Start() {
+		_levelSlider.maxValue = 1f;
+
+		var playerCount = PlayerManager.Instance.Players.Count;
+		for (int i = 0; i < _playerText.Count; i++) {
+			_playerText[i].gameObject.SetActive(i < playerCount);
+			
+			if(i < playerCount)
+				_playerText[i].color = PlayerManager.Instance.Players[i].GetComponent<PlayerColor>().GetColor().Color;
+		}
+	}
+
+	void Update() {
+		for (int i = 0; i < PlayerManager.Instance.Players.Count; i++) {
+			_playerText[i].text = getPointsFromPlayer(PlayerManager.Instance.Players[i].GetComponent<PlayerPoints>());
+		}
+
+		_levelSlider.value = AnimationProgress(_cameraAnimation);
+
+		if (_dimensionManager) {
+			var nextSwitch = _dimensionManager.GetTimeUntilNextSwitch();
+			if (nextSwitch <= 3f) {
+				_dimensionCountdown.gameObject.SetActive(true);
+				_dimensionCountdown.text = nextSwitch.ToString("0.0");
+			}  else {
+				_dimensionCountdown.gameObject.SetActive(false);
+			}
+		}
+	}
+
+	private static float AnimationProgress(Animation a) {
+		if (!a)
+			return 0f;
 		
-		for (int i = 0; i < _players.Length; i++)
-		{
-			_playerText[i].SetActive(true);;
+		foreach (AnimationState state in a) {
+			return state.normalizedTime;
 		}
 
-		for (int i = _players.Length; i < _playerText.Count; i++)
-		{
-			_playerText[i].SetActive(false);
-		}
-
-		setPlayerColor();
+		return 1f;
 	}
 
-	private void setPlayerColor()
-	{
-		for (int i = 0; i < _players.Length; i++)
-		{
-			Color c = _players[i].GetComponent<PlayerColor>().GetColor();
-			_playerText[i].GetComponent<TMP_Text>().color = c;
-		}
-	}
-
-	void Update()
-    {
-	    for (int i = 0; i < _players.Length; i++)
-	    {
-		    _playerText[i].GetComponent<TMP_Text>().text = getPointsFromPlayer(_players[i].GetComponent<PlayerPoints>());
-	    }
-	    
-	    _time += Time.deltaTime;
-	    float levelProgress = _time % _secondsCompleteLevel;
-	    _levelSlider.value = levelProgress;
-	    float dimensionProgress = (float) Math.Round(Math.Abs((_time % _secondsPerDimension)-_secondsPerDimension),2);
-	    _dimensionCountdown.text = dimensionProgress.ToString();
-
-    }
-
-	private static string getPointsFromPlayer(PlayerPoints player)
-	{
+	private static string getPointsFromPlayer(PlayerPoints player) {
 		return player.points.ToString();
 	}
-
-	private void initializePlayerPointsCanvas(GameObject parent)
-    {
-	    List<GameObject> parents     = new List<GameObject>();
-	    Transform[]      allChildren = parent.GetComponentsInChildren<Transform>();
-	    foreach (Transform obj in allChildren)
-	    {
-		    if (obj.transform.parent == parent.transform && obj.name.Contains("Points"))
-		    {
-			    _playerText.Add(obj.gameObject);
-		    }
-	    }
-    }
 }

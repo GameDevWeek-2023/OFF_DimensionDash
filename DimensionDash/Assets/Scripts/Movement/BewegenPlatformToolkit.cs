@@ -83,7 +83,7 @@ public class BewegenPlatformToolkit : BewegenBasis {
 	private float sekundenSeitSprungBefehl; // für Jump-Buffer
 
 	public int MaxAirJumps {
-		get => verbleibendeAirJumps;
+		get => maxAirJumps;
 		set {
 			if (maxAirJumps < 0 && value >= 0) verbleibendeAirJumps = value;
 			if (value < verbleibendeAirJumps) verbleibendeAirJumps  = value;

@@ -1,12 +1,11 @@
 using System;
+using System.Collections;
+using CookAGeddon.Utility;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class GameStateManager : GlobalSystem<GameStateManager> {
-	public event Action GameStarted = delegate {  }; 
-	public event Action GameEnded = delegate {  }; 
-	
 	[SerializeField] [Scene] private string   _firstScene;
 	[SerializeField] [Scene] private string   _uiScene;
 	[SerializeField] [Scene] private string   _gameOverScene;
@@ -20,22 +19,37 @@ public class GameStateManager : GlobalSystem<GameStateManager> {
 	}
 
 	public void ChangeScene(string scene) {
-		if (_currentMainScene == scene) return;
+		if (_currentMainScene == scene)
+			return;
 
-		if (_currentMainScene != null)
-			SceneManager.UnloadSceneAsync(_currentMainScene);
+		StartCoroutine(ChangeSceneCo(scene));
+	}
 
+	public IEnumerator ChangeSceneCo(string scene) {
+		var last = _currentMainScene;
 		_currentMainScene = scene;
-		SceneManager.LoadSceneAsync(_currentMainScene, LoadSceneMode.Additive);
+		
+		foreach (var fade in FindObjectsOfType<CameraFade>()) {
+			fade.FadeOut(new CameraFade.Options(){FadeTime = 1f});
+		}
+		yield return new WaitForSecondsRealtime(1f);
+
+		if (last != null) {
+			yield return SceneManager.UnloadSceneAsync(last);
+		}
+		
+		yield return SceneManager.LoadSceneAsync(_currentMainScene, LoadSceneMode.Additive);
+		
+		foreach (var fade in FindObjectsOfType<CameraFade>()) {
+			fade.FadeIn();
+		}
 	}
 
 	public void StartGame(int index) {
-		GameStarted();
 		ChangeScene(_levels[index<_levels.Length ? index : 0]);
 	}
 
 	public void EndGame() {
-		GameEnded();
 		ChangeScene(_gameOverScene);
 	}
 }

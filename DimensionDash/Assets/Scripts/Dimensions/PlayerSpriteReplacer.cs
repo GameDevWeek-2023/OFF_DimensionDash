@@ -31,11 +31,11 @@ namespace Dimensions {
 			if (newType == _currentType)
 				return;
 			
-			if (_typeGameObjects.TryGetValue(newType, out var newGo)) {
+			if (_typeGameObjects.TryGetValue(newType, out var newGo) && newGo) {
 				newGo.SetActive(true);
 			}
 
-			if (_typeGameObjects.TryGetValue(_currentType, out var oldGo)) {
+			if (_typeGameObjects.TryGetValue(_currentType, out var oldGo) && oldGo) {
 				oldGo.SetActive(false);
 			}
 

@@ -4,13 +4,10 @@ using System.Collections.Generic;
 using Player;
 using UnityEngine;
 
-public class Finish : MonoBehaviour
-{
-	private void OnTriggerEnter2D(Collider2D col)
-	{
-		if (col.tag == "Player")
-		{
-			col.gameObject.GetComponent<PlayerPoints>().points += 5;
+public class Finish : MonoBehaviour {
+	private void OnTriggerEnter2D(Collider2D col) {
+		if (col.gameObject.TryGetComponent(out PlayerPoints points)) {
+			points.points += 5;
 			GameStateManager.Instance.EndGame();
 			Destroy(this);
 		}
