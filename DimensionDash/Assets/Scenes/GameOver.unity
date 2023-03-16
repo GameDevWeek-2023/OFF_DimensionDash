@@ -1638,6 +1638,10 @@ PrefabInstance:
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
+      propertyPath: _maxSecondsBetweenSwitch
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
       propertyPath: _minSecondsBetweenSwitch
       value: 2
       objectReference: {fileID: 0}

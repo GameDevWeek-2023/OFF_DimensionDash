@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Dimensions {
 	public class DimensionManager : MonoBehaviour {
+		[SerializeField] private float                             _maxSecondsBetweenSwitch = float.MaxValue;
 		[SerializeField] private float                             _minSecondsBetweenSwitch = 10;
 		[SerializeField] private List<DimensionDescription>        _dimensions;
 		[SerializeField] private DimensionSelection                _dimensionSelection;
@@ -88,6 +89,8 @@ namespace Dimensions {
 			}
 
 			var duration = Mathf.Clamp(_minSecondsBetweenSwitch, next.MinTime, next.MaxTime);
+			if (duration > _maxSecondsBetweenSwitch)
+				duration = _maxSecondsBetweenSwitch;
 			_nextSwitch = Time.time + duration;
 
 			StartCoroutine(Switch(_current, next));
