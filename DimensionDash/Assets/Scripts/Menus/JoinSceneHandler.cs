@@ -33,8 +33,6 @@ namespace Menus {
 
 			// add preexisting players
 			foreach (var p in PlayerManager.Instance.Players) {
-				var joined = AssignPlayerPosition(p);
-
 				ColorInfo color = null;
 
 				if (p.TryGetComponent(out PlayerColor playerColor)) {
@@ -46,6 +44,9 @@ namespace Menus {
 				if(!controller)
 					Debug.LogError("Missing PlayerController on joined player");
 				controller.Ready = false;
+				
+				var joined = AssignPlayerPosition(p, controller);
+				
 				_players.Add(new JoinedPlayers() {gameObject=p, color = color, joinBox = joined, playerController = controller});
 			}
 
@@ -81,19 +82,20 @@ namespace Menus {
 				playerColor.SetColor(color, () => _availableColor.Add(color));
 			}
 
-			var joined     = AssignPlayerPosition(player);
 			var controller = player.transform.parent.GetComponent<PlayerController>();
 			if(!controller)
 				Debug.LogError("Missing PlayerController on joined player");
+			
+			var joined = AssignPlayerPosition(player, controller);
 			_players.Add(new JoinedPlayers() {gameObject = player, color = color, joinBox = joined, playerController = controller});
 			Debug.Log("Player joined");
 		}
 
-		private PlayerJoined AssignPlayerPosition(GameObject player) {
+		private PlayerJoined AssignPlayerPosition(GameObject player, PlayerController playerController) {
 			var positionIndex = _remainingStartPositions.Count - 1;
 			var joined        = _remainingStartPositions[positionIndex];
 			player.transform.position = joined.transform.position;
-			joined.PlayerJoinedMe();
+			joined.PlayerJoinedMe(playerController);
 			_remainingStartPositions.RemoveAt(positionIndex);
 			return joined;
 		}

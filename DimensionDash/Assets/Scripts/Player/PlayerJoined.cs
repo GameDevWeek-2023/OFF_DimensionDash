@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Player;
 using UnityEngine;
 
 public class PlayerJoined : MonoBehaviour
@@ -13,7 +14,7 @@ public class PlayerJoined : MonoBehaviour
 	[SerializeField]
 	private GameObject startIndicator1;
 
-	private bool iAmReady;
+	private PlayerController player;
 
 
 	void Awake()
@@ -24,16 +25,18 @@ public class PlayerJoined : MonoBehaviour
 	}
 
 
-	public void PlayerJoinedMe() 
+	public void PlayerJoinedMe(PlayerController newPlayer) 
 	{
 		joinG.SetActive(false);
 		colorSelectG.SetActive(true);
+		player = newPlayer;
 	}
 
 	void Update() {
-		if (iAmReady && !startIndicator1.activeSelf)
+		var ready = player && player.Ready;
+		if (ready && !startIndicator1.activeSelf)
 			startIndicator1.SetActive(true);
-		else if (!iAmReady && startIndicator1.activeSelf)
+		else if (!ready && startIndicator1.activeSelf)
 			startIndicator1.SetActive(false);
 	}
 }

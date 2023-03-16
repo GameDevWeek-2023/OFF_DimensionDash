@@ -37,6 +37,7 @@ public class GameStateManager : GlobalSystem<GameStateManager> {
 		if (last != null) {
 			yield return SceneManager.UnloadSceneAsync(last);
 		}
+		yield return new WaitForSecondsRealtime(0.5f);
 		
 		yield return SceneManager.LoadSceneAsync(_currentMainScene, LoadSceneMode.Additive);
 		
