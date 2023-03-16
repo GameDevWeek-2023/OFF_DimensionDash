@@ -8,6 +8,7 @@ namespace Dimensions {
 	public class DimensionManager : MonoBehaviour {
 		[SerializeField] private float                             _minSecondsBetweenSwitch = 10;
 		[SerializeField] private List<DimensionDescription>        _dimensions;
+		[SerializeField] private DimensionSelection                _dimensionSelection;
 		[SerializeField] private TileReskinner                     _tileReskinner;
 		[SerializeField] private List<GameObject>                  _platformRoots;
 		[SerializeField] private GenericDictionary<string, Sprite> _tilesetPlatformSprites;
@@ -27,6 +28,9 @@ namespace Dimensions {
 			_nextSwitch = Time.time + _minSecondsBetweenSwitch;
 
 			foreach (var d in _dimensions) {
+				_remainingDimensions.Add((d.MaxUsedPerLevel, d));
+			}
+			foreach (var d in _dimensionSelection.GetEnabledDimensions()) {
 				_remainingDimensions.Add((d.MaxUsedPerLevel, d));
 			}
 

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4071d6d98b5b42e0a9a792d3febc99aa, type: 3}
+  m_Name: _DimensionSelection
+  m_EditorClassIdentifier: 
+  Dimensions:
+  - {fileID: 11400000, guid: 0a755753ea5ea8ac68752114cf8d5b15, type: 2}
+  - {fileID: 11400000, guid: a2084852ca81b6482b2bcc696a17b32b, type: 2}
+  - {fileID: 11400000, guid: 46cc1fb84a2ce8fa59d8ab1fba57136a, type: 2}
+  - {fileID: 11400000, guid: 4c134744f31db5125948110de00eacad, type: 2}
+  - {fileID: 11400000, guid: 6033bd5c42419fb40a6c4bd27fe121d4, type: 2}
+  EnabledDimensions: 0101010101

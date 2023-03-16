@@ -45,12 +45,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _minSecondsBetweenSwitch: 5
-  _dimensions:
-  - {fileID: 11400000, guid: 0a755753ea5ea8ac68752114cf8d5b15, type: 2}
-  - {fileID: 11400000, guid: a2084852ca81b6482b2bcc696a17b32b, type: 2}
-  - {fileID: 11400000, guid: 46cc1fb84a2ce8fa59d8ab1fba57136a, type: 2}
-  - {fileID: 11400000, guid: 6033bd5c42419fb40a6c4bd27fe121d4, type: 2}
+  _dimensions: []
+  _dimensionSelection: {fileID: 11400000, guid: 8f6e9a731020e40ffaa2ee7c3e69da74, type: 2}
   _tileReskinner: {fileID: 0}
+  _platformRoots: []
+  _tilesetPlatformSprites:
+    list: []
+    keyCollision: 0
 --- !u!1 &2000151904
 GameObject:
   m_ObjectHideFlags: 0
