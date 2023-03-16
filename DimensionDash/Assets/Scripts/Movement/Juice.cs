@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 namespace Movement {
@@ -15,8 +16,7 @@ namespace Movement {
 		[Tooltip("Sekunden bis wir zur ursprünglichen Breite/Höhe zurückkehren")]
 		public float dauerSekunden;
 
-		public SquashSettings(float breiteFaktor, float höheFaktor, float dauerSekunden)
-		{
+		public SquashSettings(float breiteFaktor, float höheFaktor, float dauerSekunden) {
 			this.breiteFaktor  = breiteFaktor;
 			this.höheFaktor    = höheFaktor;
 			this.dauerSekunden = dauerSekunden;
@@ -26,15 +26,13 @@ namespace Movement {
 // Kümmert sich um aesthetische Effekte wie Animationen, Partikel, Drehungen oder Squash & Stretch
 	[RequireComponent(typeof(BewegenPlatformToolkit))]
 	public class Juice : MonoBehaviour {
-		[Header("Partikel-Effekte")]
-		public ParticleSystem moveParticles;
-		public ParticleSystem jumpParticles;
-		public ParticleSystem landParticles;
+		[Header("Partikel-Effekte")] public ParticleSystem[] moveParticles;
+		public                              ParticleSystem[] jumpParticles;
+		public                              ParticleSystem[] landParticles;
 
-		[Header("Sound-Effekte")]
-		public AudioSource jumpSoundEffect;
+		[Header("Sound-Effekte")] public AudioSource[] jumpSoundEffect;
 
-		public AudioSource landSoundEffect;
+		public AudioSource[] landSoundEffect;
 
 		public SquashSettings jumpSquashSettings = new SquashSettings(0.5f, 1.8f, 0.1f);
 		public SquashSettings landSquashSettings = new SquashSettings(1.5f, 0.4f, 0.2f);
@@ -46,7 +44,7 @@ namespace Movement {
 		public float jumpSqueezeMultiplier = 1.5f;
 
 		public bool squashAndStretch = true;
-		
+
 		[Tooltip("Steuert wie stark der Spieler beim 'Squash & Stretch'-Effekt vom Landen nach unten gezogen wird, damit er nicht über dem Boden schwebt")]
 		public float landDrop = 0.4f;
 
@@ -56,7 +54,7 @@ namespace Movement {
 		[Tooltip("Wie schnell die Drehung passieren soll (in Grad/Sekunde)"), Range(0, 200)]
 		public float leanSpeed = 80;
 
-		public Transform squashTarget = null;
+		public Transform[] squashTargets;
 
 		// Andere Komponenten, die wir uns dafür merken müssen
 		private Bodenkontakt bodenkontakt;
@@ -70,36 +68,36 @@ namespace Movement {
 		private bool moveParticlesWerdenAbgespielt = false;
 
 
-		private void Start()
-		{
+		private void Start() {
 			bodenkontakt = GetComponent<Bodenkontakt>();
 			animator     = GetComponentInChildren<Animator>();
 			körper       = GetComponent<Rigidbody2D>();
 		}
 
-		private void Update()
-		{
+		private void Update() {
 			SpriteDrehen();
 
 			// Hier passen wir die Animations-Geschwindigkeit daran an, wie schnell der Charakter gerade tatsächlich rennt
 			animator.SetFloat("geschwindigkeit", Mathf.Clamp(körper.velocity.magnitude / 4f, 0f, 10f));
 
-			if(stehtAufBoden && !bodenkontakt.StehtAufDemBoden()) {
+			if (stehtAufBoden && !bodenkontakt.StehtAufDemBoden()) {
 				stehtAufBoden = false;
-			} else if(!stehtAufBoden && bodenkontakt.StehtAufDemBoden()) {
+			} else if (!stehtAufBoden && bodenkontakt.StehtAufDemBoden()) {
 				stehtAufBoden = true;
 				LandenEffekte();
 			}
 
-			if(moveParticles) {
-				if(bodenkontakt.StehtAufDemBoden() && Mathf.Abs(körper.velocity.x) > 1f) {
-					if(!moveParticlesWerdenAbgespielt) {
-						moveParticles.Play();
+			if (moveParticles != null) {
+				if (bodenkontakt.StehtAufDemBoden() && Mathf.Abs(körper.velocity.x) > 1f) {
+					if (!moveParticlesWerdenAbgespielt) {
+						foreach (var p in moveParticles)
+							p.Play();
 						moveParticlesWerdenAbgespielt = true;
 					}
 				} else {
-					if(moveParticlesWerdenAbgespielt) {
-						moveParticles.Stop();
+					if (moveParticlesWerdenAbgespielt) {
+						foreach (var p in moveParticles)
+							p.Stop();
 						moveParticlesWerdenAbgespielt = false;
 					}
 				}
@@ -109,24 +107,29 @@ namespace Movement {
 		private void SpriteDrehen() {
 			if (!körper.constraints.HasFlag(RigidbodyConstraints2D.FreezeRotation))
 				return;
-			
+
 			// Die Richtung in die wir drehen/kippen hängt von der Laufrichtung ab
 			var tiltRichtung = körper.velocity.x == 0 ? 0f : -Mathf.Sign(körper.velocity.x);
-			var t            = squashTarget ? squashTarget : animator.transform;
-			t.rotation = Quaternion.RotateTowards(t.rotation, Quaternion.Euler(0, 0, leanAngle * tiltRichtung),
-			                                      leanSpeed * Time.deltaTime);
+			var t            = animator.transform;
+			t.rotation = Quaternion.RotateTowards(t.rotation, Quaternion.Euler(0, 0, leanAngle * tiltRichtung), leanSpeed * Time.deltaTime);
 		}
 
-		private void LandenEffekte()
-		{
+		private void LandenEffekte() {
 			// Die passende Animation abspielen
 			animator.SetTrigger("gelandet");
 
 			// ggf. den festgelegten Soundeffekt abspielen
-			if(landSoundEffect && !landSoundEffect.isPlaying && landSoundEffect.enabled) landSoundEffect.Play();
+			if (landSoundEffect != null && !landSoundEffect.Any(s => s.isPlaying)) {
+				foreach (var s in landSoundEffect) {
+					if (s.enabled)
+						s.Play();
+				}
+			}
 
 			// Partikel für Staubwolke erzeugen
-			if(landParticles && !bodenkontakt.StehtAnEinerKante()) landParticles.Play();
+			if (landParticles != null && !bodenkontakt.StehtAnEinerKante())
+				foreach (var p in landParticles)
+					p.Play();
 
 			if (squashAndStretch) {
 				// Squash & Stretch Effekt starten
@@ -137,17 +140,23 @@ namespace Movement {
 		public void SchadensEffekteStarten() { animator.SetBool("schaden", true); }
 		public void SchadensEffekteBeenden() { animator.SetBool("schaden", false); }
 
-		public void SprungEffekte()
-		{
+		public void SprungEffekte() {
 			// Die passende Animation abspielen
 			animator.ResetTrigger("gelandet");
 			animator.SetTrigger("springen");
 
 			// ggf. den festgelegten Soundeffekt abspielen
-			if(jumpSoundEffect && jumpSoundEffect.enabled) jumpSoundEffect.Play();
+			if (jumpSoundEffect != null && !jumpSoundEffect.Any(s => s.isPlaying)) {
+				foreach (var s in jumpSoundEffect) {
+					if (s.enabled)
+						s.Play();
+				}
+			}
 
 			// Partikel für Staubwolke erzeugen
-			if(jumpParticles) jumpParticles.Play();
+			if (jumpParticles != null)
+				foreach (var p in jumpParticles)
+					p.Play();
 
 			if (squashAndStretch) {
 				// Squash & Stretch Effekt starten
@@ -155,46 +164,50 @@ namespace Movement {
 			}
 		}
 
-		private void SquashAndStretchStarten(SquashSettings einstellungen, float drop, float faktor)
-		{
-			if(faktor < 1f) return;
+		private void SquashAndStretchStarten(SquashSettings einstellungen, float drop, float faktor) {
+			if (faktor < 1f) return;
 
 			// Der eigentliche Effekt passiert über die Coroutine unten über mehrere Frames
-			if(squashAndStretchCoroutine != null) StopCoroutine(squashAndStretchCoroutine);
+			if (squashAndStretchCoroutine != null) StopCoroutine(squashAndStretchCoroutine);
 			squashAndStretchCoroutine = StartCoroutine(SquashAndStretch(einstellungen.breiteFaktor,  einstellungen.höheFaktor,
 			                                                            einstellungen.dauerSekunden, drop, faktor - 1));
 		}
 
-		private IEnumerator SquashAndStretch(float xFaktor,
-		                                     float yFaktor,
-		                                     float dauerSekunden,
-		                                     float drop,
-		                                     float stärke)
-		{
-			var visualTransform = squashTarget ? squashTarget : animator.transform;
-		
+		private IEnumerator SquashAndStretch(float xFaktor, float yFaktor, float dauerSekunden, float drop, float stärke) {
+			var visualTransforms = squashTargets != null && squashTargets.Length > 0 ? squashTargets : new[] {animator.transform};
+
 			var verzerrteGröße    = Vector3.LerpUnclamped(Vector3.one, new Vector3(xFaktor, yFaktor, 1f), stärke);
 			var verzerrtePosition = new Vector3(0, -drop * stärke, 0);
 
 			// Zuerst verzerren wir das Sprite schnell (in 0.1 Sekunden) auf die gewünschten Maße
-			for(var t = 0f; t <= 1f; t += Time.deltaTime / 0.1f) {
-				visualTransform.localScale    = Vector3.Lerp(Vector3.one,  verzerrteGröße,    t);
-				visualTransform.localPosition = Vector3.Lerp(Vector3.zero, verzerrtePosition, t);
+			for (var t = 0f; t <= 1f; t += Time.deltaTime / 0.1f) {
+				for (var i = 0; i < visualTransforms.Length; ++i) {
+					visualTransforms[i].localScale    = Vector3.Lerp(Vector3.one,  verzerrteGröße,    t);
+					visualTransforms[i].localPosition = Vector3.Lerp(Vector3.zero, verzerrtePosition, t);
+				}
+
 				yield return null; // (nach jeder Änderung der Maße warten wir bis zum nächsten Frame)
 			}
 
-			visualTransform.localScale    = verzerrteGröße;
-			visualTransform.localPosition = verzerrtePosition;
+			for (var i = 0; i < visualTransforms.Length; ++i) {
+				visualTransforms[i].localScale    = verzerrteGröße;
+				visualTransforms[i].localPosition = verzerrtePosition;
+			}
 
 			// ... und danach strecken wir es langsam, über die festgelegte Dauer, wieder auf seine ursprünglichen Maße
-			for(var t = 0f; t <= 1f; t += Time.deltaTime / dauerSekunden) {
-				visualTransform.localScale    = Vector3.Lerp(verzerrteGröße,    Vector3.one,  t);
-				visualTransform.localPosition = Vector3.Lerp(verzerrtePosition, Vector3.zero, t);
+			for (var t = 0f; t <= 1f; t += Time.deltaTime / dauerSekunden) {
+				for (var i = 0; i < visualTransforms.Length; ++i) {
+					visualTransforms[i].localScale    = Vector3.Lerp(verzerrteGröße,    Vector3.one,  t);
+					visualTransforms[i].localPosition = Vector3.Lerp(verzerrtePosition, Vector3.zero, t);
+				}
+
 				yield return null; // (nach jeder Änderung der Maße warten wir bis zum nächsten Frame)
 			}
 
-			visualTransform.localScale    = Vector3.one;
-			visualTransform.localPosition = Vector3.zero;
+			for (var i = 0; i < visualTransforms.Length; ++i) {
+				visualTransforms[i].localScale    = Vector3.one;
+				visualTransforms[i].localPosition = Vector3.zero;
+			}
 
 			squashAndStretchCoroutine = null;
 		}
