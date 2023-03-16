@@ -61,6 +61,12 @@ MonoBehaviour:
       Value: {fileID: 21300000, guid: 6123b73a5a73fe7f2ab091c81ce0daa8, type: 3}
     - Key: vector
       Value: {fileID: 21300000, guid: e2e464bc63754f4b58ab38d818fb5389, type: 3}
+    - Key: arcade
+      Value: {fileID: 21300000, guid: 61ddc038798c51fa2a988cb9365c842d, type: 3}
+    - Key: space
+      Value: {fileID: 21300000, guid: 15659473f51791637ad6549e1fec2bd7, type: 3}
+    - Key: stone
+      Value: {fileID: 21300000, guid: 8c4e430081efa5df18a96bf30ce1894d, type: 3}
     keyCollision: 0
 --- !u!1 &2000151904
 GameObject:

@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 921d76e32f9b6eb43a20fc40641aabe1, type: 3}
-  m_Name: Stone
+  m_Script: {fileID: 11500000, guid: aa730431dd65411d83e5b700b91f6715, type: 3}
+  m_Name: AstroidsDimension
   m_EditorClassIdentifier: 
-  <PlayerSprite>k__BackingField: 7
-  <TileSetName>k__BackingField: stone
-  <Name>k__BackingField: TOOD
+  <PlayerSprite>k__BackingField: 4
+  <TileSetName>k__BackingField: space
+  <Name>k__BackingField: Space
   <Icon>k__BackingField: {fileID: 0}
-  <MaxUsedPerLevel>k__BackingField: 1
+  <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
-  <MinTime>k__BackingField: 0
-  <CameraSpeed>k__BackingField: 0.1
+  <MinTime>k__BackingField: 5
+  <CameraSpeed>k__BackingField: 1

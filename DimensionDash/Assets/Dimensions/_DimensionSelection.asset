@@ -18,4 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 46cc1fb84a2ce8fa59d8ab1fba57136a, type: 2}
   - {fileID: 11400000, guid: 4c134744f31db5125948110de00eacad, type: 2}
   - {fileID: 11400000, guid: 6033bd5c42419fb40a6c4bd27fe121d4, type: 2}
-  EnabledDimensions: 0101010101
+  - {fileID: 11400000, guid: 8a476eaa10e2fd43a8ad774201b73584, type: 2}
+  - {fileID: 11400000, guid: 9b666d8b5d942d457bb79fd3215f1328, type: 2}
+  EnabledDimensions: 01010101010101

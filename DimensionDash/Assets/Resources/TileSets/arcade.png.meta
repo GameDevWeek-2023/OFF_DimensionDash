@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3e085d9de12ddd368bb450e91c57cbad
+guid: f32bd237c782da95a93d442dcc9be36c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -117,7 +117,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: pixel_0
+      name: arcade_0
       rect:
         serializedVersion: 2
         x: 0
@@ -131,14 +131,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7a06a7570c54d5dbea54df718dede2b4
-      internalID: -1341626939
+      spriteID: 6f598fe6cdb9e261c81852ade93aad31
+      internalID: -1771708256
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_1
+      name: arcade_1
       rect:
         serializedVersion: 2
         x: 256
@@ -152,14 +152,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 240f7fde97bd3dab8b92ef74187eb1a7
-      internalID: 438251250
+      spriteID: 633d729b5bf45bbdea89e6d2e480e6be
+      internalID: -137071645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_2
+      name: arcade_2
       rect:
         serializedVersion: 2
         x: 512
@@ -173,14 +173,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 06d7c382d03601c0e98351ab2f7e79f1
-      internalID: -2059207847
+      spriteID: 678c75c6eaaeeed159ea8144062ffafd
+      internalID: 253163041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_3
+      name: arcade_3
       rect:
         serializedVersion: 2
         x: 768
@@ -194,14 +194,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1e4b84da875c0b5db74cc8416194c8e
-      internalID: 2018439043
+      spriteID: b95896d0205a8b766a1c756ee731bc64
+      internalID: 1690785005
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_4
+      name: arcade_4
       rect:
         serializedVersion: 2
         x: 1024
@@ -215,14 +215,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c1d1b6699a683f5cad31e57865e269b
-      internalID: -474247641
+      spriteID: 1630fc70f262df5a78d9bfdf56135b3e
+      internalID: -1425702948
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_5
+      name: arcade_5
       rect:
         serializedVersion: 2
         x: 1280
@@ -236,14 +236,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 74c05b15a48c54dc3948131b87e76df1
-      internalID: 1031811790
+      spriteID: 972fe1c9b837e90dabddea1f334eadbb
+      internalID: -779566641
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_6
+      name: arcade_6
       rect:
         serializedVersion: 2
         x: 1536
@@ -257,14 +257,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1fe98f6ecfd1c150094143830188db49
-      internalID: 1650578985
+      spriteID: b044c30dca77d13f8b12fd47c68a8481
+      internalID: -990128225
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_7
+      name: arcade_7
       rect:
         serializedVersion: 2
         x: 0
@@ -278,14 +278,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0638096b3bb968357879c8bceeb7903b
-      internalID: -610373986
+      spriteID: 27ba66a25891ed2378c218fb3d8f7d2e
+      internalID: 371499751
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_8
+      name: arcade_8
       rect:
         serializedVersion: 2
         x: 256
@@ -299,14 +299,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c6560b18aed2c86e39ea31944da7d31b
-      internalID: 1050473981
+      spriteID: 0c2e5fdfaced52f3db8267980284a34d
+      internalID: -794531437
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_9
+      name: arcade_9
       rect:
         serializedVersion: 2
         x: 512
@@ -320,14 +320,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a92f4a3b97a70c434892770e4c406cab
-      internalID: 1200738283
+      spriteID: 5835b86801e1947948ff24fa409df39a
+      internalID: -1925270335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_10
+      name: arcade_10
       rect:
         serializedVersion: 2
         x: 768
@@ -341,14 +341,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 421026e2325a64916869620422a5c4ac
-      internalID: 1410356875
+      spriteID: dd0a4f57de9829aa4adf4921b41f4354
+      internalID: 1198207531
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_11
+      name: arcade_11
       rect:
         serializedVersion: 2
         x: 1024
@@ -362,14 +362,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e690914f375ca58d898eebca7ea2b840
-      internalID: -605405950
+      spriteID: 873461596dd65fba19edb3e14bac76cf
+      internalID: 2091429263
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_12
+      name: arcade_12
       rect:
         serializedVersion: 2
         x: 1280
@@ -383,14 +383,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 16105e8335a2a9630baff3d62e93eb03
-      internalID: 1876062844
+      spriteID: 3cb5d4bd1a606dbdc9489db19bfd929d
+      internalID: 1088483283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_13
+      name: arcade_13
       rect:
         serializedVersion: 2
         x: 1536
@@ -404,14 +404,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d98d0402476af67c39e27155a3c77a49
-      internalID: -1041847480
+      spriteID: c141b0862b4f3830ab96da4d180bee34
+      internalID: -645383091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_14
+      name: arcade_14
       rect:
         serializedVersion: 2
         x: 0
@@ -425,14 +425,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 30ad502b13693e808844a64e3d2b38b4
-      internalID: -180425523
+      spriteID: 417e5737cabaf4f668ff010dd773c46e
+      internalID: 1305087179
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_15
+      name: arcade_15
       rect:
         serializedVersion: 2
         x: 256
@@ -446,14 +446,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26caac7d4bafc83c98aa6757e5b95332
-      internalID: 1068213421
+      spriteID: 7e12dda3bdffdd8298fd06f7708f018f
+      internalID: 104147282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_16
+      name: arcade_16
       rect:
         serializedVersion: 2
         x: 512
@@ -467,14 +467,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 776c6e7ab702fcfad8316598883423b7
-      internalID: 1042112913
+      spriteID: bfc211b256d25fce5ad3615904f39bae
+      internalID: 756742155
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_17
+      name: arcade_17
       rect:
         serializedVersion: 2
         x: 768
@@ -488,14 +488,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7e7e67aea2ecc6c31987f950965585ce
-      internalID: -372611019
+      spriteID: 810ad68457236bd03b9dd6921a0ad0a0
+      internalID: -224112205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_18
+      name: arcade_18
       rect:
         serializedVersion: 2
         x: 1024
@@ -509,14 +509,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: adedc41b74b4b0be78bf8a51647157b3
-      internalID: -1517075176
+      spriteID: 89ca54f2f961cd39697e934d8dd5653b
+      internalID: 1554278481
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_19
+      name: arcade_19
       rect:
         serializedVersion: 2
         x: 1280
@@ -530,14 +530,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf4a81ceb4b98fd50b72edf0a2ec28c9
-      internalID: 115121989
+      spriteID: 6460571b9169e62c59ad679de34efc8d
+      internalID: -638249320
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_20
+      name: arcade_20
       rect:
         serializedVersion: 2
         x: 1536
@@ -551,14 +551,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 206a495b8315f2c2aa01232d8576b485
-      internalID: 2052483976
+      spriteID: 75e8191c22619f77abec23816d73b7fb
+      internalID: 1160705429
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_21
+      name: arcade_21
       rect:
         serializedVersion: 2
         x: 0
@@ -572,14 +572,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5ee7ff843504f0e18b4bafc5819688f5
-      internalID: -1220221742
+      spriteID: 855f5d2f625a22d46a7f9e3ca4daa45a
+      internalID: 127597482
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_22
+      name: arcade_22
       rect:
         serializedVersion: 2
         x: 256
@@ -593,14 +593,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a5c333ce754fa588098ca8100d1a65d1
-      internalID: 1032416141
+      spriteID: e83f868f0327b30a693f5ec2dbb253cd
+      internalID: 1441530949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_23
+      name: arcade_23
       rect:
         serializedVersion: 2
         x: 512
@@ -614,14 +614,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccf92f869c625573bb0aac063d5da38c
-      internalID: -2038684047
+      spriteID: 6374e736b931fa81b9a25db1f5288ce6
+      internalID: -1571497491
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_24
+      name: arcade_24
       rect:
         serializedVersion: 2
         x: 768
@@ -635,14 +635,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ef3ac439d4373aac9299cf9bb853418
-      internalID: -2072949483
+      spriteID: 74f3e1ff4f8dd4f94beb87d2e3b18870
+      internalID: -1440504939
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_25
+      name: arcade_25
       rect:
         serializedVersion: 2
         x: 1024
@@ -656,14 +656,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 37a7314e4db0197f8883d14203a300fb
-      internalID: -524593325
+      spriteID: f88f2690f2b0918f6878c701c5f3a675
+      internalID: -1405665682
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_26
+      name: arcade_26
       rect:
         serializedVersion: 2
         x: 1280
@@ -677,14 +677,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 14f0fb0c9237f0fb8b5cb1271f0a47cc
-      internalID: 304022733
+      spriteID: eb312d948d922a97d91d61d8cff808b8
+      internalID: 1928907971
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: pixel_27
+      name: arcade_27
       rect:
         serializedVersion: 2
         x: 1536
@@ -698,8 +698,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 93b7984fab8cbd03c99f54c9dc1bf55f
-      internalID: 1914075726
+      spriteID: 1d2361252ad329a349b913101ab014e8
+      internalID: 494083418
       vertices: []
       indices: 
       edges: []
@@ -715,34 +715,34 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      pixel_0: -1341626939
-      pixel_1: 438251250
-      pixel_10: 1410356875
-      pixel_11: -605405950
-      pixel_12: 1876062844
-      pixel_13: -1041847480
-      pixel_14: -180425523
-      pixel_15: 1068213421
-      pixel_16: 1042112913
-      pixel_17: -372611019
-      pixel_18: -1517075176
-      pixel_19: 115121989
-      pixel_2: -2059207847
-      pixel_20: 2052483976
-      pixel_21: -1220221742
-      pixel_22: 1032416141
-      pixel_23: -2038684047
-      pixel_24: -2072949483
-      pixel_25: -524593325
-      pixel_26: 304022733
-      pixel_27: 1914075726
-      pixel_3: 2018439043
-      pixel_4: -474247641
-      pixel_5: 1031811790
-      pixel_6: 1650578985
-      pixel_7: -610373986
-      pixel_8: 1050473981
-      pixel_9: 1200738283
+      arcade_0: -1771708256
+      arcade_1: -137071645
+      arcade_10: 1198207531
+      arcade_11: 2091429263
+      arcade_12: 1088483283
+      arcade_13: -645383091
+      arcade_14: 1305087179
+      arcade_15: 104147282
+      arcade_16: 756742155
+      arcade_17: -224112205
+      arcade_18: 1554278481
+      arcade_19: -638249320
+      arcade_2: 253163041
+      arcade_20: 1160705429
+      arcade_21: 127597482
+      arcade_22: 1441530949
+      arcade_23: -1571497491
+      arcade_24: -1440504939
+      arcade_25: -1405665682
+      arcade_26: 1928907971
+      arcade_27: 494083418
+      arcade_3: 1690785005
+      arcade_4: -1425702948
+      arcade_5: -779566641
+      arcade_6: -990128225
+      arcade_7: 371499751
+      arcade_8: -794531437
+      arcade_9: -1925270335
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
