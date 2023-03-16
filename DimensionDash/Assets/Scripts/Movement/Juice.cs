@@ -45,6 +45,8 @@ namespace Movement {
 		[Tooltip("Steuert wie stark der 'Squash & Stretch'-Effekt beim Springen ist (<1 : aus, =2 : wie oben definiert)"), Range(0, 2)]
 		public float jumpSqueezeMultiplier = 1.5f;
 
+		public bool squashAndStretch = true;
+		
 		[Tooltip("Steuert wie stark der Spieler beim 'Squash & Stretch'-Effekt vom Landen nach unten gezogen wird, damit er nicht über dem Boden schwebt")]
 		public float landDrop = 0.4f;
 
@@ -104,8 +106,10 @@ namespace Movement {
 			}
 		}
 
-		private void SpriteDrehen()
-		{
+		private void SpriteDrehen() {
+			if (!körper.constraints.HasFlag(RigidbodyConstraints2D.FreezeRotation))
+				return;
+			
 			// Die Richtung in die wir drehen/kippen hängt von der Laufrichtung ab
 			var tiltRichtung = körper.velocity.x == 0 ? 0f : -Mathf.Sign(körper.velocity.x);
 			var t            = squashTarget ? squashTarget : animator.transform;
@@ -124,8 +128,10 @@ namespace Movement {
 			// Partikel für Staubwolke erzeugen
 			if(landParticles && !bodenkontakt.StehtAnEinerKante()) landParticles.Play();
 
-			// Squash & Stretch Effekt starten
-			SquashAndStretchStarten(landSquashSettings, landDrop, landSqueezeMultiplier);
+			if (squashAndStretch) {
+				// Squash & Stretch Effekt starten
+				SquashAndStretchStarten(landSquashSettings, landDrop, landSqueezeMultiplier);
+			}
 		}
 
 		public void SchadensEffekteStarten() { animator.SetBool("schaden", true); }
@@ -143,8 +149,10 @@ namespace Movement {
 			// Partikel für Staubwolke erzeugen
 			if(jumpParticles) jumpParticles.Play();
 
-			// Squash & Stretch Effekt starten
-			SquashAndStretchStarten(jumpSquashSettings, 0, jumpSqueezeMultiplier);
+			if (squashAndStretch) {
+				// Squash & Stretch Effekt starten
+				SquashAndStretchStarten(jumpSquashSettings, 0, jumpSqueezeMultiplier);
+			}
 		}
 
 		private void SquashAndStretchStarten(SquashSettings einstellungen, float drop, float faktor)

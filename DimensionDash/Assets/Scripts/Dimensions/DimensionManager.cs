@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using Tilemap;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -14,6 +15,7 @@ namespace Dimensions {
 		[SerializeField] private TileReskinner                     _tileReskinner;
 		[SerializeField] private List<GameObject>                  _platformRoots;
 		[SerializeField] private GenericDictionary<string, Sprite> _tilesetPlatformSprites;
+		[SerializeField] private GenericDictionary<string, GameObject> _tilesetBackgroundRoots;
 
 		private readonly List<(int, DimensionDescription)> _remainingDimensions = new();
 
@@ -26,6 +28,18 @@ namespace Dimensions {
 		private DimensionDescription _current;
 		private float                _nextSwitch;
 
+		[SerializeField] private DimensionDescription _forceDimension;
+
+		[Button]
+		private void ForceDimension() {
+			if (!_forceDimension) return;
+			
+			_nextSwitch = Time.time + 999f;
+			StartCoroutine(Switch(_current, _forceDimension));
+			_current = _forceDimension;
+		}
+		
+		
 		private void Start() {
 			_nextSwitch = Time.time + _minSecondsBetweenSwitch;
 
@@ -137,7 +151,12 @@ namespace Dimensions {
 		private void Enable(DimensionDescription dimension) {
 			if(_tileReskinner)
 				_tileReskinner.SetTileSet(dimension.TileSetName ?? "base");
-
+			
+			// switch backgrounds
+			if (dimension && _tilesetBackgroundRoots.TryGetValue(dimension.TileSetName ?? "base", out var root) && root) {
+				root.SetActive(true);
+			}
+			
 			foreach (var p in _playerSprites)
 				p.SetType(dimension.PlayerSprite);
 
@@ -162,7 +181,12 @@ namespace Dimensions {
 			foreach (var p in _playerSprites)
 				if (p)
 					p.SetType(PlayerSpriteType.Base);
-
+			
+			// switch backgrounds
+			if (dimension && _tilesetBackgroundRoots.TryGetValue(dimension.TileSetName ?? "base", out var root) && root) {
+				root.SetActive(false);
+			}
+			
 			if (_tileReskinner)
 				_tileReskinner.SetTileSet("base");
 		}

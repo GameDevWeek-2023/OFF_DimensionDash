@@ -21,3 +21,5 @@ MonoBehaviour:
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 0
   <CameraSpeed>k__BackingField: 1
+  _unlockRotation: 1
+  _newJumpHeight: 2

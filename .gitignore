@@ -68,3 +68,4 @@ screenshots/*
 *.ipr
 *.iws
 
+.DS_Store
