@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using NaughtyAttributes;
 using Tilemap;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -27,6 +28,18 @@ namespace Dimensions {
 		private DimensionDescription _current;
 		private float                _nextSwitch;
 
+		[SerializeField] private DimensionDescription _forceDimension;
+
+		[Button]
+		private void ForceDimension() {
+			if (!_forceDimension) return;
+			
+			_nextSwitch = Time.time + 999f;
+			StartCoroutine(Switch(_current, _forceDimension));
+			_current = _forceDimension;
+		}
+		
+		
 		private void Start() {
 			_nextSwitch = Time.time + _minSecondsBetweenSwitch;
 

@@ -15,7 +15,8 @@ MonoBehaviour:
   <PlayerSprite>k__BackingField: 0
   <TileSetName>k__BackingField: dave
   <Name>k__BackingField: Dave
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 37749aa9c005df349984aa5fadfbba10, type: 3}
+  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 54b172b05d268cc489fc99819a46c375, type: 3}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 0
