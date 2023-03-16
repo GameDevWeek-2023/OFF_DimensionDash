@@ -27,11 +27,18 @@ namespace Dimensions {
 		private void Start() {
 			_nextSwitch = Time.time + _minSecondsBetweenSwitch;
 
-			foreach (var d in _dimensions) {
-				_remainingDimensions.Add((d.MaxUsedPerLevel, d));
+			if (_dimensions != null) {
+				foreach (var d in _dimensions) {
+					if(d)
+						_remainingDimensions.Add((d.MaxUsedPerLevel, d));
+				}
 			}
-			foreach (var d in _dimensionSelection.GetEnabledDimensions()) {
-				_remainingDimensions.Add((d.MaxUsedPerLevel, d));
+
+			if (_dimensionSelection != null) {
+				foreach (var d in _dimensionSelection.GetEnabledDimensions()) {
+					if(d)
+						_remainingDimensions.Add((d.MaxUsedPerLevel, d));
+				}
 			}
 
 			_playerSprites = FindObjectsOfType<PlayerSpriteReplacer>();
