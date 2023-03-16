@@ -21,7 +21,7 @@ namespace Player {
 				return;
 			}
 			
-			foreach (var p in FindObjectsOfType<PlayerController>()) {
+			foreach (var p in PlayerManager.Instance.Players) {
 				p.transform.position = position.Value + new Vector3(Random.Range(-1f, 1f), Random.Range(-1f, 1f), 0f);
 			}
 		}
