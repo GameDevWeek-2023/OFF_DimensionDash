@@ -16172,6 +16172,7 @@ GameObject:
   - component: {fileID: 8709208093608239909}
   - component: {fileID: 4436982924342837115}
   - component: {fileID: 7085631137210551874}
+  - component: {fileID: 8513984827247318606}
   m_Layer: 6
   m_Name: player_root
   m_TagString: Untagged
@@ -16509,7 +16510,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 7589580813036299078}
   m_Enabled: 0
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 2e6f39edcd2786689ba50c1f6a35b610, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -16541,6 +16542,20 @@ MonoBehaviour:
   _impulse: 2000
   _body: {fileID: 226803126642516652}
   _basis: {fileID: 2932850926464620458}
+--- !u!114 &8513984827247318606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7589580813036299078}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0908810a279d4c33b721ae3cdde0ce1e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _impulse: 500
+  _body: {fileID: 226803126642516652}
 --- !u!1 &7760340755875069535
 GameObject:
   m_ObjectHideFlags: 0
