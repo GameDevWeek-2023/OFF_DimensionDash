@@ -12,6 +12,7 @@ namespace Dimensions {
 		Cube,
 		FlipperBall,
 		Stone,
+		Scribble,
 	}
 	
 	public class PlayerSpriteReplacer : MonoBehaviour {
