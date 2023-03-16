@@ -5,7 +5,7 @@ using UnityEngine.UI;
 namespace UI {
 	public class SoundManager : MonoBehaviour
 	{
-
+		
 		public float fadeTime;
 
 
@@ -14,14 +14,15 @@ namespace UI {
 		[SerializeField]
 		private Slider effectVolumeSlider;
 		[SerializeField]
-		private List<AudioSource> musicSourceList;
+
+		private GenericDictionary<string, AudioSource> musicSourceDic;
 		[SerializeField]
 		private AudioSource effectSource;
 
 
 		private float maxMusicVolume;
-		private int   currentDimensionMusic;
-		private int   priorDimensionMusic;
+		public string   currentDimensionMusic;
+		private string   priorDimensionMusic;
 		private bool  fadeOut;
 		private bool  fadeIn;
 	
@@ -30,10 +31,9 @@ namespace UI {
 		void Start()
 		{
 			maxMusicVolume = musicVolumeSlider.value;
-			foreach (AudioSource audioSource in musicSourceList) 
+			foreach (AudioSource audioSource in musicSourceDic.Values) 
 			{
 				audioSource.volume    = 0;
-				currentDimensionMusic = 0;
 				fadeIn                = true;
 			}
 		}
@@ -43,34 +43,37 @@ namespace UI {
 			FadeMusic();
 		}
 
-		public void DimensionChangeMusicSwap(int i) 
+		public void DimensionChangeMusicSwap(string i) 
 		{
-			priorDimensionMusic   = currentDimensionMusic;
-			currentDimensionMusic = i;
-			fadeOut               = true;
-			fadeIn                = true;
+			if(i != currentDimensionMusic) {
+				priorDimensionMusic   = currentDimensionMusic;
+				currentDimensionMusic = i;
+				fadeOut               = true;
+				fadeIn                = true;
+			}
 		}
 
 
 
 		private void FadeMusic() 
 		{
-			if (fadeOut && musicSourceList[priorDimensionMusic] != null) {
-				if (musicSourceList[priorDimensionMusic].volume > 0)
-					musicSourceList[priorDimensionMusic].volume -= fadeTime;
-				if (musicSourceList[priorDimensionMusic].volume <= 0) 
+			
+			if (fadeOut && musicSourceDic[priorDimensionMusic] != null) {
+				if (musicSourceDic[priorDimensionMusic].volume > 0)
+					musicSourceDic[priorDimensionMusic].volume -= fadeTime;
+				if (musicSourceDic[priorDimensionMusic].volume <= 0) 
 				{
-					musicSourceList[priorDimensionMusic].volume = 0;
+					musicSourceDic[priorDimensionMusic].volume = 0;
 					fadeOut                                     = false;
 				}
 			}
 
 			if (fadeIn) {
-				if (musicSourceList[currentDimensionMusic].volume < maxMusicVolume)
-					musicSourceList[currentDimensionMusic].volume += fadeTime;
-				if (musicSourceList[currentDimensionMusic].volume >= maxMusicVolume) 
+				if (musicSourceDic[currentDimensionMusic].volume < maxMusicVolume)
+					musicSourceDic[currentDimensionMusic].volume += fadeTime;
+				if (musicSourceDic[currentDimensionMusic].volume >= maxMusicVolume) 
 				{
-					musicSourceList[currentDimensionMusic].volume = maxMusicVolume;
+					musicSourceDic[currentDimensionMusic].volume = maxMusicVolume;
 					fadeIn                                        = false;
 				}
 			}
@@ -80,7 +83,7 @@ namespace UI {
 		public void ChangeMusicVolume() 
 		{
 			float newVolume = musicVolumeSlider.value;
-			musicSourceList[currentDimensionMusic].volume = newVolume;
+			musicSourceDic[currentDimensionMusic].volume = newVolume;
 			maxMusicVolume                                = newVolume;
 			Debug.Log(maxMusicVolume);
 		}
@@ -89,5 +92,6 @@ namespace UI {
 			float newVolume = musicVolumeSlider.value;
 			effectSource.volume = newVolume;
 		}
+		
 	}
 }

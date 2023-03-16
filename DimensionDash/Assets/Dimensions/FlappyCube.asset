@@ -15,7 +15,9 @@ MonoBehaviour:
   <PlayerSprite>k__BackingField: 5
   <TileSetName>k__BackingField: vector
   <Name>k__BackingField: TOOD
-  <Icon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 1508a7ff265b75b46ac1590078e45e69, type: 3}
+  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 2042fe8288b023a429e31e2667c88b4d, type: 3}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 0
+  <CameraSpeed>k__BackingField: 1

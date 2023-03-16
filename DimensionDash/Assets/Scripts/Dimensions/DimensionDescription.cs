@@ -16,7 +16,10 @@ namespace Dimensions {
 		public string Name { get; private set; } = "TOOD";
 
 		[field:SerializeField]
-		public Image Icon { get; private set; } = null;
+		public Sprite Icon { get; private set; } = null;
+
+		[field: SerializeField]
+		public Sprite GreyIcon { get; private set; } = null;
 
 		[field:SerializeField]
 		public int MaxUsedPerLevel { get; private set; } = -1;
