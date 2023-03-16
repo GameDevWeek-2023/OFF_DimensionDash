@@ -30,7 +30,7 @@ namespace Player {
 
 		private void LateUpdate() {
 			var camera = Camera.main;
-			if (!camera) return;
+			if (!camera || !OutOfViewMarkerPool.InstanceOptional) return;
 
 			var camRelativePosition     = transform.position - camera.transform.position;
 			var camSize                 = new Vector2(camera.aspect, 1f) * camera.orthographicSize;

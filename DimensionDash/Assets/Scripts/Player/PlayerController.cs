@@ -3,18 +3,23 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 namespace Player {
-	[RequireComponent(typeof(BewegenBasis))]
 	public class PlayerController : MonoBehaviour {
 		[SerializeField] private BewegenBasis _movement;
 
+		private Vector2 _direction = Vector2.zero;
+		
 		public bool Ready = false;
 
 		private void OnValidate() {
-			if (!_movement) _movement = GetComponent<BewegenBasis>();
+			if (!_movement) _movement = GetComponentInChildren<BewegenBasis>();
 		}
 
 		private void Awake() {
-			if (!_movement) _movement = GetComponent<BewegenBasis>();
+			if (!_movement) _movement = GetComponentInChildren<BewegenBasis>();
+		}
+
+		private void Update() {
+			_movement.Laufen(_direction);
 		}
 
 		private void OnDisable() {
@@ -29,6 +34,7 @@ namespace Player {
 		}
 
 		public void OnMove(InputValue input) {
+			_direction = input.Get<Vector2>();
 			_movement.Laufen(input.Get<Vector2>());
 		}
 

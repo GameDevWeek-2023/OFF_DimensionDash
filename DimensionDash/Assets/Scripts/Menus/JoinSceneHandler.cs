@@ -10,6 +10,7 @@ namespace Menus {
 		[SerializeField] private List<PlayerJoined> _startPositions;
 
 		private class JoinedPlayers {
+			public GameObject       gameObject;
 			public PlayerController playerController;
 			public ColorInfo        color;
 			public PlayerJoined     joinBox;
@@ -41,7 +42,11 @@ namespace Menus {
 					_colors.Remove(color);
 				}
 
-				_players.Add(new JoinedPlayers() {color = color, joinBox = joined, playerController = p.GetComponent<PlayerController>()});
+				var controller = p.transform.parent.GetComponent<PlayerController>();
+				if(!controller)
+					Debug.LogError("Missing PlayerController on joined player");
+				controller.Ready = false;
+				_players.Add(new JoinedPlayers() {gameObject=p, color = color, joinBox = joined, playerController = controller});
 			}
 
 			PlayerManager.Instance.AllowJoining = true;
@@ -76,8 +81,11 @@ namespace Menus {
 				playerColor.SetColor(color, () => _availableColor.Add(color));
 			}
 
-			var joined = AssignPlayerPosition(player);
-			_players.Add(new JoinedPlayers() {color = color, joinBox = joined, playerController = player.GetComponent<PlayerController>()});
+			var joined     = AssignPlayerPosition(player);
+			var controller = player.transform.parent.GetComponent<PlayerController>();
+			if(!controller)
+				Debug.LogError("Missing PlayerController on joined player");
+			_players.Add(new JoinedPlayers() {gameObject = player, color = color, joinBox = joined, playerController = controller});
 			Debug.Log("Player joined");
 		}
 
@@ -91,7 +99,7 @@ namespace Menus {
 		}
 
 		private void OnLeft(GameObject player) {
-			var p = _players.Find(p => p.playerController.gameObject == player);
+			var p = _players.Find(p => p.gameObject == player);
 			if (p == null) return;
 
 			_remainingStartPositions.Add(p.joinBox);

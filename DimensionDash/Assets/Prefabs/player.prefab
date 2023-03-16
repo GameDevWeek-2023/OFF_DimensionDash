@@ -1425,6 +1425,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6740600990102101148}
   - component: {fileID: 2056252544}
+  - component: {fileID: 7141266470869126318}
   m_Layer: 6
   m_Name: player
   m_TagString: Player
@@ -1478,6 +1479,20 @@ MonoBehaviour:
   m_DefaultActionMap: game
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &7141266470869126318
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6740600990102101138}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45ff0d0834e745069e672550d5e17860, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _movement: {fileID: 2932850926464620458}
+  Ready: 0
 --- !u!1 &6793449522857606232
 GameObject:
   m_ObjectHideFlags: 0
@@ -1711,7 +1726,6 @@ GameObject:
   - component: {fileID: 5039472548573161613}
   - component: {fileID: 1363085671229929937}
   - component: {fileID: 4565816385633401697}
-  - component: {fileID: 1674392905340088140}
   - component: {fileID: 5716582749675653322}
   - component: {fileID: 2555835892758745181}
   - component: {fileID: 7055440249276094}
@@ -1937,20 +1951,6 @@ MonoBehaviour:
   bodenLayer:
     serializedVersion: 2
     m_Bits: 384
---- !u!114 &1674392905340088140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7589580813036299078}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 45ff0d0834e745069e672550d5e17860, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _movement: {fileID: 2932850926464620458}
-  Ready: 0
 --- !u!114 &5716582749675653322
 MonoBehaviour:
   m_ObjectHideFlags: 0
