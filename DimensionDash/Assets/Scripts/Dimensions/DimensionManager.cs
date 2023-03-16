@@ -134,12 +134,24 @@ namespace Dimensions {
 			foreach (var p in _playerSprites)
 				p.SetType(dimension.PlayerSprite);
 
+			var cam = Camera.main;
+			if (cam && cam.TryGetComponent(out Animation anim)) {
+				foreach (AnimationState s in anim)
+					s.speed = dimension.CameraSpeed;
+			}
+			
 			dimension.Apply(_players);
 		}
 
 		private void Disable(DimensionDescription dimension) {
 			dimension.UnApply(_players);
 
+			var cam = Camera.main;
+			if (cam && cam.TryGetComponent(out Animation anim)) {
+				foreach (AnimationState s in anim)
+					s.speed = 1f;
+			}
+			
 			foreach (var p in _playerSprites)
 				if (p)
 					p.SetType(PlayerSpriteType.Base);

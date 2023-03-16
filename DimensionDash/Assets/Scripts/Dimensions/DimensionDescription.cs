@@ -27,6 +27,9 @@ namespace Dimensions {
 		[field:SerializeField]
 		public float MinTime { get; private set; } = 0f;
 
+		[field:SerializeField]
+		public float CameraSpeed { get; private set; } = 1f;
+
 		public abstract void Apply(List<GameObject>   players);
 		public abstract void UnApply(List<GameObject> players);
 
