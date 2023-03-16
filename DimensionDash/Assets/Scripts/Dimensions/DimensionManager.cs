@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using Tilemap;
@@ -7,20 +6,23 @@ using Random = UnityEngine.Random;
 
 namespace Dimensions {
 	public class DimensionManager : MonoBehaviour {
-		[SerializeField] private float                      _minSecondsBetweenSwitch = 10;
-		[SerializeField] private List<DimensionDescription> _dimensions;
-		[SerializeField] private TileReskinner              _tileReskinner;
+		[SerializeField] private float                             _minSecondsBetweenSwitch = 10;
+		[SerializeField] private List<DimensionDescription>        _dimensions;
+		[SerializeField] private TileReskinner                     _tileReskinner;
+		[SerializeField] private List<GameObject>                  _platformRoots;
+		[SerializeField] private GenericDictionary<string, Sprite> _tilesetPlatformSprites;
 
 		private readonly List<(int, DimensionDescription)> _remainingDimensions = new();
 
 		private PlayerSpriteReplacer[] _playerSprites;
 		private List<GameObject>       _players;
-		
+
+		private readonly List<List<SpriteRenderer>> _dimensionPlatforms         = new();
+		private          int                        _lastDimensionPlatformIndex = -1;
+
 		private DimensionDescription _current;
 		private float                _nextSwitch;
 
-		// TODO: merge with Objects.ObjectManager
-		
 		private void Start() {
 			_nextSwitch = Time.time + _minSecondsBetweenSwitch;
 
@@ -32,6 +34,20 @@ namespace Dimensions {
 			_players       = new List<GameObject>(_playerSprites.Length);
 			foreach (var ps in _playerSprites) {
 				_players.Add(ps.gameObject);
+			}
+
+			foreach (var root in _platformRoots) {
+				var platforms = new List<SpriteRenderer>();
+
+				for (int i = 0; i < root.transform.childCount; i++) {
+					var p = root.transform.GetChild(i);
+					if (p.TryGetComponent(out SpriteRenderer sprite)) {
+						platforms.Add(sprite);
+						sprite.gameObject.SetActive(false);
+					}
+				}
+
+				_dimensionPlatforms.Add(platforms);
 			}
 		}
 
@@ -71,27 +87,50 @@ namespace Dimensions {
 			// TODO: animate / camera-effects...
 
 			yield return null;
-			
+
 			if (from) Disable(from);
 			if (to) Enable(to);
+
+			// switch platforms
+			if (_dimensionPlatforms.Count > 0) {
+				// disable old
+				if (_lastDimensionPlatformIndex >= 0) {
+					foreach (var p in _dimensionPlatforms[_lastDimensionPlatformIndex]) {
+						p.gameObject.SetActive(false);
+					}
+				}
+
+				// enable new
+				_lastDimensionPlatformIndex = (_lastDimensionPlatformIndex + 1) % _dimensionPlatforms.Count;
+				if (to && _tilesetPlatformSprites.TryGetValue(to.TileSetName ?? "base", out var platformSprite)) {
+					foreach (var p in _dimensionPlatforms[_lastDimensionPlatformIndex]) {
+						p.sprite = platformSprite;
+					}
+				}
+
+				foreach (var p in _dimensionPlatforms[_lastDimensionPlatformIndex]) {
+					p.gameObject.SetActive(true);
+				}
+			}
 		}
 
 		private void Enable(DimensionDescription dimension) {
 			_tileReskinner.SetTileSet(dimension.TileSetName ?? "base");
-			
-			foreach(var p in _playerSprites)
+
+			foreach (var p in _playerSprites)
 				p.SetType(dimension.PlayerSprite);
-			
+
 			dimension.Apply(_players);
 		}
+
 		private void Disable(DimensionDescription dimension) {
 			dimension.UnApply(_players);
-			
-			foreach(var p in _playerSprites)
-				if(p)
+
+			foreach (var p in _playerSprites)
+				if (p)
 					p.SetType(PlayerSpriteType.Base);
-			
-			if(_tileReskinner)
+
+			if (_tileReskinner)
 				_tileReskinner.SetTileSet("base");
 		}
 	}
