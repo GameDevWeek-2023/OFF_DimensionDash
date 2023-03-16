@@ -77,7 +77,6 @@ namespace Dimensions {
 		}
 
 		private void Enable(DimensionDescription dimension) {
-			Debug.Log(dimension.name);
 			_tileReskinner.SetTileSet(dimension.TileSetName ?? "base");
 			
 			foreach(var p in _playerSprites)
