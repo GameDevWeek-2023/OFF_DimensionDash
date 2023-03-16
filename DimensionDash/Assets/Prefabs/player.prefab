@@ -20498,7 +20498,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4529276580895222060
 Transform:
   m_ObjectHideFlags: 0
@@ -26534,6 +26534,8 @@ MonoBehaviour:
       Value: {fileID: 3765881424829730442}
     - Key: 7
       Value: {fileID: 6196964803142159562}
+    - Key: 8
+      Value: {fileID: 5100571865266922638}
     keyCollision: 0
 --- !u!114 &8709208093608239909
 MonoBehaviour:
