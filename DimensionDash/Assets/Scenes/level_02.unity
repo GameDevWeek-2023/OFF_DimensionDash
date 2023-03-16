@@ -19700,7 +19700,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _templateSpriteSheet: template
-  _defaultTileSet: template
+  _defaultTileSet: dave
 --- !u!1 &1993226781
 GameObject:
   m_ObjectHideFlags: 0
@@ -19989,46 +19989,6 @@ PrefabInstance:
       propertyPath: _platformRoots.Array.data[2]
       value: 
       objectReference: {fileID: 343569344}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.keyCollision
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.data[0].Key
-      value: base
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.data[1].Key
-      value: pixel
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.data[2].Key
-      value: spider
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.data[3].Key
-      value: vector
-      objectReference: {fileID: 0}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.data[0].Value
-      value: 
-      objectReference: {fileID: 21300000, guid: c190299e5abd48ed8a190e6da9f2a009, type: 3}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.data[1].Value
-      value: 
-      objectReference: {fileID: 21300000, guid: e6e09a9ed09b801159707b3c64690020, type: 3}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.data[2].Value
-      value: 
-      objectReference: {fileID: 21300000, guid: 6123b73a5a73fe7f2ab091c81ce0daa8, type: 3}
-    - target: {fileID: 1193492210, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _tilesetPlatformSprites.list.Array.data[3].Value
-      value: 
-      objectReference: {fileID: 21300000, guid: e2e464bc63754f4b58ab38d818fb5389, type: 3}
     - target: {fileID: 2000151906, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
       propertyPath: _camera
       value: 

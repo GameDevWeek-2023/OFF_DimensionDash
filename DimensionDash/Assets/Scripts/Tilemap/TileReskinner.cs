@@ -36,6 +36,9 @@ namespace Tilemap {
 		}
 
 		public void SetTileSet(string tileSetName) {
+			if(_tilemaps==null)
+				Start();
+			
 			if (tileSetName == _currentTileSetName)
 				return;
 

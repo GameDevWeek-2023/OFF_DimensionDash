@@ -6,6 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace Dimensions {
 	public class DimensionManager : MonoBehaviour {
+		[SerializeField] private DimensionDescription              _defaultDimension;
 		[SerializeField] private float                             _maxSecondsBetweenSwitch = float.MaxValue;
 		[SerializeField] private float                             _minSecondsBetweenSwitch = 10;
 		[SerializeField] private List<DimensionDescription>        _dimensions;
@@ -60,6 +61,11 @@ namespace Dimensions {
 				}
 
 				_dimensionPlatforms.Add(platforms);
+			}
+
+			if (_defaultDimension) {
+				Enable(_defaultDimension);
+				_current = _defaultDimension;
 			}
 		}
 
@@ -129,7 +135,8 @@ namespace Dimensions {
 		}
 
 		private void Enable(DimensionDescription dimension) {
-			_tileReskinner.SetTileSet(dimension.TileSetName ?? "base");
+			if(_tileReskinner)
+				_tileReskinner.SetTileSet(dimension.TileSetName ?? "base");
 
 			foreach (var p in _playerSprites)
 				p.SetType(dimension.PlayerSprite);

@@ -44,13 +44,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2e6a75afbf84919ac0ad4697acdfb09, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _defaultDimension: {fileID: 11400000, guid: 0a755753ea5ea8ac68752114cf8d5b15, type: 2}
+  _maxSecondsBetweenSwitch: 3.4028235e+38
   _minSecondsBetweenSwitch: 5
   _dimensions: []
   _dimensionSelection: {fileID: 11400000, guid: 8f6e9a731020e40ffaa2ee7c3e69da74, type: 2}
   _tileReskinner: {fileID: 0}
   _platformRoots: []
   _tilesetPlatformSprites:
-    list: []
+    list:
+    - Key: dave
+      Value: {fileID: 21300000, guid: d446c4576977d40fc85d67fd98476c32, type: 3}
+    - Key: pixel
+      Value: {fileID: 21300000, guid: e6e09a9ed09b801159707b3c64690020, type: 3}
+    - Key: spider
+      Value: {fileID: 21300000, guid: 6123b73a5a73fe7f2ab091c81ce0daa8, type: 3}
+    - Key: vector
+      Value: {fileID: 21300000, guid: e2e464bc63754f4b58ab38d818fb5389, type: 3}
     keyCollision: 0
 --- !u!1 &2000151904
 GameObject:

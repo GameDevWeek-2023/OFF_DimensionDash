@@ -14862,7 +14862,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _templateSpriteSheet: template
-  _defaultTileSet: template
+  _defaultTileSet: dave
 --- !u!1839735485 &1259659301
 Tilemap:
   m_ObjectHideFlags: 0

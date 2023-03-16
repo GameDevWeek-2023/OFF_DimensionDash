@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Base
   m_EditorClassIdentifier: 
   <PlayerSprite>k__BackingField: 0
-  <TileSetName>k__BackingField: base
-  <Name>k__BackingField: Boooring
+  <TileSetName>k__BackingField: dave
+  <Name>k__BackingField: Dave
   <Icon>k__BackingField: {fileID: 0}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 0
+  <CameraSpeed>k__BackingField: 1
