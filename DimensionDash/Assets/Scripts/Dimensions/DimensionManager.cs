@@ -2,15 +2,17 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using NaughtyAttributes;
+using Player;
 using Tilemap;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.Rendering.PostProcessing;
 using Random = UnityEngine.Random;
 
 namespace Dimensions {
 	public class DimensionManager : MonoBehaviour {
-		[SerializeField] private PostProcessVolume                     _postProcessVolume;
-		
+		[SerializeField] private PostProcessVolume _postProcessVolume;
+
 		[SerializeField] private DimensionDescription                  _defaultDimension;
 		[SerializeField] private float                                 _maxSecondsBetweenSwitch = float.MaxValue;
 		[SerializeField] private float                                 _minSecondsBetweenSwitch = 10;
@@ -25,12 +27,12 @@ namespace Dimensions {
 		[SerializeField] private float _fadeOutDuration           = 0.1f;
 		[SerializeField] private float _fadeInChromaticAberration = 1f;
 		[SerializeField] private float _fadeInLensDistortion      = 60f;
-		[SerializeField] private float _switchTimeScale      = 0.1f;
+		[SerializeField] private float _switchTimeScale           = 0.1f;
 
 		private readonly List<(int, DimensionDescription)> _remainingDimensions = new();
 
-		private PlayerSpriteReplacer[] _playerSprites;
-		private List<GameObject>       _players;
+		private List<PlayerSpriteReplacer> _playerSprites;
+		private List<GameObject>           _players;
 
 		private readonly List<List<SpriteRenderer>> _dimensionPlatforms         = new();
 		private          int                        _lastDimensionPlatformIndex = -1;
@@ -67,10 +69,13 @@ namespace Dimensions {
 				}
 			}
 
-			_playerSprites = FindObjectsOfType<PlayerSpriteReplacer>();
-			_players       = new List<GameObject>(_playerSprites.Length);
-			foreach (var ps in _playerSprites) {
-				_players.Add(ps.gameObject);
+			_playerSprites = new List<PlayerSpriteReplacer>();
+			_players       = new List<GameObject>();
+			foreach (var ps in PlayerManager.Instance.Players) {
+				_players.Add(ps);
+				var spriteReplacer = ps.GetComponent<PlayerSpriteReplacer>();
+				Assert.IsNotNull(spriteReplacer);
+				_playerSprites.Add(spriteReplacer);
 			}
 
 			if (_platformRoots != null) {
@@ -159,7 +164,7 @@ namespace Dimensions {
 					chroma.intensity.value =  t * t * _fadeInChromaticAberration;
 					lens.intensity.value   =  t * t * _fadeInLensDistortion;
 					time                   += Time.unscaledDeltaTime;
-					Time.timeScale         =  Mathf.Lerp(orgTimeScale, _switchTimeScale, t*t);
+					Time.timeScale         =  Mathf.Lerp(orgTimeScale, _switchTimeScale, t * t);
 					yield return new WaitForEndOfFrame();
 				} while (time < _fadeInDuration);
 
