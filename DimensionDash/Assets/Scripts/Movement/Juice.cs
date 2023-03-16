@@ -106,8 +106,10 @@ namespace Movement {
 			}
 		}
 
-		private void SpriteDrehen()
-		{
+		private void SpriteDrehen() {
+			if (!körper.constraints.HasFlag(RigidbodyConstraints2D.FreezeRotation))
+				return;
+			
 			// Die Richtung in die wir drehen/kippen hängt von der Laufrichtung ab
 			var tiltRichtung = körper.velocity.x == 0 ? 0f : -Mathf.Sign(körper.velocity.x);
 			var t            = squashTarget ? squashTarget : animator.transform;
