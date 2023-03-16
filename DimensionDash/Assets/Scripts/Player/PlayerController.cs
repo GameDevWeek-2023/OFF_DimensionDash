@@ -41,7 +41,7 @@ namespace Player {
 
 		public void OnLeave() {
 			if (PlayerManager.Instance.AllowJoining) {
-				Destroy(transform.parent.gameObject);
+				Destroy(gameObject);
 				Debug.Log("Player left");
 			}
 		}
