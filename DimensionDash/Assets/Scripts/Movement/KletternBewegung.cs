@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace Skripte.Bewegung {
+namespace Movement {
 	// Überschreibt die normale Steuerung (aktiviert durch Klettern.cs und drücken von 'w' bzw. Pfeil-Hoch) mit der
 	//   Steuerung für Klettern, in der der Spieler nicht mehr nach unten fällt und sich in beliebige Richtungen bewegen kann.
 	// Die Komponente ist normalerweise deaktiviert und wird nur aktiviert wenn der Spieler vor einem

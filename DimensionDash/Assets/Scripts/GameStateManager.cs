@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using CookAGeddon.Utility;
 using NaughtyAttributes;
 using UnityEngine;
 using UnityEngine.SceneManagement;

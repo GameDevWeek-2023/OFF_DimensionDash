@@ -1,30 +1,27 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
-public class PlayerPoints : MonoBehaviour
-{
-	public int points = 0;
-
-	private void OnTriggerEnter2D(Collider2D col)
+namespace Player {
+	public class PlayerPoints : MonoBehaviour
 	{
-		if (col.gameObject.tag == "Item")
+		public int points = 0;
+
+		private void OnTriggerEnter2D(Collider2D col)
 		{
-			Destroy(col.gameObject);
-			updatePlayerPoints(1);
+			if (col.gameObject.tag == "Item")
+			{
+				Destroy(col.gameObject);
+				updatePlayerPoints(1);
+			}
+		}
+
+		public void updatePlayerPoints(int point)
+		{
+		
+			points = points + point;
+			if (points < 1)
+			{
+				//TODO: Player lose
+			}
 		}
 	}
-
-	public void updatePlayerPoints(int point)
-    {
-		
-	    points = points + point;
-	    if (points < 1)
-	    {
-		    //TODO: Player lose
-	    }
-    }
 }
