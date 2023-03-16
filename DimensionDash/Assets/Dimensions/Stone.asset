@@ -21,3 +21,4 @@ MonoBehaviour:
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 0
   <CameraSpeed>k__BackingField: 0.1
+  _newPhysicsMaterial: {fileID: 6200000, guid: 96068912a6c990e4cb44ea2fe21f3a59, type: 2}
