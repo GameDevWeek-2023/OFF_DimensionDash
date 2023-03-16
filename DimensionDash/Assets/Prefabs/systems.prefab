@@ -67,6 +67,8 @@ MonoBehaviour:
       Value: {fileID: 21300000, guid: 15659473f51791637ad6549e1fec2bd7, type: 3}
     - Key: stone
       Value: {fileID: 21300000, guid: 8c4e430081efa5df18a96bf30ce1894d, type: 3}
+    - Key: underwater
+      Value: {fileID: 21300000, guid: 77dc353c6dc68e1ee82972add4822f7e, type: 3}
     keyCollision: 0
 --- !u!1 &2000151904
 GameObject:
