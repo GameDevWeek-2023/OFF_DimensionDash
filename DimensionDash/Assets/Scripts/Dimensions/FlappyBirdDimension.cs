@@ -5,14 +5,16 @@ using UnityEngine;
 namespace Dimensions {
 	[CreateAssetMenu(fileName = "Dimension", menuName = "Dimensions/FlappyBirdDimension", order = 0)]
 	public class FlappyBirdDimension : DimensionDescription {
-		[SerializeField] private bool  _unlockRotation = false;
-		[SerializeField] private float _newJumpHeight;
+		[SerializeField] private bool              _unlockRotation = false;
+		[SerializeField] private float             _newJumpHeight;
+		[SerializeField] private PhysicsMaterial2D _newPhysicsMaterial;
 
-		private int   _previousAirJumps;
-		private float _maxAcceleration;
-		private float _maxDeceleration;
-		private float _maxTurnSpeed;
-		private float _jumpHeight;
+		private int               _previousAirJumps;
+		private float             _maxAcceleration;
+		private float             _maxDeceleration;
+		private float             _maxTurnSpeed;
+		private float             _jumpHeight;
+		private PhysicsMaterial2D _physicsMaterial;
 
 		public override void Apply(List<GameObject> players) {
 			foreach (var p in players) {
@@ -28,6 +30,11 @@ namespace Dimensions {
 					b.maxDeceleration = 0;
 					b.maxTurnSpeed    = 0;
 					b.jumpHeight      = _newJumpHeight;
+
+					if (p.TryGetComponent(out CircleCollider2D cc)) {
+						_physicsMaterial = cc.sharedMaterial;
+						cc.sharedMaterial = _newPhysicsMaterial;
+					}
 
 					if (_unlockRotation) {
 						var body = p.GetComponent<Rigidbody2D>();
@@ -50,6 +57,10 @@ namespace Dimensions {
 					b.maxTurnSpeed    = _maxTurnSpeed;
 					b.jumpHeight      = _jumpHeight;
 
+					if (p.TryGetComponent(out CircleCollider2D cc)) {
+						cc.sharedMaterial = _physicsMaterial;
+					}
+					
 					if (_unlockRotation) {
 						var body = p.GetComponent<Rigidbody2D>();
 						body.constraints = RigidbodyConstraints2D.FreezeRotation;

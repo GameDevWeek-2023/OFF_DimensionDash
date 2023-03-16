@@ -21,7 +21,7 @@ MonoBehaviour:
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 0
   <CameraSpeed>k__BackingField: 0.5
-  _newGravity: {x: 0, y: -2}
+  _newGravity: {x: 0, y: -1}
   _newJumpHeight: 1
   _newJumpDuration: 4
-  _accelerationFactor: 0.25
+  _accelerationFactor: 0.2

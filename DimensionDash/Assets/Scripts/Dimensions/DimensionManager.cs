@@ -82,6 +82,9 @@ namespace Dimensions {
 				}
 			}
 
+			foreach(var r in _tilesetBackgroundRoots.Values)
+				r.SetActive(false);
+			
 			if (_defaultDimension) {
 				Enable(_defaultDimension);
 				_current = _defaultDimension;
