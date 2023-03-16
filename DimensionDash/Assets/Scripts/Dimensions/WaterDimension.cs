@@ -6,9 +6,10 @@ namespace Dimensions {
 	[CreateAssetMenu(fileName = "Dimension", menuName = "Dimensions/WaterDimension", order = 0)]
 	public class WaterDimension : DimensionDescription {
 		[SerializeField] private Vector2 _newGravity;
-		[SerializeField] private float   _newJumpHeight      = 2f;
-		[SerializeField] private float   _newJumpDuration      = 4f;
-		[SerializeField] private float   _accelerationFactor = 0.25f;
+		[SerializeField] private float   _newJumpHeight          = 2f;
+		[SerializeField] private float   _newJumpDuration        = 4f;
+		[SerializeField] private float   _accelerationFactor     = 0.25f;
+		[SerializeField] private float   _terminalVelocityFactor = 0.5f;
 
 		private int   _previousAirJumps;
 		private float _maxAcceleration;
@@ -19,6 +20,7 @@ namespace Dimensions {
 		private float _maxAirTurnSpeed;
 		private float _jumpHeight;
 		private float _jumpDuration;
+		private float _terminalVelocity;
 
 		private Vector2 _previousGravity;
 
@@ -37,6 +39,7 @@ namespace Dimensions {
 					_maxAirTurnSpeed    = b.maxAirTurnSpeed;
 					_jumpHeight         = b.jumpHeight;
 					_jumpDuration       = b.jumpDuration;
+					_terminalVelocity   = b.terminalVelocity;
 
 					b.MaxAirJumps        =  -1;
 					b.maxAcceleration    *= _accelerationFactor;
@@ -47,7 +50,11 @@ namespace Dimensions {
 					b.maxAirTurnSpeed    *= _accelerationFactor;
 					b.jumpHeight         =  _newJumpHeight;
 					b.jumpDuration       =  _newJumpDuration;
+					b.terminalVelocity   *= _terminalVelocityFactor;
 				}
+
+				if (p && p.TryGetComponent(out BewegenDash d))
+					d.enabled = true;
 			}
 		}
 
@@ -65,10 +72,14 @@ namespace Dimensions {
 					b.maxAirTurnSpeed    = _maxAirTurnSpeed;
 					b.jumpHeight         = _jumpHeight;
 					b.jumpDuration       = _jumpDuration;
+					b.terminalVelocity   = _terminalVelocity;
 
 					if (p.TryGetComponent(out BoxCollider2D c))
 						c.enabled = false;
 				}
+
+				if (p && p.TryGetComponent(out BewegenDash d))
+					d.enabled = false;
 			}
 		}
 	}

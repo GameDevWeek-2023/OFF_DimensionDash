@@ -23,3 +23,4 @@ MonoBehaviour:
   <CameraSpeed>k__BackingField: 1
   _unlockRotation: 0
   _newJumpHeight: 4
+  _newPhysicsMaterial: {fileID: 6200000, guid: 96068912a6c990e4cb44ea2fe21f3a59, type: 2}

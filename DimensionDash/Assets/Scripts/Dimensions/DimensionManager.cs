@@ -63,20 +63,28 @@ namespace Dimensions {
 				_players.Add(ps.gameObject);
 			}
 
-			foreach (var root in _platformRoots) {
-				var platforms = new List<SpriteRenderer>();
+			if (_platformRoots != null) {
+				foreach (var root in _platformRoots) {
+					if (!root)
+						continue;
+					
+					var platforms = new List<SpriteRenderer>();
 
-				for (int i = 0; i < root.transform.childCount; i++) {
-					var p = root.transform.GetChild(i);
-					if (p.TryGetComponent(out SpriteRenderer sprite)) {
-						platforms.Add(sprite);
-						sprite.gameObject.SetActive(false);
+					for (int i = 0; i < root.transform.childCount; i++) {
+						var p = root.transform.GetChild(i);
+						if (p.TryGetComponent(out SpriteRenderer sprite)) {
+							platforms.Add(sprite);
+							sprite.gameObject.SetActive(false);
+						}
 					}
-				}
 
-				_dimensionPlatforms.Add(platforms);
+					_dimensionPlatforms.Add(platforms);
+				}
 			}
 
+			foreach(var r in _tilesetBackgroundRoots.Values)
+				r.SetActive(false);
+			
 			if (_defaultDimension) {
 				Enable(_defaultDimension);
 				_current = _defaultDimension;
