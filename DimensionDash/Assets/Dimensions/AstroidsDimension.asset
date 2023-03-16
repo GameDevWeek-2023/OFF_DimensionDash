@@ -15,8 +15,8 @@ MonoBehaviour:
   <PlayerSprite>k__BackingField: 4
   <TileSetName>k__BackingField: space
   <Name>k__BackingField: Space
-  <Icon>k__BackingField: {fileID: 21300000, guid: 37749aa9c005df349984aa5fadfbba10, type: 3}
-  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 54b172b05d268cc489fc99819a46c375, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 4c1dc036b12536e45be27d9c688dc032, type: 3}
+  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 64c81bf5cf597bb4f8ed81327f539c35, type: 3}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 5

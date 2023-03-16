@@ -15,8 +15,8 @@ MonoBehaviour:
   <PlayerSprite>k__BackingField: 2
   <TileSetName>k__BackingField: spider
   <Name>k__BackingField: SpiderMan
-  <Icon>k__BackingField: {fileID: 21300000, guid: 37749aa9c005df349984aa5fadfbba10, type: 3}
-  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 54b172b05d268cc489fc99819a46c375, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: dedeaaa19a12d2b4f88d83220ab41be0, type: 3}
+  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 273131482098c5645a3615dc15dbd0f8, type: 3}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 0
