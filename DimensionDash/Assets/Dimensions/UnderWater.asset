@@ -15,8 +15,8 @@ MonoBehaviour:
   <PlayerSprite>k__BackingField: 3
   <TileSetName>k__BackingField: underwater
   <Name>k__BackingField: Water
-  <Icon>k__BackingField: {fileID: 21300000, guid: 37749aa9c005df349984aa5fadfbba10, type: 3}
-  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 54b172b05d268cc489fc99819a46c375, type: 3}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 59ac187cb19f2a74fb9dfe4459f89e40, type: 3}
+  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 39da882214a87c04190912ec7964b8a2, type: 3}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 0
@@ -25,3 +25,4 @@ MonoBehaviour:
   _newJumpHeight: 1
   _newJumpDuration: 4
   _accelerationFactor: 0.2
+  _terminalVelocityFactor: 0.5

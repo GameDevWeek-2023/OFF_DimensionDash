@@ -245,6 +245,7 @@ namespace Dimensions {
 			}
 
 			dimension.Apply(_players);
+			UI.SoundManager.Instance.DimensionChangeMusicSwap(dimension.TileSetName ?? "dave");
 		}
 
 		private void Disable(DimensionDescription dimension) {

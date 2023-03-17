@@ -3,7 +3,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 namespace UI {
-	public class SoundManager : MonoBehaviour
+	public class SoundManager : GlobalSystem<SoundManager>
 	{
 		
 		public float fadeTime;
@@ -18,6 +18,8 @@ namespace UI {
 		private GenericDictionary<string, AudioSource> musicSourceDic;
 		[SerializeField]
 		private AudioSource effectSource;
+		[SerializeField]
+		private GenericDictionary<string, AudioClip> audioClips;
 
 
 		private float maxMusicVolume;
@@ -43,6 +45,7 @@ namespace UI {
 			FadeMusic();
 		}
 
+
 		public void DimensionChangeMusicSwap(string i) 
 		{
 			if(i != currentDimensionMusic) {
@@ -51,6 +54,9 @@ namespace UI {
 				fadeOut               = true;
 				fadeIn                = true;
 			}
+
+			if (audioClips[i] != null)
+				effectSource.PlayOneShot(audioClips[i]);
 		}
 
 
