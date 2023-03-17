@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab16adf28686d224f8ce2474128233e2, type: 3}
   m_Name: Teleport
   m_EditorClassIdentifier: 
-  <PlayerSprite>k__BackingField: 0
-  <TileSetName>k__BackingField: dave
+  <PlayerSprite>k__BackingField: 8
+  <TileSetName>k__BackingField: scribble
   <Name>k__BackingField: TOOD
   <Icon>k__BackingField: {fileID: 0}
   <GreyIcon>k__BackingField: {fileID: 0}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
-  <MinTime>k__BackingField: 1000
+  <MinTime>k__BackingField: 4
   <CameraSpeed>k__BackingField: 1

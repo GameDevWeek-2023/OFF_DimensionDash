@@ -26116,8 +26116,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: cdaee08af5598a43aadc571ef65ab6c8,
-    type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: cdaee08af5598a43aadc571ef65ab6c8, type: 3}
   m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -26808,6 +26807,10 @@ MonoBehaviour:
   - {fileID: 7998941692545085470}
   - {fileID: 3038232158845635624}
   - {fileID: 2810766791304630341}
+  - {fileID: 3257821622712272054}
+  - {fileID: 3161485623401323067}
+  - {fileID: 4056835379329719690}
+  - {fileID: 7382086061440951351}
 --- !u!114 &2555835892758745181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26958,8 +26961,7 @@ MonoBehaviour:
   _flyForce: 300
   _flyMaxVelocity: 100
   _flyDrag: 0.2
-  _bulletPrefab: {fileID: 5503297180906598517, guid: d6a74b7d0446989238ddc4306e6430d7,
-    type: 3}
+  _bulletPrefab: {fileID: 5503297180906598517, guid: d6a74b7d0446989238ddc4306e6430d7, type: 3}
   _bulletVelocity: 50
   _recoilImpulse: 200
   _shootPosition: {fileID: 1486810183013033306}
