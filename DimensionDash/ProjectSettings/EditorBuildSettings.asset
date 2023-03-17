@@ -21,9 +21,15 @@ EditorBuildSettings:
     path: Assets/Scenes/GameOver.unity
     guid: d20520b7d39adb59aa44b52b8dc388e4
   - enabled: 0
-    path: Assets/Scenes/EndScene.unity
+    path: 
     guid: f1a92d00252c8d842b511837d8a13c6a
   - enabled: 1
     path: Assets/Scenes/level_02.unity
     guid: b9276adeb3a2643ebb7cf71a9aea6390
+  - enabled: 1
+    path: Assets/Scenes/join_lab.unity
+    guid: d481d24733569fa4a8f6b5a9bdc3846d
+  - enabled: 1
+    path: Assets/Scenes/level_Playtest.unity
+    guid: 126c713c734514d028dc457b5f869c94
   m_configObjects: {}

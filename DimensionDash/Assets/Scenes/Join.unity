@@ -1649,6 +1649,7 @@ MonoBehaviour:
   - {fileID: 1409848108}
   - {fileID: 1720154830}
   - {fileID: 1490769451}
+  _namePool: {fileID: 11400000, guid: 242828a8878f58071826e97266c2c3fb, type: 2}
   _colors:
   - {fileID: 11400000, guid: 8481e68588b49ecf1a73ccc402913f76, type: 2}
   - {fileID: 11400000, guid: 8a1047ceffa7f7c99a3be03e17b41944, type: 2}
