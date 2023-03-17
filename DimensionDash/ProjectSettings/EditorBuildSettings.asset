@@ -29,4 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/join_lab.unity
     guid: d481d24733569fa4a8f6b5a9bdc3846d
+  - enabled: 1
+    path: Assets/Scenes/level_Playtest.unity
+    guid: 126c713c734514d028dc457b5f869c94
   m_configObjects: {}
