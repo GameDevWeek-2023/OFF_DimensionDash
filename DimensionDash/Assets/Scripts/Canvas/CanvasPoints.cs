@@ -44,8 +44,8 @@ namespace Canvas {
 		}
 
 		private static float AnimationProgress(Animation a) {
-			if (!a)
-				return 0f;
+			if (!a || !a.isPlaying)
+				return 1f;
 		
 			foreach (AnimationState state in a) {
 				return state.normalizedTime;

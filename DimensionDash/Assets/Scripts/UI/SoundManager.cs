@@ -46,8 +46,10 @@ namespace UI {
 		}
 
 
-		public void DimensionChangeMusicSwap(string i) 
-		{
+		public void DimensionChangeMusicSwap(string i) {
+			if (!audioClips.ContainsKey(i))
+				return;
+			
 			if(i != currentDimensionMusic) {
 				priorDimensionMusic   = currentDimensionMusic;
 				currentDimensionMusic = i;
