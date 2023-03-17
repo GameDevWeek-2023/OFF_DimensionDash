@@ -21,17 +21,18 @@ public class GameStateManager : GlobalSystem<GameStateManager> {
 		if (_currentMainScene == scene)
 			return;
 
-		StartCoroutine(ChangeSceneCo(scene));
+		StartCoroutine(ChangeSceneCo(scene, 1f));
 	}
 
-	public IEnumerator ChangeSceneCo(string scene) {
+	private IEnumerator ChangeSceneCo(string scene, float fadeOutDuration) {
 		var last = _currentMainScene;
 		_currentMainScene = scene;
 		
 		foreach (var fade in FindObjectsOfType<CameraFade>()) {
-			fade.FadeOut(new CameraFade.Options(){FadeTime = 1f});
+			fade.FadeOut(new CameraFade.Options(){FadeTime = fadeOutDuration});
 		}
-		yield return new WaitForSecondsRealtime(1f);
+		yield return new WaitForSecondsRealtime(fadeOutDuration);
+		Time.timeScale = 1f;
 
 		if (last != null) {
 			yield return SceneManager.UnloadSceneAsync(last);
@@ -51,5 +52,14 @@ public class GameStateManager : GlobalSystem<GameStateManager> {
 
 	public void EndGame() {
 		ChangeScene(_gameOverScene);
+	}
+	public void EndGameAfter(float delay) {
+		StartCoroutine(EndGameAfterCo(delay));
+	}
+
+	private IEnumerator EndGameAfterCo(float delay) {
+		Time.timeScale = 0.1f;
+		yield return new WaitForSecondsRealtime(delay/2f);
+		yield return ChangeSceneCo(_gameOverScene, delay/2f);
 	}
 }

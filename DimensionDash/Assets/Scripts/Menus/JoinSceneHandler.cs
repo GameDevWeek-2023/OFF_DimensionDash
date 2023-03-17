@@ -39,6 +39,10 @@ namespace Menus {
 					color = playerColor.GetColor();
 					_colors.Remove(color);
 				}
+				
+				if (p.TryGetComponent(out PlayerPoints points)) {
+					points.Reset();
+				}
 
 				var controller = p.transform.parent.GetComponent<PlayerController>();
 				if(!controller)
