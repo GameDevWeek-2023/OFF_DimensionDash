@@ -21,6 +21,7 @@ namespace Dimensions {
 		[SerializeField] private TileReskinner                         _tileReskinner;
 		[SerializeField] private List<GameObject>                      _platformRoots;
 		[SerializeField] private GenericDictionary<string, Sprite>     _tilesetPlatformSprites;
+		[SerializeField] private GenericDictionary<string, Sprite>     _tilesetCoinSprites;
 		[SerializeField] private GenericDictionary<string, GameObject> _tilesetBackgroundRoots;
 
 		[SerializeField] private float _fadeInDuration            = 0.4f;
@@ -34,6 +35,8 @@ namespace Dimensions {
 		private List<PlayerSpriteReplacer> _playerSprites;
 		private List<GameObject>           _players;
 
+		private readonly List<SpriteRenderer> _coins = new();
+
 		private readonly List<List<SpriteRenderer>> _dimensionPlatforms         = new();
 		private          int                        _lastDimensionPlatformIndex = -1;
 
@@ -46,7 +49,7 @@ namespace Dimensions {
 
 		[Button]
 		private void ForceDimension() {
-			if (!_forceDimension) return;
+			if (!_forceDimension || _transitionOrgTimeScale.HasValue) return;
 
 			_nextSwitch = Time.time + 999f;
 			StartCoroutine(Switch(_current, _forceDimension));
@@ -79,6 +82,11 @@ namespace Dimensions {
 				_playerSprites.Add(spriteReplacer);
 			}
 
+			foreach (var coin in GameObject.FindGameObjectsWithTag("Item")) {
+				if (coin.TryGetComponent(out SpriteRenderer sprite))
+					_coins.Add(sprite);
+			}
+			
 			if (_platformRoots != null) {
 				foreach (var root in _platformRoots) {
 					if (!root)
@@ -122,7 +130,7 @@ namespace Dimensions {
 		}
 
 		public void Update() {
-			if (_nextSwitch > Time.time || _remainingDimensions.Count <= 0 || (_remainingDimensions.Count == 1 && _remainingDimensions[0].Item2 == _current))
+			if (_nextSwitch > Time.time || _transitionOrgTimeScale.HasValue || _remainingDimensions.Count <= 0 || (_remainingDimensions.Count == 1 && _remainingDimensions[0].Item2 == _current))
 				return;
 
 			var nextIndex = Random.Range(0, _remainingDimensions.Count);
@@ -209,6 +217,13 @@ namespace Dimensions {
 
 				foreach (var p in _dimensionPlatforms[_lastDimensionPlatformIndex]) {
 					p.gameObject.SetActive(true);
+				}
+			}
+
+			if (_tilesetCoinSprites.TryGetValue(to.TileSetName ?? "base", out var coinSprite)) {
+				foreach (var coin in _coins) {
+					if(coin)
+						coin.sprite = coinSprite;
 				}
 			}
 

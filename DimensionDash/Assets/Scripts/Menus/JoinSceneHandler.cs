@@ -8,6 +8,7 @@ using Random = UnityEngine.Random;
 namespace Menus {
 	public class JoinSceneHandler : MonoBehaviour {
 		[SerializeField] private List<PlayerJoined> _startPositions;
+		[SerializeField] private PlayerNamePool     _namePool;
 
 		private class JoinedPlayers {
 			public GameObject       gameObject;
@@ -21,6 +22,7 @@ namespace Menus {
 
 		private          List<ColorInfo>     _availableColor;
 		private          List<PlayerJoined>  _remainingStartPositions;
+		private          List<string>        _remainingNames;
 		private readonly List<JoinedPlayers> _players        = new();
 		private          float               _startCountdown = 3;
 
@@ -31,6 +33,8 @@ namespace Menus {
 			_availableColor = new List<ColorInfo>(_colors);
 			_startCountdown = _startDelay;
 
+			_remainingNames = new List<string>(_namePool.Names);
+
 			// add preexisting players
 			foreach (var p in PlayerManager.Instance.Players) {
 				ColorInfo color = null;
@@ -38,6 +42,10 @@ namespace Menus {
 				if (p.TryGetComponent(out PlayerColor playerColor)) {
 					color = playerColor.GetColor();
 					_colors.Remove(color);
+				}
+				
+				if (p.TryGetComponent(out PlayerName name)) {
+					_remainingNames.Remove(name.GetName());
 				}
 				
 				if (p.TryGetComponent(out PlayerPoints points)) {
@@ -85,6 +93,13 @@ namespace Menus {
 			if (player.TryGetComponent(out PlayerColor playerColor)) {
 				playerColor.SetColor(color, () => _availableColor.Add(color));
 			}
+				
+			if (player.TryGetComponent(out PlayerName name)) {
+				var nameIndex = Random.Range(0, _remainingNames.Count);
+				name.SetName(_remainingNames[nameIndex]);
+				name.SetColor(color.Color);
+				_remainingNames.RemoveAt(nameIndex);
+			}
 
 			var controller = player.transform.parent.GetComponent<PlayerController>();
 			if(!controller)
@@ -107,7 +122,7 @@ namespace Menus {
 		private void OnLeft(GameObject player) {
 			var p = _players.Find(p => p.gameObject == player);
 			if (p == null) return;
-
+			p.joinBox.PlayerLeftMe();
 			_remainingStartPositions.Add(p.joinBox);
 			_players.Remove(p);
 			Debug.Log("Player left");

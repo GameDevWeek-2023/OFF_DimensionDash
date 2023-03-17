@@ -10,7 +10,6 @@ namespace Dimensions
 	{
 		public override void Apply(List<GameObject> players)
 		{
-			Debug.Log("Teleportdimension apply");
 			foreach (GameObject player in players)
 			{
 				if (player && player.TryGetComponent(out TeleportierenBewegung b))
@@ -22,7 +21,6 @@ namespace Dimensions
 
 		public override void UnApply(List<GameObject> players)
 		{
-			Debug.Log("Teleportdimension unapply");
 			foreach (GameObject player in players)
 			{
 				if (player && player.TryGetComponent(out TeleportierenBewegung b))

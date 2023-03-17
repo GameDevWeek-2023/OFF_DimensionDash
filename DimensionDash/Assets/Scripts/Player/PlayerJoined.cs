@@ -37,5 +37,10 @@ namespace Player {
 			else if (!ready && startIndicator1.activeSelf)
 				startIndicator1.SetActive(false);
 		}
+
+		public void PlayerLeftMe() {
+			joinG.SetActive(true);
+			colorSelectG.SetActive(false);
+		}
 	}
 }
