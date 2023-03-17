@@ -26851,6 +26851,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2724d3261b3cd694ba9d80cd39adf12d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _points_per_coin: 20
   points: 0
 --- !u!61 &4436982924342837115
 BoxCollider2D:
