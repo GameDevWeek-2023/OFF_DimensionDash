@@ -39,7 +39,7 @@ namespace Dimensions {
 
 		private DimensionDescription _current;
 		private DimensionDescription _transitioningFrom      = null;
-		private float?                _transitionOrgTimeScale = null;
+		private float?               _transitionOrgTimeScale = null;
 		private float                _nextSwitch;
 
 		[SerializeField] private DimensionDescription _forceDimension;
@@ -122,7 +122,7 @@ namespace Dimensions {
 		}
 
 		public void Update() {
-			if (_nextSwitch > Time.time || _remainingDimensions.Count <= 1)
+			if (_nextSwitch > Time.time || _remainingDimensions.Count <= 0 || (_remainingDimensions.Count == 1 && _remainingDimensions[0].Item2 == _current))
 				return;
 
 			var nextIndex = Random.Range(0, _remainingDimensions.Count);
@@ -141,7 +141,7 @@ namespace Dimensions {
 			if (duration > _maxSecondsBetweenSwitch)
 				duration = _maxSecondsBetweenSwitch;
 			_nextSwitch = Time.time + duration;
-			if (_remainingDimensions.Count <= 1)
+			if (_remainingDimensions.Count <= 0 || (_remainingDimensions.Count == 1 && _remainingDimensions[0].Item2 == next))
 				_nextSwitch = Time.time + 9999; // no more switching
 
 			StartCoroutine(Switch(_current, next));
@@ -161,7 +161,7 @@ namespace Dimensions {
 		private IEnumerator Switch(DimensionDescription from, DimensionDescription to) {
 			_current           = to;
 			_transitioningFrom = from;
-			
+
 			var (chroma, lens) = GetPostProcessing();
 
 			_transitionOrgTimeScale = Time.timeScale;
@@ -259,7 +259,7 @@ namespace Dimensions {
 
 			dimension.Apply(_players);
 			var sound = UI.SoundManager.InstanceOptional;
-			if(sound)
+			if (sound)
 				sound.DimensionChangeMusicSwap(dimension.TileSetName ?? "dave");
 		}
 
