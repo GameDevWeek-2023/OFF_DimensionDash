@@ -26541,6 +26541,7 @@ GameObject:
   - component: {fileID: 8513984827247318606}
   - component: {fileID: 196587375881958839}
   - component: {fileID: 5866747464928476829}
+  - component: {fileID: 6028124187515116568}
   m_Layer: 6
   m_Name: player_root
   m_TagString: Untagged
@@ -26980,6 +26981,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teleportieren: 0
+--- !u!114 &6028124187515116568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7589580813036299078}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f1e051017424729bcccef4e0a9db192, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  grapplinghook: 0
+  speed: 30
+  zielpunkt: {x: 0, y: 0}
 --- !u!1 &7760340755875069535
 GameObject:
   m_ObjectHideFlags: 0
