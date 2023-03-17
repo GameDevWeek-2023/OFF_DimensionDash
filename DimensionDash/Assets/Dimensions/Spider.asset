@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb86ce6a21864ad9bc5ddec50fc5816a, type: 3}
+  m_Script: {fileID: 11500000, guid: 84b3a37047c7487286e64c1ee17e59ad, type: 3}
   m_Name: Spider
   m_EditorClassIdentifier: 
   <PlayerSprite>k__BackingField: 2
   <TileSetName>k__BackingField: spider
-  <Name>k__BackingField: SpiderMan
+  <Name>k__BackingField: Spider
   <Icon>k__BackingField: {fileID: 21300000, guid: dedeaaa19a12d2b4f88d83220ab41be0, type: 3}
   <GreyIcon>k__BackingField: {fileID: 21300000, guid: 273131482098c5645a3615dc15dbd0f8, type: 3}
   <MaxUsedPerLevel>k__BackingField: -1

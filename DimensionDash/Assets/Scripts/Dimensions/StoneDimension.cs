@@ -25,6 +25,9 @@ namespace Dimensions {
 
 		public override void UnApply(List<GameObject> players) {
 			foreach (GameObject player in players) {
+				if (!player)
+					continue;
+				
 				player.GetComponent<BewegenPlatformToolkit>().enabled = true;
 				player.GetComponent<Juice>().squashAndStretch         = true;
 				var body = player.GetComponent<Rigidbody2D>();

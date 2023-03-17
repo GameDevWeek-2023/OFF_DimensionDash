@@ -211,7 +211,7 @@ MonoBehaviour:
   _uiScene: UI
   _gameOverScene: GameOver
   _levels:
-  - level_02
+  - level_Playtest
 --- !u!114 &8421829780344331638
 MonoBehaviour:
   m_ObjectHideFlags: 0

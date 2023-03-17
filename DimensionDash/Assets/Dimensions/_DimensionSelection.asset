@@ -22,5 +22,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b666d8b5d942d457bb79fd3215f1328, type: 2}
   - {fileID: 11400000, guid: ea40c4702bdecf9ff87ea266615f672a, type: 2}
   - {fileID: 11400000, guid: e31190160673a484180b762c1277639a, type: 2}
-  - {fileID: 11400000, guid: 45bf5aa39cf484045bec04027b43c294, type: 2}
-  EnabledDimensions: 01010101010101010101
+  EnabledDimensions: 010101010101010101
