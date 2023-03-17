@@ -16,7 +16,7 @@ namespace Dimensions {
 					b.enabled = true;
 					b.EnableMode();
 				}
-				if (p.TryGetComponent(out CircleCollider2D cc)) {
+				if (p && p.TryGetComponent(out CircleCollider2D cc)) {
 					_physicsMaterial  = cc.sharedMaterial;
 					cc.sharedMaterial = _newPhysicsMaterial;
 				}
@@ -29,7 +29,7 @@ namespace Dimensions {
 					b.DisableMode();
 					b.enabled = false;
 				}
-				if (p.TryGetComponent(out CircleCollider2D cc)) {
+				if (p && p.TryGetComponent(out CircleCollider2D cc)) {
 					cc.sharedMaterial = _physicsMaterial;
 				}
 			}

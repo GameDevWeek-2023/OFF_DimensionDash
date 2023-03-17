@@ -29878,13 +29878,13 @@ Transform:
   - {fileID: 1254939753}
   - {fileID: 1388464118}
   - {fileID: 1618989194}
-  - {fileID: 1479022531}
   - {fileID: 1406906559}
   - {fileID: 1077830946}
+  - {fileID: 1479022531}
   - {fileID: 1184476222}
   - {fileID: 1407986792}
-  - {fileID: 1496993447}
   - {fileID: 797411522}
+  - {fileID: 1496993447}
   - {fileID: 106956864}
   - {fileID: 601333098}
   - {fileID: 156233888}
@@ -30647,10 +30647,6 @@ PrefabInstance:
       propertyPath: _dimensions.Array.data[4]
       value: 
       objectReference: {fileID: 11400000, guid: 6033bd5c42419fb40a6c4bd27fe121d4, type: 2}
-    - target: {fileID: 2000151906, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
-      propertyPath: _camera
-      value: 
-      objectReference: {fileID: 0}
     - target: {fileID: 2000151906, guid: cee57bfb89e743b3ca7129b34e252688, type: 3}
       propertyPath: _respawnPositionSource
       value: 
