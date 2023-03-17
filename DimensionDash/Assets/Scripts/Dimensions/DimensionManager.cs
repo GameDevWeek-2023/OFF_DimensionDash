@@ -49,7 +49,7 @@ namespace Dimensions {
 
 		[Button]
 		private void ForceDimension() {
-			if (!_forceDimension) return;
+			if (!_forceDimension || _transitionOrgTimeScale.HasValue) return;
 
 			_nextSwitch = Time.time + 999f;
 			StartCoroutine(Switch(_current, _forceDimension));
@@ -130,7 +130,7 @@ namespace Dimensions {
 		}
 
 		public void Update() {
-			if (_nextSwitch > Time.time || _remainingDimensions.Count <= 0 || (_remainingDimensions.Count == 1 && _remainingDimensions[0].Item2 == _current))
+			if (_nextSwitch > Time.time || _transitionOrgTimeScale.HasValue || _remainingDimensions.Count <= 0 || (_remainingDimensions.Count == 1 && _remainingDimensions[0].Item2 == _current))
 				return;
 
 			var nextIndex = Random.Range(0, _remainingDimensions.Count);

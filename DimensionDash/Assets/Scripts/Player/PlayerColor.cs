@@ -30,7 +30,7 @@ namespace Player {
 
 		[Button]
 		private void AddAllSprites() {
-			_sprites.Clear();
+			_sprites = new();
 			_sprites.AddRange(GetComponentsInChildren<SpriteRenderer>(includeInactive: true));
 		}
 	}

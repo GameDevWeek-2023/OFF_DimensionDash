@@ -9,7 +9,8 @@ namespace Dimensions {
 		public override void Apply(List<GameObject> players) {
 			foreach (var p in players) {
 				if (p && p.TryGetComponent(out BewegenAstroids b)) {
-					b.enabled = true;
+					p.transform.localScale = Vector3.one;
+					b.enabled              = true;
 				}
 			}
 		}
