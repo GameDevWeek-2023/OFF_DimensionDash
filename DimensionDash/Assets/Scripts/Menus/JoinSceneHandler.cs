@@ -107,7 +107,7 @@ namespace Menus {
 		private void OnLeft(GameObject player) {
 			var p = _players.Find(p => p.gameObject == player);
 			if (p == null) return;
-
+			p.joinBox.PlayerLeftMe();
 			_remainingStartPositions.Add(p.joinBox);
 			_players.Remove(p);
 			Debug.Log("Player left");
