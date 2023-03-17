@@ -38,6 +38,8 @@ namespace Dimensions {
 		private          int                        _lastDimensionPlatformIndex = -1;
 
 		private DimensionDescription _current;
+		private DimensionDescription _transitioningFrom      = null;
+		private float?                _transitionOrgTimeScale = null;
 		private float                _nextSwitch;
 
 		[SerializeField] private DimensionDescription _forceDimension;
@@ -48,7 +50,6 @@ namespace Dimensions {
 
 			_nextSwitch = Time.time + 999f;
 			StartCoroutine(Switch(_current, _forceDimension));
-			_current = _forceDimension;
 		}
 
 
@@ -111,7 +112,12 @@ namespace Dimensions {
 		}
 
 		private void OnDestroy() {
-			if (_current)
+			if (_transitionOrgTimeScale.HasValue)
+				Time.timeScale = _transitionOrgTimeScale.Value;
+
+			if (_transitioningFrom)
+				Disable(_transitioningFrom);
+			else if (_current)
 				Disable(_current);
 		}
 
@@ -135,9 +141,10 @@ namespace Dimensions {
 			if (duration > _maxSecondsBetweenSwitch)
 				duration = _maxSecondsBetweenSwitch;
 			_nextSwitch = Time.time + duration;
+			if (_remainingDimensions.Count <= 1)
+				_nextSwitch = Time.time + 9999; // no more switching
 
 			StartCoroutine(Switch(_current, next));
-			_current = next;
 		}
 
 		private (ChromaticAberration, LensDistortion) GetPostProcessing() {
@@ -152,9 +159,12 @@ namespace Dimensions {
 		}
 
 		private IEnumerator Switch(DimensionDescription from, DimensionDescription to) {
+			_current           = to;
+			_transitioningFrom = from;
+			
 			var (chroma, lens) = GetPostProcessing();
 
-			var orgTimeScale = Time.timeScale;
+			_transitionOrgTimeScale = Time.timeScale;
 
 			// fade in effect
 			if (chroma && lens) {
@@ -164,7 +174,7 @@ namespace Dimensions {
 					chroma.intensity.value =  t * t * _fadeInChromaticAberration;
 					lens.intensity.value   =  t * t * _fadeInLensDistortion;
 					time                   += Time.unscaledDeltaTime;
-					Time.timeScale         =  Mathf.Lerp(orgTimeScale, _switchTimeScale, t * t);
+					Time.timeScale         =  Mathf.Lerp(_transitionOrgTimeScale.Value, _switchTimeScale, t * t);
 					yield return new WaitForEndOfFrame();
 				} while (time < _fadeInDuration);
 
@@ -178,6 +188,7 @@ namespace Dimensions {
 
 			if (from) Disable(from);
 			if (to) Enable(to);
+			_transitioningFrom = null;
 
 			// switch platforms
 			if (_dimensionPlatforms.Count > 0) {
@@ -209,15 +220,17 @@ namespace Dimensions {
 					chroma.intensity.value =  t * _fadeInChromaticAberration;
 					lens.intensity.value   =  t * _fadeInLensDistortion;
 					time                   += Time.unscaledDeltaTime;
-					Time.timeScale         =  Mathf.Lerp(_switchTimeScale, orgTimeScale, t);
+					Time.timeScale         =  Mathf.Lerp(_switchTimeScale, _transitionOrgTimeScale.Value, t);
 					yield return new WaitForEndOfFrame();
 				} while (time < _fadeOutDuration);
 
 				yield return new WaitForEndOfFrame();
 				chroma.intensity.value = 0;
 				lens.intensity.value   = 0;
-				Time.timeScale         = orgTimeScale;
+				Time.timeScale         = _transitionOrgTimeScale.Value;
 			}
+
+			_transitionOrgTimeScale = null;
 		}
 
 		static float EaseOutElastic(float t, float b, float c, float d) {
