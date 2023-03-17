@@ -27086,7 +27086,7 @@ MonoBehaviour:
   _speed: 30
   _pushImpulse: 80
   _armBody: {fileID: 4323032619270498885}
-  _armCollider: {fileID: 0}
+  _armCollider: {fileID: 3615824484581125975}
   _playerBody: {fileID: 226803126642516652}
   _basis: {fileID: 2932850926464620458}
 --- !u!114 &6028124187515116568
@@ -27495,6 +27495,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7412e16083c132373aca49a493a5005a, type: 3}
+--- !u!61 &3615824484581125975 stripped
+BoxCollider2D:
+  m_CorrespondingSourceObject: {fileID: 2642331914891670389, guid: 7412e16083c132373aca49a493a5005a, type: 3}
+  m_PrefabInstance: {fileID: 1623142866749856802}
+  m_PrefabAsset: {fileID: 0}
 --- !u!50 &4323032619270498885 stripped
 Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 3276633252195923559, guid: 7412e16083c132373aca49a493a5005a, type: 3}
