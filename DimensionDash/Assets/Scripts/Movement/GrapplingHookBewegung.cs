@@ -21,7 +21,7 @@ namespace Skripte.Bewegung
 
 		public override bool WennSpringen()
 		{
-			if (grapplinghook)
+			if (this.enabled && grapplinghook)
 			{
 				Ziehen(richtung);
 				return false;
@@ -31,9 +31,9 @@ namespace Skripte.Bewegung
 
 		public override bool WennAktuallisieren()
 		{
-			Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
 			if (this.enabled && grapplinghook && zieht)
 			{
+				Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
 				if ((playerPosition - zielpunkt).sqrMagnitude>1)
 				{
 					Vector2 pos = Vector2.MoveTowards(transform.position, zielpunkt, speed * Time.deltaTime);
@@ -49,14 +49,14 @@ namespace Skripte.Bewegung
 
 		private void Ziehen(Vector2 richtung)
 		{
-			Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
-			if (this.enabled && grapplinghook)
+			if (this.enabled && grapplinghook && richtung.sqrMagnitude>0.01f)
 			{
 				if (!grapplinghook || !zieht)
 				{
-					int          layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
-					RaycastHit2D hit        = Physics2D.Raycast(playerPosition, richtung, 1000, layer_mask);
-					if (hit.collider != null)
+					Vector2      playerPosition = new Vector2(transform.position.x, transform.position.y);
+					int          layer_mask     = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
+					RaycastHit2D hit            = Physics2D.Raycast(playerPosition, richtung, 40, layer_mask);
+					if (hit && hit.collider != null)
 					{
 						zieht     = true;
 						zielpunkt = hit.point;
