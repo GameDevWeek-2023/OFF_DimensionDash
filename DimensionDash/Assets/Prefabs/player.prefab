@@ -26847,6 +26847,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f892779abdc843d3b9466fe70d0c353e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 8631597110398554361, guid: 09013cb213af3074d90145c33f01ac92, type: 3}
   teleportieren: 0
 --- !u!114 &1214090803717888440
 MonoBehaviour:
@@ -26878,6 +26879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f1e051017424729bcccef4e0a9db192, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  crosshair: {fileID: 8631597110398554361, guid: 09013cb213af3074d90145c33f01ac92, type: 3}
   grapplinghook: 0
   speed: 30
   zielpunkt: {x: 0, y: 0}

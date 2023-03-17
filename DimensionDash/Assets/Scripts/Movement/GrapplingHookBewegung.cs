@@ -6,24 +6,38 @@ namespace Skripte.Bewegung
 {
 	public class GrapplingHookBewegung : BewegenÜberschreiben
 	{
-		public                   bool    grapplinghook = false;
-		private                  bool    zieht         = false;
-		private                  Vector2 richtung;
-		
+		[SerializeField] private GameObject   crosshair;
+		private                  bool         crosshairExists = false;
+		public                   bool         grapplinghook   = false;
+		private                  bool         zieht           = false;
+		private                  Vector2      richtung;
+		private                  RaycastHit2D hit;
+
 		[SerializeField] private float   speed = 30f;
 		[SerializeField] private Vector2 zielpunkt;
 
 		public override bool WennLaufen(Vector2 richtung)
 		{
-			this.richtung = richtung;
+			if (grapplinghook)
+			{
+				int          layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
+				hit        = Physics2D.Raycast(transform.position, richtung, 10, layer_mask);
+				zielpunkt = hit.point;
+				if (!crosshairExists && hit.collider)
+				{
+					crosshair       = Instantiate(crosshair, zielpunkt, Quaternion.identity);
+					crosshairExists = true;
+				}
+				crosshair.transform.position = hit.point;
+			}
 			return true;
 		}
 
 		public override bool WennSpringen()
 		{
-			if (grapplinghook)
+			if (grapplinghook && hit.collider && this.enabled && !zieht)
 			{
-				Ziehen(richtung);
+				zieht = true;
 				return false;
 			}
 			return true;
@@ -41,28 +55,23 @@ namespace Skripte.Bewegung
 				} else
 				{
 					zieht = false;
-					zielpunkt = Vector2.zero;
+				}
+			}
+
+			if (richtung.sqrMagnitude > 0.001f)
+			{
+				if (crosshairExists)
+				{
+					crosshair.SetActive(true);
+				} 
+			} else
+			{
+				if (crosshairExists)
+				{
+					crosshair.SetActive(false);
 				}
 			}
 			return true;
-		}
-
-		private void Ziehen(Vector2 richtung)
-		{
-			Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
-			if (this.enabled && grapplinghook)
-			{
-				if (!grapplinghook || !zieht)
-				{
-					int          layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
-					RaycastHit2D hit        = Physics2D.Raycast(playerPosition, richtung, 1000, layer_mask);
-					if (hit.collider != null)
-					{
-						zieht     = true;
-						zielpunkt = hit.point;
-					}
-				}
-			}
 		}
 	}
 }
