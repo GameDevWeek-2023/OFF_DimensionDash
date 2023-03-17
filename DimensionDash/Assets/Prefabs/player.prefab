@@ -20916,6 +20916,37 @@ Transform:
   m_Father: {fileID: 1667321179665723638}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5552089948910849574
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1486810183013033306}
+  m_Layer: 6
+  m_Name: shoot
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1486810183013033306
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5552089948910849574}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0.8, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2069395865334031860}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &5723662237885830488
 GameObject:
   m_ObjectHideFlags: 0
@@ -26085,7 +26116,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: cdaee08af5598a43aadc571ef65ab6c8, type: 3}
+  m_Actions: {fileID: -944628639613478452, guid: cdaee08af5598a43aadc571ef65ab6c8,
+    type: 3}
   m_NotificationBehavior: 1
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
@@ -26508,6 +26540,7 @@ GameObject:
   - component: {fileID: 4436982924342837115}
   - component: {fileID: 7085631137210551874}
   - component: {fileID: 8513984827247318606}
+  - component: {fileID: 196587375881958839}
   - component: {fileID: 5866747464928476829}
   m_Layer: 6
   m_Name: player_root
@@ -26529,6 +26562,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8006688697232008692}
+  - {fileID: 1486810183013033306}
   m_Father: {fileID: 6740600990102101148}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -26909,6 +26943,28 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _impulse: 500
   _body: {fileID: 226803126642516652}
+--- !u!114 &196587375881958839
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7589580813036299078}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9285433e205c465eafacaa9ed5cfb022, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _flyForce: 300
+  _flyMaxVelocity: 100
+  _flyDrag: 0.2
+  _bulletPrefab: {fileID: 5503297180906598517, guid: d6a74b7d0446989238ddc4306e6430d7,
+    type: 3}
+  _bulletVelocity: 50
+  _recoilImpulse: 200
+  _shootPosition: {fileID: 1486810183013033306}
+  _body: {fileID: 226803126642516652}
+  _basis: {fileID: 2932850926464620458}
 --- !u!114 &5866747464928476829
 MonoBehaviour:
   m_ObjectHideFlags: 0

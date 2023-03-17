@@ -19,5 +19,5 @@ MonoBehaviour:
   <GreyIcon>k__BackingField: {fileID: 21300000, guid: 64c81bf5cf597bb4f8ed81327f539c35, type: 3}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
-  <MinTime>k__BackingField: 5
-  <CameraSpeed>k__BackingField: 1
+  <MinTime>k__BackingField: 10
+  <CameraSpeed>k__BackingField: 0.3
