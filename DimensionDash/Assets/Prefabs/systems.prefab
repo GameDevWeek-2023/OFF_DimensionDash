@@ -639,8 +639,8 @@ MonoBehaviour:
     - Key: scribble
       Value: {fileID: 1066142920430850151}
     keyCollision: 0
-  _fadeInDuration: 0.4
-  _fadeOutDuration: 0.3
+  _fadeInDuration: 0.2
+  _fadeOutDuration: 0.6
   _fadeInChromaticAberration: 1
   _fadeInLensDistortion: 80
   _switchTimeScale: 0.25

@@ -216,9 +216,9 @@ namespace Dimensions {
 			if (chroma && lens) {
 				var time = 0f;
 				do {
-					var t = 1f - EaseOutElastic(time / _fadeOutDuration, 0, 1, 1);
-					chroma.intensity.value =  t * _fadeInChromaticAberration;
-					lens.intensity.value   =  t * _fadeInLensDistortion;
+					var t = time / _fadeOutDuration;
+					chroma.intensity.value =  DOVirtual.EasedValue(_fadeInChromaticAberration, 0f, t, Ease.OutElastic, 2f);
+					lens.intensity.value   =  DOVirtual.EasedValue(_fadeInLensDistortion,      0f, t, Ease.OutElastic, 2f);
 					time                   += Time.unscaledDeltaTime;
 					Time.timeScale         =  Mathf.Lerp(_switchTimeScale, _transitionOrgTimeScale.Value, t);
 					yield return new WaitForEndOfFrame();
