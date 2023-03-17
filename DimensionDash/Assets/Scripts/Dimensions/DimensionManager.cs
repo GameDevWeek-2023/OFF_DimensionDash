@@ -222,7 +222,8 @@ namespace Dimensions {
 
 			if (_tilesetCoinSprites.TryGetValue(to.TileSetName ?? "base", out var coinSprite)) {
 				foreach (var coin in _coins) {
-					coin.sprite = coinSprite;
+					if(coin)
+						coin.sprite = coinSprite;
 				}
 			}
 

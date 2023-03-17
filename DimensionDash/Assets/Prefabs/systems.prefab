@@ -618,6 +618,27 @@ MonoBehaviour:
     - Key: scribble
       Value: {fileID: 21300000, guid: ca5c04fa32658c145a52a835c12c0438, type: 3}
     keyCollision: 0
+  _tilesetCoinSprites:
+    list:
+    - Key: dave
+      Value: {fileID: 21300000, guid: 7f0c54c651b095f289a05b8f50571b0b, type: 3}
+    - Key: pixel
+      Value: {fileID: 21300000, guid: 7f0c54c651b095f289a05b8f50571b0b, type: 3}
+    - Key: spider
+      Value: {fileID: 21300000, guid: 7f0c54c651b095f289a05b8f50571b0b, type: 3}
+    - Key: vector
+      Value: {fileID: 21300000, guid: d1f45c60cb6331ca29962effa451f758, type: 3}
+    - Key: arcade
+      Value: {fileID: 21300000, guid: 9fcf30353f10053c997f588f7241de02, type: 3}
+    - Key: space
+      Value: {fileID: 21300000, guid: c9951b2fc75e7551488c2e540e480ce7, type: 3}
+    - Key: stone
+      Value: {fileID: 21300000, guid: 7f0c54c651b095f289a05b8f50571b0b, type: 3}
+    - Key: underwater
+      Value: {fileID: 21300000, guid: 24153a04b4bbc6f4f83b588cc381e0c2, type: 3}
+    - Key: scribble
+      Value: {fileID: 21300000, guid: 7f0c54c651b095f289a05b8f50571b0b, type: 3}
+    keyCollision: 0
   _tilesetBackgroundRoots:
     list:
     - Key: dave
