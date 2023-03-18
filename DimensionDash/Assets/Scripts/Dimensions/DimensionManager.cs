@@ -190,7 +190,7 @@ namespace Dimensions {
 
 			var (chroma, lens) = GetPostProcessing();
 
-			_transitionOrgTimeScale = Time.timeScale;
+			_transitionOrgTimeScale = to ? to.TimeScale : Time.timeScale;
 
 			// fade in effect
 			if (chroma && lens) {

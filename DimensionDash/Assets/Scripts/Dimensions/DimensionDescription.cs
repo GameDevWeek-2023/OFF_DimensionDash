@@ -32,6 +32,9 @@ namespace Dimensions {
 
 		[field:SerializeField]
 		public float CameraSpeed { get; private set; } = 1f;
+		
+		[field:SerializeField]
+		public float TimeScale = 1f;
 
 		public abstract void Apply(List<GameObject>   players);
 		public abstract void UnApply(List<GameObject> players);

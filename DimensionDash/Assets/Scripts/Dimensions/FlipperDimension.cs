@@ -7,8 +7,10 @@ namespace Dimensions {
 	public class FlipperDimension : DimensionDescription {
 
 		[SerializeField] private PhysicsMaterial2D _newPhysicsMaterial;
+		[SerializeField] private GameObject        _collisionBorderPrefab;
 		
 		private PhysicsMaterial2D _physicsMaterial;
+		private GameObject        _collisionBorder;
 		
 		public override void Apply(List<GameObject> players) {
 			foreach (var p in players) {
@@ -21,6 +23,9 @@ namespace Dimensions {
 					cc.sharedMaterial = _newPhysicsMaterial;
 				}
 			}
+
+			if (!_collisionBorder)
+				_collisionBorder = Instantiate(_collisionBorderPrefab);
 		}
 
 		public override void UnApply(List<GameObject> players) {
@@ -33,6 +38,11 @@ namespace Dimensions {
 					cc.sharedMaterial = _physicsMaterial;
 				}
 			}
+			
+			if (_collisionBorder)
+				Destroy(_collisionBorder);
+			
+			_collisionBorder = null;
 		}
 	}
 }
