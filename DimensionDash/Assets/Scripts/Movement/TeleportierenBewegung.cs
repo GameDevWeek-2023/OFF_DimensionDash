@@ -6,12 +6,13 @@ namespace Skripte.Bewegung
     public class TeleportierenBewegung : BewegenÜberschreiben
     {
 	    [SerializeField] private GameObject   crosshair;
+	    [SerializeField] private Vector2      zielpunkt;
 	    private                  bool         crosshairExists = false;
         public                   bool         teleportieren   = false;
         private                  Vector2      richtung        = Vector2.zero;
         private                  RaycastHit2D hit;
-        private                  bool         läuft = false;
-        private                  Vector2      zielpunkt;
+        private                  bool         läuft   = false;
+        [SerializeField] private                  float        distanz = 4;
         
         public override bool WennLaufen(Vector2 richtung)
         {
@@ -19,34 +20,34 @@ namespace Skripte.Bewegung
 	        if (teleportieren)
 	        {
 		        int layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
-		        hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), richtung, 10, layer_mask);
+		        hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), richtung, distanz, layer_mask);
 		        if (!crosshairExists)
 		        {
 			        crosshairExists = true; 
 			        crosshair = Instantiate(crosshair, zielpunkt, Quaternion.identity);
 		        }
-
+		        
 		        if (!hit.collider)
+		        {
+			        zielpunkt = new Vector2(transform.position.x, transform.position.y) + richtung * distanz;
+			        
+		        } else
 		        {
 			        zielpunkt = hit.point;
 		        }
-
-		        crosshair.transform.position = hit.point;
+		        crosshair.transform.position = zielpunkt;
 	        }
-	        return true;
+	        return false;
         }
 
         public override bool WennAktuallisieren()
         {
-	        if (richtung.sqrMagnitude > 0.001f)
+	        if (crosshairExists)
 	        {
-		        if (crosshairExists)
+		        if (richtung.sqrMagnitude > 0.001f)
 		        {
 			        crosshair.SetActive(true);
-		        } 
-	        } else
-	        {
-		        if (crosshairExists)
+		        } else
 		        {
 			        crosshair.SetActive(false);
 		        }
@@ -56,26 +57,12 @@ namespace Skripte.Bewegung
         
         public override bool WennSpringen()
         {
-	        if (teleportieren)
+	        if (this.enabled && teleportieren)
 	        {
-		        Teleportieren();
+		        transform.position = zielpunkt;
 		        return false;
 	        }
 	        return true;
-        }
-        
-        private void Teleportieren()
-        {
-            if (this.enabled && teleportieren && hit.collider != null)
-            {
-	            int          layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
-	            RaycastHit2D hit        = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), richtung, 40, layer_mask);
-	            if (hit && hit.collider != null)
-	            {
-		            transform.position = new Vector3(hit.point.x, hit.point.y, 0);
-	            }
-
-            }
         }
     }
 }

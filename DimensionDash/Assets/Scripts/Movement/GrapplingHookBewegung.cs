@@ -12,6 +12,7 @@ namespace Skripte.Bewegung
 		private                  bool         zieht           = false;
 		private                  Vector2      richtung;
 		private                  RaycastHit2D hit;
+		private                  float        distance = 10;
 
 		[SerializeField] private float   speed = 30f;
 		[SerializeField] private Vector2 zielpunkt;
@@ -21,8 +22,8 @@ namespace Skripte.Bewegung
 			if (grapplinghook)
 			{
 				int          layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
-				hit       = Physics2D.Raycast(transform.position, richtung, 10, layer_mask);
-				if (hit.point != Vector2.zero)
+				hit       = Physics2D.Raycast(transform.position, richtung, distance, layer_mask);
+				if (!hit)
 				{
 					zielpunkt = hit.point;
 				}
@@ -36,7 +37,7 @@ namespace Skripte.Bewegung
 				{
 					crosshair.SetActive(true);
 				}
-				crosshair.transform.position = hit.point;
+				crosshair.transform.position = zielpunkt;
 			}
 			return true;
 		}
