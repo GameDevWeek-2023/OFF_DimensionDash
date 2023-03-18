@@ -300,6 +300,7 @@ namespace Dimensions {
 
 			dimension.Apply(_players);
 			var sound = UI.SoundManager.InstanceOptional;
+			Debug.Log(dimension.TileSetName ?? "dave");
 			if (sound)
 				sound.DimensionChangeMusicSwap(dimension.TileSetName ?? "dave");
 		}
