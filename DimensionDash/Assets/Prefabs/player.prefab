@@ -26698,7 +26698,7 @@ MonoBehaviour:
   maxAirDeceleration: 20
   maxAirTurnSpeed: 80
   useAcceleration: 1
-  wallJumpSpeed: 20
+  wallJumpSpeed: 5
   jumpHeight: 4
   jumpDuration: 2
   upwardMovementMultiplier: 1
