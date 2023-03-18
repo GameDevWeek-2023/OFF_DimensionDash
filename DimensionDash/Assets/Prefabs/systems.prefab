@@ -597,6 +597,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  _fixedPlatformRoots: []
   _tilesetPlatformSprites:
     list:
     - Key: dave
@@ -637,7 +638,7 @@ MonoBehaviour:
     - Key: underwater
       Value: {fileID: 21300000, guid: 24153a04b4bbc6f4f83b588cc381e0c2, type: 3}
     - Key: scribble
-      Value: {fileID: 21300000, guid: 7f0c54c651b095f289a05b8f50571b0b, type: 3}
+      Value: {fileID: 21300000, guid: 92743da587373c48dba01576fff3c823, type: 3}
     keyCollision: 0
   _tilesetBackgroundRoots:
     list:
