@@ -20,7 +20,7 @@ MonoBehaviour:
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 8
-  <CameraSpeed>k__BackingField: 0.5
+  <CameraSpeed>k__BackingField: 0.75
   TimeScale: 1
   _newGravity: {x: 0, y: -1}
   _newJumpHeight: 1
