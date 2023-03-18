@@ -124,6 +124,9 @@ namespace Menus {
 			if (p == null) return;
 			p.joinBox.PlayerLeftMe();
 			_remainingStartPositions.Add(p.joinBox);
+			if (p.gameObject.TryGetComponent(out PlayerName name)) {
+				_remainingNames.Add(name.GetName());
+			}
 			_players.Remove(p);
 			Debug.Log("Player left");
 		}
