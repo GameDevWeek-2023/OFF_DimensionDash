@@ -7,6 +7,7 @@ namespace Movement {
 	public class BewegenFlipper : BewegenÜberschreiben {
 		[SerializeField] private float _speed       = 20f;
 		[SerializeField] private float _pushImpulse = 500f;
+		[SerializeField] private float _maxVelocity  = 60f;
 
 		[SerializeField] private Rigidbody2D   _armBody;
 		[SerializeField] private BoxCollider2D _armCollider;
@@ -24,6 +25,8 @@ namespace Movement {
 		}
 
 		public override bool WennAktuallisieren() {
+			if (_playerBody.velocity.sqrMagnitude > _maxVelocity * _maxVelocity)
+				_playerBody.velocity = _maxVelocity * _playerBody.velocity.normalized;
 			return false;
 		}
 
@@ -46,7 +49,7 @@ namespace Movement {
 		public void EnableMode() {
 			_basis.Laufen(Vector2.zero);
 			_armBody.gameObject.SetActive(true);
-			_armBody.position   = LimitPosition(_playerBody.position - Vector2.up * 2f);
+			_armBody.position   = LimitPosition(_playerBody.position - Vector2.up * 4f);
 			_lastCameraPosition = Camera.main.transform.position;
 			_playerBody.AddForce(Vector2.up * 500 + Vector2.right * Random.Range(-200, 200), ForceMode2D.Impulse);
 		}

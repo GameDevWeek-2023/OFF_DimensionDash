@@ -66,5 +66,9 @@ namespace Skripte.Bewegung
 	        }
 	        return true;
         }
+        
+        private void Update() {
+	        // required to have enable
+        }
     }
 }
