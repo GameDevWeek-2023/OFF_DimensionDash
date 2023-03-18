@@ -45,14 +45,15 @@ namespace Skripte.Bewegung
 
 		public override bool WennSpringen()
 		{
+			int layer_mask = LayerMask.GetMask("DimensionPlattform");
 			if (grapplinghook && hit.collider && this.enabled && !zieht)
 			{
 				zieht = true;
 				return false;
-			} else if (grapplinghook && this.enabled && zieht)
+			} else if (grapplinghook && this.enabled && zieht && hit.transform.gameObject.layer == layer_mask)
 			{
 				//im ziehen springen, ziehen abbrechen
-				zieht = false;
+				zielpunkt = new Vector2(hit.point.x, hit.collider.GetComponent<Mesh>().bounds.max.y);
 			}
 			return true;
 		}
@@ -60,12 +61,10 @@ namespace Skripte.Bewegung
 		public override bool WennAktuallisieren()
 		{
 			//check if respawned, then break
-			Debug.Log(Time.time - oldtime);
 			if (Time.time - oldtime > 1.9f)
 			{
 				zieht = false;
 			}
-
 			oldtime = Time.time;
 			
 			//grappling hook
