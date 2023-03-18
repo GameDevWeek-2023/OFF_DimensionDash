@@ -589,7 +589,7 @@ MonoBehaviour:
   _postProcessVolume: {fileID: 5052225891233042361}
   _defaultDimension: {fileID: 11400000, guid: 0a755753ea5ea8ac68752114cf8d5b15, type: 2}
   _maxSecondsBetweenSwitch: 3.4028235e+38
-  _minSecondsBetweenSwitch: 5
+  _minSecondsBetweenSwitch: 6
   _dimensions: []
   _dimensionSelection: {fileID: 11400000, guid: 8f6e9a731020e40ffaa2ee7c3e69da74, type: 2}
   _tileReskinner: {fileID: 0}
@@ -887,7 +887,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df4ce4c203fb4eb99e8577fa8777ad02, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _respawnDelay: 2
+  _respawnDelay: 1
   _respawnPositions:
   - {x: 4, y: -1.52, z: 0}
   - {x: 21.27, y: 8.13, z: 0}
