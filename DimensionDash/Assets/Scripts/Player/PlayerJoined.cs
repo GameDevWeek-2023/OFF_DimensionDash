@@ -12,6 +12,9 @@ namespace Player {
 		[SerializeField]
 		private GameObject startIndicator1;
 
+		[SerializeField]
+		private GameObject hitBox;
+
 		private PlayerController player;
 
 
@@ -32,10 +35,14 @@ namespace Player {
 
 		void Update() {
 			var ready = player && player.Ready;
-			if (ready && !startIndicator1.activeSelf)
+			if (ready && !startIndicator1.activeSelf) {
 				startIndicator1.SetActive(true);
-			else if (!ready && startIndicator1.activeSelf)
+				hitBox.SetActive(false);
+			}
+			else if (!ready && startIndicator1.activeSelf) {
 				startIndicator1.SetActive(false);
+				hitBox.SetActive(true);
+			}
 		}
 
 		public void PlayerLeftMe() {

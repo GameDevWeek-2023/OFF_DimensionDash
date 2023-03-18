@@ -15784,8 +15784,8 @@ MeshRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 2069203369
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &4482518117024603789
@@ -15874,12 +15874,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 8011111809481220557}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 8011111809481220557}
+  m_maskType: 0
 --- !u!114 &8336112580382330970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27071,7 +27071,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 8631597110398554361, guid: 09013cb213af3074d90145c33f01ac92, type: 3}
+  zielpunkt: {x: 0, y: 0}
   teleportieren: 0
+  distanz: 4
 --- !u!114 &1214090803717888440
 MonoBehaviour:
   m_ObjectHideFlags: 0
