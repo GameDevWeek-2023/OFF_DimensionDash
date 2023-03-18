@@ -15874,12 +15874,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  m_hasFontAssetChanged: 0
-  m_renderer: {fileID: 8011111809481220557}
-  m_maskType: 0
   _SortingLayer: 0
   _SortingLayerID: 0
   _SortingOrder: 0
+  m_hasFontAssetChanged: 0
+  m_renderer: {fileID: 8011111809481220557}
+  m_maskType: 0
 --- !u!114 &8336112580382330970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26915,6 +26915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxOutOfViewTime: 2
+  _instantDespawnDistance: 5
   _dyingDeduction: 5
   _playerColor: {fileID: 5716582749675653322}
   _points: {fileID: 8709208093608239909}
@@ -26982,6 +26983,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _points_per_coin: 20
   points: 0
+  coinFX: {fileID: 8543825632763284913, guid: 750e7986b5eb74a79b79ffe5ffdf6003, type: 3}
 --- !u!61 &4436982924342837115
 BoxCollider2D:
   m_ObjectHideFlags: 0
