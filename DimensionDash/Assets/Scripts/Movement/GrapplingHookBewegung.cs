@@ -43,8 +43,9 @@ namespace Skripte.Bewegung
 			return true;
 		}
 
-		public override bool WennSpringen()
-		{
+		public override bool WennSpringen() {
+			if (!hit) return false;
+			
 			int layer_mask = LayerMask.GetMask("DimensionPlattform");
 			if (grapplinghook && hit.collider && this.enabled && !zieht)
 			{
