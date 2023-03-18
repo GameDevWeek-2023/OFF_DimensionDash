@@ -12,7 +12,7 @@ namespace Skripte.Bewegung
         private                  Vector2      richtung        = Vector2.zero;
         private                  RaycastHit2D hit;
         private                  bool         läuft   = false;
-        [SerializeField] private                  float        distanz = 4;
+        [SerializeField] private                  float        distanz = 8;
         
         public override bool WennLaufen(Vector2 richtung)
         {
