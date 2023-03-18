@@ -21,12 +21,20 @@ namespace Skripte.Bewegung
 			if (grapplinghook)
 			{
 				int          layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
-				hit        = Physics2D.Raycast(transform.position, richtung, 10, layer_mask);
-				zielpunkt = hit.point;
+				hit       = Physics2D.Raycast(transform.position, richtung, 10, layer_mask);
+				if (hit.point != Vector2.zero)
+				{
+					zielpunkt = hit.point;
+				}
 				if (!crosshairExists && hit.collider)
 				{
 					crosshair       = Instantiate(crosshair, zielpunkt, Quaternion.identity);
 					crosshairExists = true;
+				}
+
+				if (!crosshair.activeSelf && hit.collider)
+				{
+					crosshair.SetActive(true);
 				}
 				crosshair.transform.position = hit.point;
 			}
