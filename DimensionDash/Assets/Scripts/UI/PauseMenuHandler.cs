@@ -96,12 +96,14 @@ public class PauseMenuHandler : MonoBehaviour
 
 
 	public void RestartGame() {
+		GameStateManager.Instance.ChangeToInitialScreen();
 
 	}
 
 
 	public void ExitGame() {
-
+		Debug.Log("2");
+		Application.Quit();
 	}
 
 
