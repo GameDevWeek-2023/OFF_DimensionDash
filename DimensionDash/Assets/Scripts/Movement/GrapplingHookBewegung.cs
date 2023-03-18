@@ -12,7 +12,7 @@ namespace Skripte.Bewegung
 		private                  bool         zieht           = false;
 		private                  Vector2      richtung;
 		private                  RaycastHit2D hit;
-		private                  float        distance  = 10;
+		[SerializeField] private                  float        distance  = 25;
 		private                  bool         plattform = false;
 		[SerializeField] private float        speed     = 30f;
 		[SerializeField] private Vector2      zielpunkt;
@@ -68,7 +68,16 @@ namespace Skripte.Bewegung
 
 		private void OnDisable()
 		{
+			cordGrabblingHook.SetActive(false);
 			reset();
+		}
+
+		private void OnEnable()
+		{
+			if (cordGrabblingHookExists)
+			{
+				cordGrabblingHook.SetActive(true);
+			}
 		}
 
 		public override bool WennAktuallisieren()

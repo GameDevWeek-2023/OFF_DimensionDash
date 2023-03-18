@@ -12,14 +12,14 @@ namespace Skripte.Bewegung
         private                  Vector2      richtung        = Vector2.zero;
         private                  RaycastHit2D hit;
         private                  bool         läuft   = false;
-        [SerializeField] private                  float        distanz = 4;
+        [SerializeField] private                  float        distanz = 8;
         
         public override bool WennLaufen(Vector2 richtung)
         {
 	        this.richtung = richtung;
 	        if (teleportieren)
 	        {
-		        int layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
+		        int layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther");
 		        hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), richtung, distanz, layer_mask);
 		        if (!crosshairExists)
 		        {

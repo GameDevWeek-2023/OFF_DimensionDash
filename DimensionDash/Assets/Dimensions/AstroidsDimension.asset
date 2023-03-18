@@ -20,4 +20,5 @@ MonoBehaviour:
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 10
-  <CameraSpeed>k__BackingField: 0.3
+  <CameraSpeed>k__BackingField: 1
+  TimeScale: 1

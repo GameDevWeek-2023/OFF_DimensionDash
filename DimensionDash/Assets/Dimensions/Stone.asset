@@ -17,8 +17,9 @@ MonoBehaviour:
   <Name>k__BackingField: TOOD
   <Icon>k__BackingField: {fileID: 21300000, guid: d7ffa6bb9990cf245b26a76798fdd3d1, type: 3}
   <GreyIcon>k__BackingField: {fileID: 21300000, guid: 71038fb97e47e2445ac750e415077ae8, type: 3}
-  <MaxUsedPerLevel>k__BackingField: 1
-  <MaxTime>k__BackingField: 3.4028235e+38
+  <MaxUsedPerLevel>k__BackingField: 2
+  <MaxTime>k__BackingField: 3
   <MinTime>k__BackingField: 0
   <CameraSpeed>k__BackingField: 0.1
+  TimeScale: 1
   _newPhysicsMaterial: {fileID: 6200000, guid: 96068912a6c990e4cb44ea2fe21f3a59, type: 2}
