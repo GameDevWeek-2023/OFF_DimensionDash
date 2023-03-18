@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Player {
 	public class PlayerPoints : MonoBehaviour {
@@ -7,6 +8,9 @@ namespace Player {
 		
 		public int points = 0;
 		public GameObject coinFX;
+		public AudioClip coinPing;
+
+		
 
 		private void OnTriggerEnter2D(Collider2D col)
 		{
@@ -16,6 +20,7 @@ namespace Player {
 
 				GameObject fx = Instantiate(coinFX);
 				fx.transform.position = col.transform.position;
+				UI.SoundManager.Instance.PlayMyOneShot(coinPing);
 
 				Destroy(col.gameObject);
 			}

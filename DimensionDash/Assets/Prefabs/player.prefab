@@ -26984,6 +26984,7 @@ MonoBehaviour:
   _points_per_coin: 20
   points: 0
   coinFX: {fileID: 8543825632763284913, guid: 750e7986b5eb74a79b79ffe5ffdf6003, type: 3}
+  coinPing: {fileID: 8300000, guid: c76d432258b7c5bb6adf10efd2e2a49e, type: 3}
 --- !u!61 &4436982924342837115
 BoxCollider2D:
   m_ObjectHideFlags: 0
