@@ -15874,12 +15874,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  _SortingLayer: 0
-  _SortingLayerID: 0
-  _SortingOrder: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8011111809481220557}
   m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
 --- !u!114 &8336112580382330970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -26868,7 +26868,7 @@ MonoBehaviour:
   "maxH\xF6he": 0.3
   bodenLayer:
     serializedVersion: 2
-    m_Bits: 384
+    m_Bits: 6528
 --- !u!114 &5716582749675653322
 MonoBehaviour:
   m_ObjectHideFlags: 0
