@@ -15785,7 +15785,7 @@ MeshRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 2069203369
-  m_SortingLayer: 3
+  m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
 --- !u!114 &4482518117024603789
@@ -26983,7 +26983,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _points_per_coin: 20
   points: 0
-  coinFX: {fileID: 8543825632763284913, guid: 750e7986b5eb74a79b79ffe5ffdf6003, type: 3}
 --- !u!61 &4436982924342837115
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -27111,6 +27110,7 @@ MonoBehaviour:
   grapplinghook: 0
   speed: 30
   zielpunkt: {x: 0, y: 0}
+  stringGrabblingHook: {fileID: 937094364042132291, guid: eeecdef1fd72d1f46a0b16bd2238606a, type: 3}
 --- !u!114 &3437578971425422292
 MonoBehaviour:
   m_ObjectHideFlags: 0
