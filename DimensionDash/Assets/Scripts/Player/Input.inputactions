@@ -84,61 +84,6 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "keyboard",
-                    "id": "72c372a8-ec9e-4a2c-8b15-ec4e54ce2921",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "up",
-                    "id": "545e7cd7-84d5-40cd-b87e-d9fba8780041",
-                    "path": "<Keyboard>/w",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "9a28ce83-0a8f-4e95-ba80-bdaedb764db4",
-                    "path": "<Keyboard>/s",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "7a6a9db1-a12f-4776-89b6-24f9b670beed",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "70ceaf66-3b58-4644-8fef-cd05f0fc3e08",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "",
                     "id": "e8bb9d3d-40f5-4f85-8e1b-26758eac8417",
                     "path": "<Gamepad>/rightShoulder",
@@ -206,28 +151,6 @@
                 },
                 {
                     "name": "",
-                    "id": "c61f2165-e42b-43f4-9456-a00ea4c1d5b6",
-                    "path": "<Keyboard>/space",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "jump",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "d7db6cc8-c514-430a-b4bc-04f3e6a5ae96",
-                    "path": "<Keyboard>/escape",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "leave",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "1027bda9-2b03-455e-b023-0873eedf4fe3",
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
@@ -245,28 +168,6 @@
                     "processors": "",
                     "groups": "default",
                     "action": "ready",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "b0a05bbd-2c75-4677-86cf-267bf989433b",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "ready",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "02a4c8fd-5f87-4e63-a7d9-0b3d32bc8980",
-                    "path": "<Keyboard>/q",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "keyboard",
-                    "action": "menuLeft",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -313,17 +214,6 @@
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
-                    "isOptional": false,
-                    "isOR": false
-                }
-            ]
-        },
-        {
-            "name": "keyboard",
-            "bindingGroup": "keyboard",
-            "devices": [
-                {
-                    "devicePath": "<Keyboard>",
                     "isOptional": false,
                     "isOR": false
                 }
