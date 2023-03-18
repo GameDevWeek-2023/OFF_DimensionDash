@@ -15874,12 +15874,12 @@ MonoBehaviour:
   m_margin: {x: 0, y: 0, z: 0, w: 0}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
-  _SortingLayer: 0
-  _SortingLayerID: 0
-  _SortingOrder: 0
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 8011111809481220557}
   m_maskType: 0
+  _SortingLayer: 0
+  _SortingLayerID: 0
+  _SortingOrder: 0
 --- !u!114 &8336112580382330970
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27038,7 +27038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0908810a279d4c33b721ae3cdde0ce1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impulse: 500
+  _impulse: 900
   _body: {fileID: 226803126642516652}
 --- !u!114 &196587375881958839
 MonoBehaviour:
