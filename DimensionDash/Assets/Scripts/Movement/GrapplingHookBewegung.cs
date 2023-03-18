@@ -13,6 +13,7 @@ namespace Skripte.Bewegung
 		private                  Vector2      richtung;
 		private                  RaycastHit2D hit;
 		private                  float        distance = 10;
+		private                  float        oldtime;
 
 		[SerializeField] private float   speed = 30f;
 		[SerializeField] private Vector2 zielpunkt;
@@ -23,7 +24,7 @@ namespace Skripte.Bewegung
 			{
 				int          layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
 				hit       = Physics2D.Raycast(transform.position, richtung, distance, layer_mask);
-				if (!hit)
+				if (hit.collider)
 				{
 					zielpunkt = hit.point;
 				}
@@ -48,12 +49,26 @@ namespace Skripte.Bewegung
 			{
 				zieht = true;
 				return false;
+			} else if (grapplinghook && this.enabled && zieht)
+			{
+				//im ziehen springen, ziehen abbrechen
+				zieht = false;
 			}
 			return true;
 		}
 
 		public override bool WennAktuallisieren()
 		{
+			//check if respawned, then break
+			Debug.Log(Time.time - oldtime);
+			if (Time.time - oldtime > 1.9f)
+			{
+				zieht = false;
+			}
+
+			oldtime = Time.time;
+			
+			//grappling hook
 			Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
 			if (this.enabled && grapplinghook && zieht)
 			{
@@ -67,7 +82,7 @@ namespace Skripte.Bewegung
 				}
 			}
 
-			if (richtung.sqrMagnitude > 0.001f)
+			if (richtung.sqrMagnitude > 0.001f && grapplinghook)
 			{
 				if (crosshairExists)
 				{

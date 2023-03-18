@@ -46,7 +46,7 @@ namespace Skripte.Bewegung
         {
 	        if (crosshairExists)
 	        {
-		        if (richtung.sqrMagnitude > 0.001f)
+		        if (richtung.sqrMagnitude > 0.001f && teleportieren)
 		        {
 			        crosshair.SetActive(true);
 		        } else
