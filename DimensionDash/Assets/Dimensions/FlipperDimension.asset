@@ -20,5 +20,7 @@ MonoBehaviour:
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 8
-  <CameraSpeed>k__BackingField: 0.25
-  _newPhysicsMaterial: {fileID: 0}
+  <CameraSpeed>k__BackingField: 1
+  TimeScale: 0.5
+  _newPhysicsMaterial: {fileID: 6200000, guid: 2e6f39edcd2786689ba50c1f6a35b610, type: 2}
+  _collisionBorderPrefab: {fileID: 8328127432567520252, guid: cafbda13108ca2ec7a3541f3c5ccacd1, type: 3}

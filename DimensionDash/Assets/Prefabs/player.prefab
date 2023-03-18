@@ -26915,6 +26915,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxOutOfViewTime: 2
+  _instantDespawnDistance: 5
   _dyingDeduction: 5
   _playerColor: {fileID: 5716582749675653322}
   _points: {fileID: 8709208093608239909}
@@ -27086,7 +27087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83554c99970d4b06aa622da4362132ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 20
+  _speed: 30
   _pushImpulse: 20
   _maxVelocity: 40
   _armBody: {fileID: 4323032619270498885}
