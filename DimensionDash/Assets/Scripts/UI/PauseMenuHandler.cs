@@ -21,6 +21,8 @@ public class PauseMenuHandler : MonoBehaviour
 	[SerializeField]
 	private Text timerText;
 	[SerializeField]
+	private GameObject timeBluePrint;
+	[SerializeField]
 	private float timerTime;
 
 	private float timerTimer;
@@ -57,6 +59,7 @@ public class PauseMenuHandler : MonoBehaviour
 			if(timerTimer <= 0) {
 				timerTimer = 0;
 				timerText.gameObject.SetActive(false);
+				timeBluePrint.SetActive(false);
 				timeStop = false;
 				Time.timeScale = 1;
 			}
@@ -97,7 +100,7 @@ public class PauseMenuHandler : MonoBehaviour
 
 	public void RestartGame() {
 		GameStateManager.Instance.ChangeToInitialScreen();
-
+		ExitPauseScreen();
 	}
 
 
@@ -111,6 +114,7 @@ public class PauseMenuHandler : MonoBehaviour
 		greyScreen.SetActive(false);
 		timerTimer = timerTime;
 		timerText.gameObject.SetActive(true);
+		timeBluePrint.SetActive(true);
 		pauseScreenG.SetActive(true);
 		pauseMenu.SetActive(false);
 		creditsScreenG.SetActive(false);
