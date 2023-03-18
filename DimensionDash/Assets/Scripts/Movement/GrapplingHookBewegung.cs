@@ -68,7 +68,16 @@ namespace Skripte.Bewegung
 
 		private void OnDisable()
 		{
+			cordGrabblingHook.SetActive(false);
 			reset();
+		}
+
+		private void OnEnable()
+		{
+			if (cordGrabblingHookExists)
+			{
+				cordGrabblingHook.SetActive(true);
+			}
 		}
 
 		public override bool WennAktuallisieren()
