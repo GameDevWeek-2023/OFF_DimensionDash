@@ -17,7 +17,8 @@ namespace Skripte.Bewegung
 		[SerializeField] private float        speed     = 30f;
 		[SerializeField] private Vector2      zielpunkt;
 		[SerializeField] private GameObject   cordGrabblingHook;
-		private                  bool         cordGrabblingHookExists = false;
+		
+		private GameObject cordGrabblingHookInstance;
 
 		public override bool WennLaufen(Vector2 richtung)
 		{
@@ -68,15 +69,14 @@ namespace Skripte.Bewegung
 
 		private void OnDisable()
 		{
-			cordGrabblingHook.SetActive(false);
 			reset();
 		}
 
 		private void OnEnable()
 		{
-			if (cordGrabblingHookExists)
+			if (cordGrabblingHookInstance)
 			{
-				cordGrabblingHook.SetActive(true);
+				cordGrabblingHookInstance.SetActive(true);
 			}
 		}
 
@@ -108,27 +108,28 @@ namespace Skripte.Bewegung
 		private void grapplingHookSprite(Vector2 playerPosition)
 		{
 			Vector2 center = (playerPosition + zielpunkt) / 2;
-			if (!cordGrabblingHookExists)
+			if (!cordGrabblingHookInstance)
 			{
-				cordGrabblingHook       = Instantiate(cordGrabblingHook, center, Quaternion.identity);
-				cordGrabblingHookExists = true;
+				cordGrabblingHookInstance       = Instantiate(cordGrabblingHook, center, Quaternion.identity);
 			}
-			cordGrabblingHook.transform.position = center;
+			cordGrabblingHookInstance.transform.position = center;
 			
 			float scaleX = Mathf.Abs(playerPosition.x - zielpunkt.x);
 			float scaleY = Mathf.Abs(playerPosition.y - zielpunkt.y);
 				
-			center.x                                    -= 0.5f;
-			center.y                                    += 0.5f;
-			cordGrabblingHook.transform.position      =  center;
+			center.x                                     -= 0.5f;
+			center.y                                     += 0.5f;
+			cordGrabblingHookInstance.transform.position =  center;
 			Vector2 direction = zielpunkt - playerPosition;
-			cordGrabblingHook.transform.localScale = new Vector3(direction.magnitude * 0.1f, 1, 0);
+			cordGrabblingHookInstance.transform.localScale = new Vector3(direction.magnitude * 0.1f, 1, 0);
 			Quaternion rotation = Quaternion.FromToRotation(Vector3.right, direction);
-			cordGrabblingHook.transform.rotation = rotation;
+			cordGrabblingHookInstance.transform.rotation = rotation;
 		}
 		
-		private void grapplingHookMechanic(Vector2 playerPosition)
-		{
+		private void grapplingHookMechanic(Vector2 playerPosition) {
+			if (!cordGrabblingHookInstance)
+				return;
+			
 			float radius = 1f;
 			if (plattform)
 			{
@@ -138,10 +139,10 @@ namespace Skripte.Bewegung
 			{
 				Vector2 pos = Vector2.MoveTowards(transform.position, zielpunkt, speed * Time.deltaTime);
 				this.GetComponent<Rigidbody2D>().MovePosition(pos);
-				cordGrabblingHook.gameObject.SetActive(true);
+				cordGrabblingHookInstance.gameObject.SetActive(true);
 			} else
 			{
-				cordGrabblingHook.gameObject.SetActive(false);
+				cordGrabblingHookInstance.gameObject.SetActive(false);
 				reset();
 			}
 		}
@@ -154,6 +155,8 @@ namespace Skripte.Bewegung
 		{
 			plattform           = false;
 			zieht               = false;
+			if(cordGrabblingHookInstance)
+				cordGrabblingHookInstance.SetActive(false);
 		}
 	}
 }
