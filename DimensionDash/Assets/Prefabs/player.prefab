@@ -27049,9 +27049,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9285433e205c465eafacaa9ed5cfb022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flyForce: 300
+  _flyForce: 1500
   _flyMaxVelocity: 100
-  _flyDrag: 0.2
+  _flyDrag: 1.5
   _bulletPrefab: {fileID: 5503297180906598517, guid: d6a74b7d0446989238ddc4306e6430d7, type: 3}
   _bulletVelocity: 50
   _recoilImpulse: 200
