@@ -33,7 +33,7 @@ namespace Movement {
 		private void Awake() {
 			var color = GetComponent<PlayerColor>().GetColor().Color;
 			_bulletPool = new ObjectPool<GameObject>(() => {
-				var go = Instantiate(_bulletPrefab, transform);
+				var go = Instantiate(_bulletPrefab);
 				go.GetComponentInChildren<SpriteRenderer>().color = color;
 				return go;
 			}, (obj) => obj.SetActive(true), obj => obj.SetActive(false), Destroy, false, 4, 16);
@@ -60,6 +60,9 @@ namespace Movement {
 			_body.MoveRotation(Vector2.SignedAngle(Vector2.right, _direction));
 			_body.AddForce(_magnitude * _direction * _flyForce, ForceMode2D.Force);
 			_body.drag = Mathf.Lerp(_flyDrag, 1f, _body.velocity.magnitude / _flyMaxVelocity);
+			
+			if (_body.velocity.sqrMagnitude > _flyMaxVelocity * _flyMaxVelocity)
+				_body.velocity = _flyMaxVelocity * _body.velocity.normalized;
 			return false;
 		}
 
