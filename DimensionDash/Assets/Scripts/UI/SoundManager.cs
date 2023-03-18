@@ -100,6 +100,10 @@ namespace UI {
 			float newVolume = musicVolumeSlider.value;
 			effectSource.volume = newVolume;
 		}
-		
+
+
+		public void PlayMyOneShot(AudioClip clip) {
+			effectSource.PlayOneShot(clip);
+		}
 	}
 }
