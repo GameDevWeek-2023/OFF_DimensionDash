@@ -15,8 +15,8 @@ MonoBehaviour:
   <PlayerSprite>k__BackingField: 8
   <TileSetName>k__BackingField: scribble
   <Name>k__BackingField: TOOD
-  <Icon>k__BackingField: {fileID: 0}
-  <GreyIcon>k__BackingField: {fileID: 0}
+  <Icon>k__BackingField: {fileID: 21300000, guid: 84c84313269151e448c5181ff98a7b61, type: 3}
+  <GreyIcon>k__BackingField: {fileID: 21300000, guid: 46aba92fb4303da45b35a3b9f29940f8, type: 3}
   <MaxUsedPerLevel>k__BackingField: -1
   <MaxTime>k__BackingField: 3.4028235e+38
   <MinTime>k__BackingField: 4
