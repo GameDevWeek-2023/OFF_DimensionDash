@@ -23,7 +23,7 @@ public class thomas : MonoBehaviour
     void Update()
     {
         if(thomasTimer > 0) {
-			thomasTimer -= Time.deltaTime;
+			thomasTimer -= Time.unscaledDeltaTime;
 
 			if(thomasTimer <= 0) {
 				thomasTimer = thomasTime;
