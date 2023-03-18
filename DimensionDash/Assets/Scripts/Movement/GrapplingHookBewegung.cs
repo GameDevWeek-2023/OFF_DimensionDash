@@ -112,11 +112,7 @@ namespace Skripte.Bewegung
 			{
 				cordGrabblingHookInstance       = Instantiate(cordGrabblingHook, center, Quaternion.identity);
 			}
-			cordGrabblingHookInstance.transform.position = center;
-			
-			float scaleX = Mathf.Abs(playerPosition.x - zielpunkt.x);
-			float scaleY = Mathf.Abs(playerPosition.y - zielpunkt.y);
-				
+			cordGrabblingHookInstance.transform.position =  center;
 			center.x                                     -= 0.5f;
 			center.y                                     += 0.5f;
 			cordGrabblingHookInstance.transform.position =  center;
@@ -157,6 +153,7 @@ namespace Skripte.Bewegung
 			zieht               = false;
 			if(cordGrabblingHookInstance)
 				cordGrabblingHookInstance.SetActive(false);
+			
 		}
 	}
 }
