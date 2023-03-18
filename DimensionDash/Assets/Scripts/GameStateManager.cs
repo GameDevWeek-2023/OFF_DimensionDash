@@ -11,6 +11,7 @@ public class GameStateManager : GlobalSystem<GameStateManager> {
 	[SerializeField] [Scene] private string[] _levels;
 
 	private string _currentMainScene;
+	private bool   _loading = false;
 
 	public void Start() {
 		SceneManager.LoadSceneAsync(_uiScene, LoadSceneMode.Additive);
@@ -18,13 +19,14 @@ public class GameStateManager : GlobalSystem<GameStateManager> {
 	}
 
 	public void ChangeScene(string scene) {
-		if (_currentMainScene == scene)
+		if (_currentMainScene == scene || _loading)
 			return;
 
 		StartCoroutine(ChangeSceneCo(scene, 1f));
 	}
 
 	private IEnumerator ChangeSceneCo(string scene, float fadeOutDuration) {
+		_loading = true;
 		var last = _currentMainScene;
 		_currentMainScene = scene;
 		
@@ -44,6 +46,8 @@ public class GameStateManager : GlobalSystem<GameStateManager> {
 		foreach (var fade in FindObjectsOfType<CameraFade>()) {
 			fade.FadeIn();
 		}
+
+		_loading = false;
 	}
 
 	public void StartGame(int index) {
@@ -54,10 +58,17 @@ public class GameStateManager : GlobalSystem<GameStateManager> {
 		ChangeScene(_gameOverScene);
 	}
 	public void EndGameAfter(float delay) {
+		if (_loading)
+			return;
+		
 		StartCoroutine(EndGameAfterCo(delay));
+	}
+	public void ChangeToInitialScreen() {
+		ChangeScene(_firstScene);
 	}
 
 	private IEnumerator EndGameAfterCo(float delay) {
+		_loading       = true;
 		Time.timeScale = 0.1f;
 		yield return new WaitForSecondsRealtime(delay/2f);
 		yield return ChangeSceneCo(_gameOverScene, delay/2f);

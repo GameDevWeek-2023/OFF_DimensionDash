@@ -1,3 +1,4 @@
+using System.Linq;
 using NaughtyAttributes;
 using Player;
 using TMPro;
@@ -6,7 +7,6 @@ using UnityEngine;
 namespace Canvas {
 	public class EndPoints : MonoBehaviour {
 		[SerializeField]         private float  _delay;
-		[SerializeField] [Scene] private string _nextScene;
 
 		[SerializeField]
 		private GameObject player1,
@@ -42,18 +42,29 @@ namespace Canvas {
 			var winnerNumber = changePlayerStats(playernames, playerPoints);
 			setPlayerColors(playernames, playerPoints);
 			setWinnerText(winnerNumber.Item1, winnerNumber.Item2, winnerNumber.Item3);
+
+			foreach (var p in PlayerManager.Instance.Players)
+				p.transform.parent.GetComponent<PlayerController>().Ready = false;
 		}
 
 		private void Update() {
 			if (_delayLeft <= 0)
 				return;
 
+			if (!PlayerManager.Instance.Players.Any(p => p.transform.parent.GetComponent<PlayerController>().Ready)) {
+				if(_timerText)
+					_timerText.gameObject.SetActive(false);
+				return;
+			}
+
 			_delayLeft -= Time.unscaledDeltaTime;
-			if (_timerText)
+			if (_timerText) {
+				_timerText.gameObject.SetActive(true);
 				_timerText.text = Mathf.RoundToInt(_delayLeft).ToString();
+			}
 
 			if (_delayLeft <= 0) {
-				GameStateManager.Instance.ChangeScene(_nextScene);
+				GameStateManager.Instance.ChangeToInitialScreen();
 			}
 		}
 

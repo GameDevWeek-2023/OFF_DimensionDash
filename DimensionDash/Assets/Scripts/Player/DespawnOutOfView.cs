@@ -6,7 +6,8 @@ using UnityEngine.UI;
 namespace Player {
 	public class DespawnOutOfView : MonoBehaviour {
 		[SerializeField] private float        _maxOutOfViewTime = 3f;
-		[SerializeField] private int        _dyingDeduction = 5;
+		[SerializeField] private float        _instantDespawnDistance = 5f;
+		[SerializeField] private int          _dyingDeduction   = 5;
 		[SerializeField] private PlayerColor  _playerColor;
 		[SerializeField] private PlayerPoints _points;
 
@@ -36,26 +37,31 @@ namespace Player {
 			var camSize                 = new Vector2(camera.aspect, 1f) * camera.orthographicSize;
 			var outOfView               = false;
 			var outOfViewMarkerPosition = camRelativePosition;
+			var maxDistance             = 0f;
 
 			if (camRelativePosition.x < -camSize.x) {
+				maxDistance               = Mathf.Max(maxDistance, -camSize.x - camRelativePosition.x);
 				outOfViewMarkerPosition.x = -camSize.x;
 				outOfView                 = true;
 			} else if (camRelativePosition.x > camSize.x) {
+				maxDistance               = Mathf.Max(maxDistance, camRelativePosition.x - camSize.x);
 				outOfViewMarkerPosition.x = camSize.x;
 				outOfView                 = true;
 			}
 
 			if (camRelativePosition.y < -camSize.y) {
+				maxDistance               = Mathf.Max(maxDistance, -camSize.y - camRelativePosition.y);
 				outOfViewMarkerPosition.y = -camSize.y;
 				outOfView                 = true;
 			} else if (camRelativePosition.y > camSize.y) {
+				maxDistance               = Mathf.Max(maxDistance, camRelativePosition.y - camSize.y);
 				outOfViewMarkerPosition.y = camSize.y;
 				outOfView                 = true;
 			}
 
 			if (outOfView) {
 				_outOfViewTime += Time.deltaTime;
-				if (_outOfViewTime > _maxOutOfViewTime) {
+				if (_outOfViewTime > _maxOutOfViewTime || maxDistance >= _instantDespawnDistance) {
 					var respawner = RespawnManager.InstanceOptional;
 					if (respawner) {
 						// TODO: return marker to UI
