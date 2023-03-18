@@ -625,7 +625,7 @@ MonoBehaviour:
     - Key: pixel
       Value: {fileID: 21300000, guid: a77b96d103db8800ab632d58ca809242, type: 3}
     - Key: spider
-      Value: {fileID: 21300000, guid: 7f0c54c651b095f289a05b8f50571b0b, type: 3}
+      Value: {fileID: 21300000, guid: 65c24ab0c144a11b382568506338b560, type: 3}
     - Key: vector
       Value: {fileID: 21300000, guid: d1f45c60cb6331ca29962effa451f758, type: 3}
     - Key: arcade

@@ -19,7 +19,8 @@ namespace Movement {
 
 		private ObjectPool<GameObject> _bulletPool;
 
-		private float _orgDrag = 0f;
+		private float _orgDrag         = 0f;
+		private float _orgGravityScale = 10f;
 
 		private Vector2 _direction = Vector2.up;
 		private float   _magnitude = 0f;
@@ -41,6 +42,7 @@ namespace Movement {
 		private void OnEnable() {
 			_basis.Laufen(Vector2.zero);
 			_body.constraints  = RigidbodyConstraints2D.None;
+			_orgGravityScale   = _body.gravityScale;
 			_body.gravityScale = 0f;
 			_body.velocity     = Vector2.zero;
 			_orgDrag           = _body.drag;
@@ -48,9 +50,10 @@ namespace Movement {
 		}
 
 		private void OnDisable() {
-			_body.constraints = RigidbodyConstraints2D.FreezeRotation;
-			_body.rotation    = 0f;
-			_body.drag        = _orgDrag;
+			_body.constraints  = RigidbodyConstraints2D.FreezeRotation;
+			_body.gravityScale = _orgGravityScale;
+			_body.rotation     = 0f;
+			_body.drag         = _orgDrag;
 		}
 
 		public override bool WennAktuallisieren() {
