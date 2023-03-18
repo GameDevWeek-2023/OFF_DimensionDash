@@ -14,19 +14,27 @@ namespace Skripte.Bewegung
 		private                  RaycastHit2D hit;
 		private                  float        distance = 10;
 		private                  float        oldtime;
-
-		[SerializeField] private float   speed = 30f;
-		[SerializeField] private Vector2 zielpunkt;
+		private                  bool         Plattform = false;
+		[SerializeField] private float        speed = 30f;
+		[SerializeField] private Vector2      zielpunkt;
 
 		public override bool WennLaufen(Vector2 richtung)
 		{
-			if (grapplinghook)
+			if (grapplinghook && !zieht)
 			{
 				int          layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther", "DimensionPlattform");
 				hit       = Physics2D.Raycast(transform.position, richtung, distance, layer_mask);
 				if (hit.collider)
 				{
-					zielpunkt = hit.point;
+					int onlyplattforms = LayerMask.NameToLayer("DimensionPlattform");
+					if (hit.transform.gameObject.layer == onlyplattforms)
+					{
+						Plattform = true;
+						zielpunkt = new Vector2(hit.point.x, hit.collider.GetComponent<Renderer>().bounds.max.y+1f);
+					} else
+					{
+						zielpunkt = hit.point;
+					}
 				}
 				if (!crosshairExists && hit.collider)
 				{
@@ -45,56 +53,67 @@ namespace Skripte.Bewegung
 
 		public override bool WennSpringen()
 		{
-			int layer_mask = LayerMask.GetMask("DimensionPlattform");
 			if (grapplinghook && hit.collider && this.enabled && !zieht)
 			{
 				zieht = true;
 				return false;
-			} else if (grapplinghook && this.enabled && zieht && hit.transform.gameObject.layer == layer_mask)
+			} else if (grapplinghook && this.enabled && zieht)
 			{
-				//im ziehen springen, ziehen abbrechen
-				zielpunkt = new Vector2(hit.point.x, hit.collider.GetComponent<Mesh>().bounds.max.y);
+				reset();
+				return false;
 			}
 			return true;
 		}
 
+		private void OnDisable()
+		{
+			reset();
+		}
+
 		public override bool WennAktuallisieren()
 		{
-			//check if respawned, then break
-			if (Time.time - oldtime > 1.9f)
-			{
-				zieht = false;
-			}
-			oldtime = Time.time;
-			
-			//grappling hook
 			Vector2 playerPosition = new Vector2(transform.position.x, transform.position.y);
+
 			if (this.enabled && grapplinghook && zieht)
 			{
-				if ((playerPosition - zielpunkt).sqrMagnitude>1)
+				float radius = 1f;
+				if (Plattform)
+				{
+					radius = 0.1f;
+				}
+				if ((playerPosition - zielpunkt).sqrMagnitude>radius)
 				{
 					Vector2 pos = Vector2.MoveTowards(transform.position, zielpunkt, speed * Time.deltaTime);
 					this.GetComponent<Rigidbody2D>().MovePosition(pos);
 				} else
 				{
-					zieht = false;
+					reset();
 				}
-			}
-
-			if (richtung.sqrMagnitude > 0.001f && grapplinghook)
-			{
-				if (crosshairExists)
-				{
-					crosshair.SetActive(true);
-				} 
 			} else
 			{
-				if (crosshairExists)
+				reset();
+			}
+
+			if (crosshairExists)
+			{
+				if (richtung.sqrMagnitude > 0.001f && grapplinghook)
+				{
+					crosshair.SetActive(true);	
+				} else
 				{
 					crosshair.SetActive(false);
 				}
 			}
 			return true;
+		}
+		private void Update() {
+			// required to have enable
+		}
+
+		private void reset()
+		{
+			Plattform = false;
+			zieht     = false;
 		}
 	}
 }
