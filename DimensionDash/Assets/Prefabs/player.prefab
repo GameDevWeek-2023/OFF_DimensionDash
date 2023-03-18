@@ -27038,7 +27038,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0908810a279d4c33b721ae3cdde0ce1e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _impulse: 500
+  _impulse: 900
   _body: {fileID: 226803126642516652}
 --- !u!114 &196587375881958839
 MonoBehaviour:
@@ -27076,7 +27076,7 @@ MonoBehaviour:
   crosshair: {fileID: 8631597110398554361, guid: 09013cb213af3074d90145c33f01ac92, type: 3}
   zielpunkt: {x: 0, y: 0}
   teleportieren: 0
-  distanz: 4
+  distanz: 8
 --- !u!114 &1214090803717888440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27110,6 +27110,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   crosshair: {fileID: 8631597110398554361, guid: 09013cb213af3074d90145c33f01ac92, type: 3}
   grapplinghook: 0
+  distance: 25
   speed: 30
   zielpunkt: {x: 0, y: 0}
   cordGrabblingHook: {fileID: 937094364042132291, guid: eeecdef1fd72d1f46a0b16bd2238606a, type: 3}
