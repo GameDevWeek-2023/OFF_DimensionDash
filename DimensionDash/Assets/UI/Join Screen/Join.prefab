@@ -68,7 +68,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8403706843141612781}
   - component: {fileID: 7284049301206477909}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Hitbox (3)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
