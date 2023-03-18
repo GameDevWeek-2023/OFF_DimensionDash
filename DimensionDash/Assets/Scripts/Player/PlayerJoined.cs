@@ -34,14 +34,18 @@ namespace Player {
 		}
 
 		void Update() {
+			if (!player) return;
+
 			var ready = player && player.Ready;
-			if (ready && !startIndicator1.activeSelf) {
+			if (ready) {
 				startIndicator1.SetActive(true);
 				hitBox.SetActive(false);
+				player.gameObject.transform.GetChild(0).gameObject.layer = 6; //player unready layer
 			}
-			else if (!ready && startIndicator1.activeSelf) {
+			else if (!ready) {
 				startIndicator1.SetActive(false);
 				hitBox.SetActive(true);
+				player.gameObject.transform.GetChild(0).gameObject.layer = 11; // standard player layer
 			}
 		}
 
