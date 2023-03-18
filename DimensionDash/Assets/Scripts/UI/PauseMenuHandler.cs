@@ -13,7 +13,11 @@ public class PauseMenuHandler : MonoBehaviour
 	[SerializeField]
 	private GameObject controlsScreenG;
 	[SerializeField]
+	private GameObject WorldSelect;
+	[SerializeField]
 	private GameObject pauseMenu;
+	[SerializeField]
+	private GameObject greyScreen;
 	[SerializeField]
 	private Text timerText;
 	[SerializeField]
@@ -46,8 +50,6 @@ public class PauseMenuHandler : MonoBehaviour
 			Time.timeScale = 0;
 		}
 
-
-
 		if (timerTimer > 0) {
 			timerTimer -= Time.unscaledDeltaTime;
 			int timeLeft = (int) timerTimer;
@@ -77,6 +79,21 @@ public class PauseMenuHandler : MonoBehaviour
 	}
 
 
+	public void OpenWorldSelect() {
+		timeStop = true;
+		Time.timeScale = 0;
+		greyScreen.SetActive(true);
+		WorldSelect.SetActive(true);
+	}
+
+	public void CloseWorldScreen() {
+		timeStop = false;
+		Time.timeScale = 1;
+		greyScreen.SetActive(false);
+		WorldSelect.SetActive(false);
+	}
+
+
 
 	public void RestartGame() {
 
@@ -89,6 +106,7 @@ public class PauseMenuHandler : MonoBehaviour
 
 
 	public void ExitPauseScreen() {
+		greyScreen.SetActive(false);
 		timerTimer = timerTime;
 		timerText.gameObject.SetActive(true);
 		pauseScreenG.SetActive(true);
@@ -99,6 +117,7 @@ public class PauseMenuHandler : MonoBehaviour
 
 
 	public void OpenPauseMenu() {
+		greyScreen.SetActive(true);
 		timerText.gameObject.SetActive(false);
 		pauseMenu.SetActive(true);
 		currentUI = CurrentUI.pauseScreen;
