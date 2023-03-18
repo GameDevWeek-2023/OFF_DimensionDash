@@ -36,8 +36,10 @@ namespace Skripte.Bewegung
 			        zielpunkt = hit.point;
 		        }
 		        crosshair.transform.position = zielpunkt;
+		        return false;
 	        }
-	        return false;
+
+	        return true;
         }
 
         public override bool WennAktuallisieren()
