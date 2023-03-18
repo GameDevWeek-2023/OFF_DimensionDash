@@ -383,7 +383,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -695,23 +695,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _delay: 3
-  player1: {fileID: 3774747147117791396}
-  player2: {fileID: 3774747146788210062}
-  player3: {fileID: 3774747145645709547}
-  player4: {fileID: 3774747146760121865}
-  player5: {fileID: 3774747146957005568}
-  player6: {fileID: 3774747147443674742}
-  player7: {fileID: 3774747146286514972}
-  player8: {fileID: 3774747145597801107}
-  player1_Points: {fileID: 3774747146822615289}
-  player2_Points: {fileID: 3774747146215483360}
-  player3_Points: {fileID: 3774747146061567441}
-  player4_Points: {fileID: 3774747146699390200}
-  player5_Points: {fileID: 3774747145882530043}
-  player6_Points: {fileID: 3774747146469658677}
-  player7_Points: {fileID: 3774747145629899748}
-  player8_Points: {fileID: 3774747146339160884}
-  winnerText: {fileID: 3774747147313190747}
+  _positions: []
+  _winnerText: {fileID: 3774747147313190745}
+  _highscore_rows:
+  - name: {fileID: 3774747146822615239}
+    score: {fileID: 3774747147117791394}
+  - name: {fileID: 3774747146215483374}
+    score: {fileID: 3774747146788210060}
+  - name: {fileID: 3774747146061567455}
+    score: {fileID: 3774747145645709545}
+  - name: {fileID: 3774747146699390150}
+    score: {fileID: 3774747146760121879}
+  - name: {fileID: 3774747145882530041}
+    score: {fileID: 3774747146957005582}
+  - name: {fileID: 3774747146469658675}
+    score: {fileID: 3774747147443674740}
+  - name: {fileID: 3774747145629899746}
+    score: {fileID: 3774747146286514970}
+  - name: {fileID: 3774747146339160882}
+    score: {fileID: 3774747145597801105}
   _timerText: {fileID: 3774747147274837095}
 --- !u!1 &3774747145766422376
 GameObject:
@@ -862,7 +864,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -999,7 +1001,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -1172,7 +1174,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -1443,7 +1445,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -1693,7 +1695,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -2001,7 +2003,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -2408,7 +2410,7 @@ MonoBehaviour:
   m_charWidthMaxAdj: 0
   m_enableWordWrapping: 1
   m_wordWrappingRatios: 0.4
-  m_overflowMode: 0
+  m_overflowMode: 1
   m_linkedTextComponent: {fileID: 0}
   parentLinkedComponent: {fileID: 0}
   m_enableKerning: 1
@@ -2945,7 +2947,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -348.53986, y: -416}
+  m_AnchoredPosition: {x: -430, y: -416}
   m_SizeDelta: {x: 88.219, y: 192.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3774747147313190694
@@ -2976,7 +2978,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Player X wins
+  m_text: You are the davest Dave
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cf17083adbac70a4796fe76156997298, type: 2}
   m_sharedMaterial: {fileID: 4264884077058472187, guid: cf17083adbac70a4796fe76156997298, type: 2}
@@ -3010,8 +3012,8 @@ MonoBehaviour:
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
-  m_HorizontalAlignment: 1
-  m_VerticalAlignment: 256
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 4096
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -3090,7 +3092,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 9.016}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1052, y: -61}
+  m_AnchoredPosition: {x: 1030, y: -60}
   m_SizeDelta: {x: 1385.5654, y: 1037.2727}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3774747147350208423

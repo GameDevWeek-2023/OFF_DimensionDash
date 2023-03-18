@@ -1,31 +1,24 @@
+using System;
+using System.Collections.Generic;
 using System.Linq;
-using NaughtyAttributes;
 using Player;
 using TMPro;
 using UnityEngine;
 
 namespace Canvas {
+	[Serializable]
+	public class Highscore_row {
+		public TMP_Text name;
+		public TMP_Text score;
+	}
+	
 	public class EndPoints : MonoBehaviour {
 		[SerializeField]         private float  _delay;
 
-		[SerializeField]
-		private GameObject player1,
-		                   player2,
-		                   player3,
-		                   player4,
-		                   player5,
-		                   player6,
-		                   player7,
-		                   player8,
-		                   player1_Points,
-		                   player2_Points,
-		                   player3_Points,
-		                   player4_Points,
-		                   player5_Points,
-		                   player6_Points,
-		                   player7_Points,
-		                   player8_Points,
-		                   winnerText;
+		[SerializeField] private Transform[] _positions;
+		
+		[SerializeField] private TMP_Text      _winnerText;
+		[SerializeField] private Highscore_row[] _highscore_rows;
 
 		[SerializeField] private TMP_Text _timerText;
 
@@ -34,17 +27,46 @@ namespace Canvas {
 		void Start() {
 			_delayLeft = _delay;
 
-			GameObject[] playerPoints = new[] {player1, player2, player3, player4, player5, player6, player7, player8};
-			GameObject[] playernames = new[] {
-				player1_Points, player2_Points, player3_Points, player4_Points, player5_Points, player6_Points, player7_Points, player8_Points
-			};
+			var scores = new List<(int, string, Color, GameObject)>();
 
-			var winnerNumber = changePlayerStats(playernames, playerPoints);
-			setPlayerColors(playernames, playerPoints);
-			setWinnerText(winnerNumber.Item1, winnerNumber.Item2, winnerNumber.Item3);
+			foreach (var r in _highscore_rows) {
+				r.name.gameObject.SetActive(false);
+				r.score.gameObject.SetActive(false);
+			}
 
-			foreach (var p in PlayerManager.Instance.Players)
+			foreach (var p in PlayerManager.Instance.Players) {
 				p.transform.parent.GetComponent<PlayerController>().Ready = false;
+
+				var color = p.GetComponent<PlayerColor>();
+				var name  = p.GetComponent<PlayerName>();
+				var score = p.GetComponent<PlayerPoints>();
+
+				if (color && name && score) {
+					scores.Add((score.points, name.GetName(), color.GetColor().Color, p));
+				}
+			}
+
+			if (scores.Count == 0)
+				return;
+
+			scores.Sort((lhs, rhs) => rhs.Item1-lhs.Item1);
+
+			for (int i = 0; i < Math.Min(_highscore_rows.Length, scores.Count); ++i) {
+				var (score, name, color, go) = scores[i];
+				var row = _highscore_rows[i];
+				
+				row.name.gameObject.SetActive(true);
+				row.name.text  = name;
+				row.name.color = color;
+				
+				row.score.gameObject.SetActive(true);
+				row.score.text  = score.ToString();
+				row.score.color = color;
+
+				go.transform.position = _positions[Math.Min(i, _positions.Length - 1)].position;
+			}
+
+			_winnerText.color = scores[0].Item3;
 		}
 
 		private void Update() {
@@ -67,57 +89,6 @@ namespace Canvas {
 				GameStateManager.Instance.ChangeToInitialScreen();
 			}
 		}
-
-		private void setWinnerText(ColorInfo player, PlayerName name, float score) {
-			var txt = winnerText.GetComponent<TMP_Text>();
-			txt.text  = name.GetName() + " Wins";
-			txt.color = player.Color;
-		}
-
-		private (ColorInfo, PlayerName, float) changePlayerStats(GameObject[] playernames, GameObject[] playerPoints) {
-			var players = PlayerManager.Instance.Players;
-
-			var winner = ((ColorInfo) null, (PlayerName) null, float.MinValue);
-			for (int player = 0; player < players.Count; player++) {
-				var color      = players[player].GetComponent<PlayerColor>().GetColor();
-				var playerName = players[player].GetComponent<PlayerName>();
-
-				playerPoints[player].SetActive(true);
-				playernames[player].SetActive(true);
-				int points = getPointsFromPlayer(players[player].GetComponent<PlayerPoints>());
-				var name   = playernames[player].GetComponent<TMP_Text>();
-				name.text  = playerName.GetName();
-				name.color = color.Color;
-
-				var pointText = playerPoints[player].GetComponent<TMP_Text>();
-				pointText.text  = points.ToString();
-				pointText.color = color.Color;
-
-
-				if (winner.Item3 < points) {
-					winner = (color, playerName, points);
-				}
-			}
-
-			for (int i = players.Count; i < playerPoints.Length; i++) {
-				playernames[i].SetActive(false);
-				playerPoints[i].SetActive(false);
-			}
-
-			return winner;
-		}
-
-		private static int getPointsFromPlayer(PlayerPoints player) {
-			return player.points;
-		}
-
-		private void setPlayerColors(GameObject[] playernames, GameObject[] points) {
-			var players = PlayerManager.Instance.Players;
-			for (int i = 0; i < players.Count; i++) {
-				Color c = players[i].GetComponent<PlayerColor>().GetColor().Color;
-				points[i].GetComponent<TMP_Text>().color      = c;
-				playernames[i].GetComponent<TMP_Text>().color = c;
-			}
-		}
+		
 	}
 }
