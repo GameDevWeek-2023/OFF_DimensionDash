@@ -15424,8 +15424,20 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3774747145597801105, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747145629899746, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3774747145645709544, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747145645709545, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3774747145740285092, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
@@ -15540,29 +15552,85 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3774747145882530041, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146061567455, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3774747146086340829, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3774747146215483374, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146286514970, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3774747146286514973, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146339160882, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3774747146348592798, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 3774747146469658675, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3774747146567167571, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146699390150, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3774747146760121878, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3774747146760121879, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146788210060, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3774747146788210063, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146822615239, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146822615239, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontColor.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146822615239, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontColor.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146822615239, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontColor.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747146822615239, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontColor32.rgba
+      value: 4294967295
       objectReference: {fileID: 0}
     - target: {fileID: 3774747146939400734, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
@@ -15572,17 +15640,37 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3774747146957005582, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3774747147054924730, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747147117791394, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3774747147117791397, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3774747147313190745, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_text
+      value: You are the Davest Dave
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747147313190745, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3774747147404481290, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3774747147443674740, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
+      propertyPath: m_fontStyle
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3774747147443674743, guid: 0a1cb1ea9eb593948a40c125b9a8ef3e, type: 3}
       propertyPath: m_RootOrder

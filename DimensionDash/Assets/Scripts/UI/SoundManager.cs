@@ -33,6 +33,7 @@ namespace UI {
 		void Start()
 		{
 			maxMusicVolume = musicVolumeSlider.value;
+			effectSource.volume = effectVolumeSlider.value;
 			foreach (AudioSource audioSource in musicSourceDic.Values) 
 			{
 				audioSource.volume    = 0;
@@ -97,7 +98,7 @@ namespace UI {
 		}
 
 		public void ChangeEffectVolume() {
-			float newVolume = musicVolumeSlider.value;
+			float newVolume = effectVolumeSlider.value;
 			effectSource.volume = newVolume;
 		}
 
