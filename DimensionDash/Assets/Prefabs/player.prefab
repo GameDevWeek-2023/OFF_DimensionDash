@@ -27049,12 +27049,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9285433e205c465eafacaa9ed5cfb022, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _flyForce: 300
-  _flyMaxVelocity: 100
-  _flyDrag: 0.2
+  _flyForce: 2000
+  _flyMaxVelocity: 80
+  _flyDrag: 1.5
   _bulletPrefab: {fileID: 5503297180906598517, guid: d6a74b7d0446989238ddc4306e6430d7, type: 3}
-  _bulletVelocity: 50
-  _recoilImpulse: 200
+  _bulletVelocity: 40
+  _recoilImpulse: 500
   _shootPosition: {fileID: 1486810183013033306}
   _body: {fileID: 226803126642516652}
   _basis: {fileID: 2932850926464620458}
@@ -27071,7 +27071,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crosshair: {fileID: 8631597110398554361, guid: 09013cb213af3074d90145c33f01ac92, type: 3}
+  zielpunkt: {x: 0, y: 0}
   teleportieren: 0
+  distanz: 4
 --- !u!114 &1214090803717888440
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27084,8 +27086,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83554c99970d4b06aa622da4362132ec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _speed: 30
-  _pushImpulse: 80
+  _speed: 20
+  _pushImpulse: 20
+  _maxVelocity: 40
   _armBody: {fileID: 4323032619270498885}
   _armCollider: {fileID: 3615824484581125975}
   _playerBody: {fileID: 226803126642516652}
