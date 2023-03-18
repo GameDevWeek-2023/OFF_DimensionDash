@@ -1,0 +1,22 @@
+fileFormatVersion: 2
+guid: d621a318085c3c04591754af5698267d
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontNames:
+  - DGM
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 6e034f776a9780b4295c2b37a752df3b, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
