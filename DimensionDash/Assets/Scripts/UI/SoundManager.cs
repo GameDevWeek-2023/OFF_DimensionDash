@@ -48,7 +48,7 @@ namespace UI {
 
 
 		public void DimensionChangeMusicSwap(string i) {
-			if (!audioClips.ContainsKey(i))
+			if (!musicSourceDic.ContainsKey(i))
 				return;
 			Debug.Log(i);
 			if(i != currentDimensionMusic) {
@@ -58,7 +58,7 @@ namespace UI {
 				fadeIn                = true;
 			}
 
-			if (audioClips[i] != null)
+			if (audioClips.ContainsKey(i) && audioClips[i] != null)
 				effectSource.PlayOneShot(audioClips[i]);
 		}
 

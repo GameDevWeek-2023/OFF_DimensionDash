@@ -1,5 +1,6 @@
 ﻿using System;
 using Movement;
+using Player;
 using UnityEngine;
 
 namespace Skripte.Bewegung
@@ -7,7 +8,6 @@ namespace Skripte.Bewegung
 	public class GrapplingHookBewegung : BewegenÜberschreiben
 	{
 		[SerializeField] private GameObject   crosshair;
-		private                  bool         crosshairExists = false;
 		public                   bool         grapplinghook   = false;
 		private                  bool         zieht           = false;
 		private                  Vector2      richtung;
@@ -17,8 +17,11 @@ namespace Skripte.Bewegung
 		[SerializeField] private float        speed     = 30f;
 		[SerializeField] private Vector2      zielpunkt;
 		[SerializeField] private GameObject   cordGrabblingHook;
+
+		[SerializeField] private PlayerColor _playerColor;
 		
-		private GameObject cordGrabblingHookInstance;
+		private                  GameObject cordGrabblingHookInstance;
+		private GameObject crosshairInstance;
 
 		public override bool WennLaufen(Vector2 richtung)
 		{
@@ -38,17 +41,21 @@ namespace Skripte.Bewegung
 						zielpunkt = hit.point;
 					}
 				}
-				if (!crosshairExists && hit.collider)
+				if (!crosshairInstance && hit.collider)
 				{
-					crosshair       = Instantiate(crosshair, zielpunkt, Quaternion.identity);
-					crosshairExists = true;
+					crosshairInstance = Instantiate(crosshair, zielpunkt, Quaternion.identity);
+					if(_playerColor && _playerColor.GetColor() && crosshairInstance.TryGetComponent(out SpriteRenderer sprite)) {
+						sprite.color = _playerColor.GetColor().Color;
+					}
 				}
 
-				if (!crosshair.activeSelf && hit.collider)
-				{
-					crosshair.SetActive(true);
+				if (crosshairInstance) {
+					if (!crosshairInstance.activeSelf && hit.collider) {
+						crosshairInstance.SetActive(true);
+					}
+
+					crosshairInstance.transform.position = zielpunkt;
 				}
-				crosshair.transform.position = zielpunkt;
 			}
 			return true;
 		}
@@ -82,14 +89,14 @@ namespace Skripte.Bewegung
 
 		public override bool WennAktuallisieren()
 		{
-			if (crosshairExists)
+			if (crosshairInstance)
 			{
 				if (richtung.sqrMagnitude > 0.001f && grapplinghook)
 				{
-					crosshair.SetActive(true);	
+					crosshairInstance.SetActive(true);	
 				} else
 				{
-					crosshair.SetActive(false);
+					crosshairInstance.SetActive(false);
 				}
 			}
 			
@@ -112,11 +119,7 @@ namespace Skripte.Bewegung
 			{
 				cordGrabblingHookInstance       = Instantiate(cordGrabblingHook, center, Quaternion.identity);
 			}
-			cordGrabblingHookInstance.transform.position = center;
-			
-			float scaleX = Mathf.Abs(playerPosition.x - zielpunkt.x);
-			float scaleY = Mathf.Abs(playerPosition.y - zielpunkt.y);
-				
+			cordGrabblingHookInstance.transform.position =  center;
 			center.x                                     -= 0.5f;
 			center.y                                     += 0.5f;
 			cordGrabblingHookInstance.transform.position =  center;
@@ -157,6 +160,7 @@ namespace Skripte.Bewegung
 			zieht               = false;
 			if(cordGrabblingHookInstance)
 				cordGrabblingHookInstance.SetActive(false);
+			
 		}
 	}
 }

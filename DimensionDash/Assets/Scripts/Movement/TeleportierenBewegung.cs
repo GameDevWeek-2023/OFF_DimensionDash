@@ -1,4 +1,5 @@
 ﻿using Movement;
+using Player;
 using UnityEngine;
 
 namespace Skripte.Bewegung
@@ -7,12 +8,15 @@ namespace Skripte.Bewegung
     {
 	    [SerializeField] private GameObject   crosshair;
 	    [SerializeField] private Vector2      zielpunkt;
-	    private                  bool         crosshairExists = false;
         public                   bool         teleportieren   = false;
         private                  Vector2      richtung        = Vector2.zero;
         private                  RaycastHit2D hit;
         private                  bool         läuft   = false;
         [SerializeField] private                  float        distanz = 8;
+        
+        [SerializeField] private PlayerColor _playerColor;
+        
+        private                  GameObject  crosshairInstance;
         
         public override bool WennLaufen(Vector2 richtung)
         {
@@ -21,10 +25,12 @@ namespace Skripte.Bewegung
 	        {
 		        int layer_mask = LayerMask.GetMask("BaseLevel", "DimensionOther");
 		        hit = Physics2D.Raycast(new Vector2(transform.position.x, transform.position.y), richtung, distanz, layer_mask);
-		        if (!crosshairExists)
+		        if (!crosshairInstance)
 		        {
-			        crosshairExists = true; 
-			        crosshair = Instantiate(crosshair, zielpunkt, Quaternion.identity);
+			        crosshairInstance = Instantiate(crosshair, zielpunkt, Quaternion.identity);
+			        if(_playerColor && _playerColor.GetColor() && crosshairInstance.TryGetComponent(out SpriteRenderer sprite)) {
+				        sprite.color = _playerColor.GetColor().Color;
+			        }
 		        }
 		        
 		        if (!hit.collider)
@@ -35,7 +41,7 @@ namespace Skripte.Bewegung
 		        {
 			        zielpunkt = hit.point;
 		        }
-		        crosshair.transform.position = zielpunkt;
+		        crosshairInstance.transform.position = zielpunkt;
 		        return false;
 	        }
 
@@ -44,14 +50,14 @@ namespace Skripte.Bewegung
 
         public override bool WennAktuallisieren()
         {
-	        if (crosshairExists)
+	        if (crosshairInstance)
 	        {
 		        if (richtung.sqrMagnitude > 0.001f && teleportieren)
 		        {
-			        crosshair.SetActive(true);
+			        crosshairInstance.SetActive(true);
 		        } else
 		        {
-			        crosshair.SetActive(false);
+			        crosshairInstance.SetActive(false);
 		        }
 	        }
 	        return true;
